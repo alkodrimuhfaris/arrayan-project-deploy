@@ -5,13 +5,18 @@
   .parallax-left, .parallax-right {
     position: absolute;
     top: 0;
-    max-width: 150px;
+    max-width: 100px;
     width: 25%;
     height: 80%;
     z-index: 800;
   }
   .parallax-left {
     left: 0;
+    transition: 0.15s ease-out;
+    &.open {
+      transform: scale(0.97) translateX(-5px);
+      transition: transform 0.3s 0.45s ease-out;
+}
     & .parallax-left-relative {
       position: relative;
       width: 100%;
@@ -21,47 +26,23 @@
         width: 100%;
         aspect-ratio: 1;
         left: 0;
-        &.top-wrap {
-          top: 8%;
-          & .parallax-left-top {
-            & img {
-              position: absolute;
-              width: 100%;
-              object-fit: contain;
-              top: 0;
-              left: 0;
-            }
-          }
-        }
-        &.mid-wrap {
-          top: 30%;
-          & .parallax-left-mid {
-            & img {
-              position: absolute;
-              width: 100%;
-              object-fit: contain;
-              top: 0;
-              left: 0;
-            }
-          }
-        }
-        &.end-wrap {
-          top: 35%;
-          & .parallax-left-end {
-            & img {
-              position: absolute;
-              width: 100%;
-              object-fit: contain;
-              top: 0;
-              left: 0;
-            }
-          }
+        & img {
+          position: absolute;
+          width: 100%;
+          object-fit: contain;
+          top: 0;
+          left: 0;
         }
       }
     }
   }
   .parallax-right {
     right: 0;
+    transition: 0.15s ease-out;
+    &.open {
+      transform: scale(0.97) translateX(5px);
+      transition: transform 0.3s 0.45s ease-out;
+}
     & .parallax-right-relative {
       position: relative;
       width: 100%;
@@ -71,41 +52,12 @@
         width: 100%;
         aspect-ratio: 1;
         right: 0;
-        &.top-wrap {
-          top: 0%;
-          & .parallax-right-top {
-            & img {
-              position: absolute;
-              width: 100%;
-              object-fit: contain;
-              top: 0;
-              right: 0;
-            }
-          }
-        }
-        &.mid-wrap {
-          top: 20%;
-          & .parallax-right-mid {
-            & img {
-              position: absolute;
-              width: 100%;
-              object-fit: contain;
-              top: 0;
-              right: 0;
-            }
-          }
-        }
-        &.end-wrap {
-          top: 40%;
-          & .parallax-right-end {
-            & img {
-              position: absolute;
-              width: 100%;
-              object-fit: contain;
-              top: 0;
-              right: 0;
-            }
-          }
+        & img {
+          position: absolute;
+          width: 100%;
+          object-fit: contain;
+          top: 0;
+          right: 0;
         }
       }
     }

@@ -669,9 +669,16 @@ div.footer-ar {
   }
 
   & section.maps {
+    position: relative;
     width: 100%;
     aspect-ratio: 2.66667;
     background-color: gray;
+    overflow: hidden;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover !important;
+    }
   }
 
   & footer.footer {
@@ -683,7 +690,6 @@ div.footer-ar {
       width: 15em;
       max-width: 100%;
       aspect-ratio: 2;
-      background-color: gray;
       position: relative;
       & img {
         position: absolute;

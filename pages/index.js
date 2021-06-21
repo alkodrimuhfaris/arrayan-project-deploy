@@ -20,6 +20,7 @@ import Award2 from '../Assets/Icons/Awards-02.svg';
 import Award3 from '../Assets/Icons/Awards-03.svg';
 import Award4 from '../Assets/Icons/Awards-04.svg';
 import arrayanIcon from '../Assets/Icons/arrayanIcon.svg';
+import arrayanIconColor from '../Assets/Icons/arrayanIconColor.svg';
 import Testimony from '../componentHelpers/Testimony';
 import HomeHeader from './header/home';
 import leftTop from '../Assets/Parallax/kiri-top.png';
@@ -28,6 +29,7 @@ import leftEnd from '../Assets/Parallax/kiri-end.png';
 import rightTop from '../Assets/Parallax/kanan-branch-top.png';
 import rightMid from '../Assets/Parallax/kanan-mid.png';
 import rightEnd from '../Assets/Parallax/kanan-branch-end.png';
+import maps from '../Assets/Photos/GoogleMaps.png';
 
 function useVisibiliyRef(options) {
   const ref = React.useRef();
@@ -255,146 +257,80 @@ export default function Home() {
     };
   }, []);
 
+  const parallaxLeft = [
+    {src: leftMid, position: '13%', speed: 0.2},
+    {src: leftTop, position: '8%', speed: 0.7},
+    {src: leftMid, position: '30%', speed: 0.5},
+    {src: leftEnd, position: '25%', speed: 0.58},
+    {src: leftTop, position: '25%', speed: 0.6},
+    {src: leftMid, position: '37%', speed: 0.7},
+    {src: leftEnd, position: '35%', speed: 0.73},
+  ];
+
+  const parallaxRight = [
+    {src: rightTop, position: '0%', speed: 0.7},
+    {src: rightEnd, position: '-1%', speed: 0.6},
+    {src: rightEnd, position: '2%', speed: 0.5},
+    {src: rightTop, position: '20%', speed: 0.6},
+    {src: rightMid, position: '16%', speed: 0.7},
+    {src: rightTop, position: '44%', speed: 0.55},
+    {src: rightEnd, position: '45%', speed: 0.52},
+  ];
+
   const topSlider = [
-    {
-      class: 'slider-left',
-      Icon: AiOutlineArrowLeft,
-    },
-    {
-      class: 'slider-right',
-      Icon: AiOutlineArrowRight,
-    },
+    {class: 'slider-left', Icon: AiOutlineArrowLeft},
+    {class: 'slider-right', Icon: AiOutlineArrowRight},
   ];
 
   const testiSlider = [
-    {
-      class: 'testi-slider-left',
-      Icon: AiOutlineArrowLeft,
-    },
-    {
-      class: 'testi-slider-right',
-      Icon: AiOutlineArrowRight,
-    },
+    {class: 'testi-slider-left', Icon: AiOutlineArrowLeft},
+    {class: 'testi-slider-right', Icon: AiOutlineArrowRight},
   ];
 
   const newsSlider = [
-    {
-      class: 'news-slider-left',
-      Icon: AiOutlineArrowLeft,
-    },
-    {
-      class: 'news-slider-right',
-      Icon: AiOutlineArrowRight,
-    },
+    {class: 'news-slider-left', Icon: AiOutlineArrowLeft},
+    {class: 'news-slider-right', Icon: AiOutlineArrowRight},
   ];
 
   const hightlight = [
-    {
-      title: 'Berdiri Sejak',
-      desc: '2010',
-    },
-    {
-      title: 'Mengelola Lahan',
-      desc: '698 Ha',
-    },
-    {
-      title: 'Unit Terjual',
-      desc: '15.000',
-    },
-    {
-      title: 'Akan Dibangun',
-      desc: '20.000',
-    },
+    {title: 'Berdiri Sejak', desc: '2010'},
+    {title: 'Mengelola Lahan', desc: '698 Ha'},
+    {title: 'Unit Terjual', desc: '15.000'},
+    {title: 'Akan Dibangun', desc: '20.000'},
   ];
 
   const awards = [
-    {
-      Award: Award1,
-    },
-    {
-      Award: Award2,
-    },
-    {
-      Award: Award3,
-    },
-    {
-      Award: Award4,
-    },
+    {Award: Award1},
+    {Award: Award2},
+    {Award: Award3},
+    {Award: Award4},
   ];
 
   const socialMedia = [
-    {
-      socmed: 'facebook',
-      link: '#',
-      Logo: ImFacebook,
-    },
-    {
-      socmed: 'instagram',
-      link: '#',
-      Logo: IoLogoInstagram,
-    },
-    {
-      socmed: 'facebook',
-      link: '#',
-      Logo: IoLogoYoutube,
-    },
+    {socmed: 'facebook', link: '#', Logo: ImFacebook},
+    {socmed: 'instagram', link: '#', Logo: IoLogoInstagram},
+    {socmed: 'youtube', link: '#', Logo: IoLogoYoutube},
   ];
 
   const OurLink = [
-    {
-      desc: 'Home',
-      link: '#',
-    },
-    {
-      desc: 'About',
-      link: '#',
-    },
-    {
-      desc: 'Our Project',
-      link: '#',
-    },
-    {
-      desc: 'Investor',
-      link: '#',
-    },
-    {
-      desc: 'News',
-      link: '#',
-    },
+    {desc: 'Home', link: '#'},
+    {desc: 'About', link: '#'},
+    {desc: 'Our Project', link: '#'},
+    {desc: 'Investor', link: '#'},
+    {desc: 'News', link: '#'},
   ];
 
   const HeadOffice = [
-    {
-      desc: 'Graha Iskandarsyah 2nd Floor',
-      link: '#',
-    },
-    {
-      desc: 'Jl. Iskandarsyah NO 66-C',
-      link: '#',
-    },
-    {
-      desc: 'Kebayoran Baru, Jaksel',
-      link: '#',
-    },
-    {
-      desc: 'DKI Jakarta 12160',
-      link: '#',
-    },
+    {desc: 'Graha Iskandarsyah 2nd Floor', link: '#'},
+    {desc: 'Jl. Iskandarsyah NO 66-C', link: '#'},
+    {desc: 'Kebayoran Baru, Jaksel', link: '#'},
+    {desc: 'DKI Jakarta 12160', link: '#'},
   ];
 
   const ProjectOffice = [
-    {
-      desc: 'Cikarang Square Blok B 18',
-      link: '#',
-    },
-    {
-      desc: 'Jl. Raya Cikarang Bekasi',
-      link: '#',
-    },
-    {
-      desc: 'Jawa Barat 17530',
-      link: '#',
-    },
+    {desc: 'Cikarang Square Blok B 18', link: '#'},
+    {desc: 'Jl. Raya Cikarang Bekasi', link: '#'},
+    {desc: 'Jawa Barat 17530', link: '#'},
   ];
 
   // function goes here
@@ -442,92 +378,55 @@ export default function Home() {
       className="position-relative w-100 page-full-cont overflow-hidden"
     >
       <HomeHeader />
-      <div className="parallax-left">
+      {/* left parallax */}
+      <div className={`parallax-left ${open ? 'open' : ''}`}>
         <div className="parallax-left-relative">
-          <div
-            ref={refPrlxLeftTop}
-            style={{
-              transform: refHomeCont.current
-                ? `translateY(${0.7 * offsetY}px)`
-                : '',
-            }}
-            className="left-wrapper top-wrap"
-          >
-            <div className="parallax-left-top">
-              <img src={leftTop} alt="parallax-left-top" />
-            </div>
-          </div>
-          <div
-            ref={refPrlxLeftMid}
-            style={{
-              transform: refHomeCont.current
-                ? `translateY(${0.5 * offsetY}px)`
-                : '',
-            }}
-            className="left-wrapper mid-wrap"
-          >
-            <div className="parallax-left-mid">
-              <img src={leftMid} alt="parallax-left-mid" />
-            </div>
-          </div>
-          <div
-            ref={refPrlxLeftEnd}
-            style={{
-              transform: refHomeCont.current
-                ? `translateY(${0.7 * offsetY}px)`
-                : '',
-            }}
-            className="left-wrapper end-wrap"
-          >
-            <div className="parallax-left-end">
-              <img src={leftEnd} alt="parallax-left-mid" />
-            </div>
-          </div>
+          {parallaxLeft.map((val, idx) => {
+            const {src, position, speed} = val;
+            return (
+              <div
+                key={idx}
+                style={{
+                  transform: refHomeCont.current
+                    ? `translateY(${speed * offsetY}px)`
+                    : '',
+                  top: position,
+                }}
+                className="left-wrapper"
+              >
+                <div className="position-relative w-100 h-100">
+                  <img src={src} alt={`parallax-left-${idx}`} />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-      <div className="parallax-right">
+      {/* right parallax */}
+      <div className={`parallax-right ${open ? 'open' : ''}`}>
         <div className="parallax-right-relative">
-          <div
-            ref={refPrlxRightTop}
-            style={{
-              transform: refHomeCont.current
-                ? `translateY(${0.7 * offsetY}px)`
-                : '',
-            }}
-            className="right-wrapper top-wrap"
-          >
-            <div className="parallax-right-top">
-              <img src={rightTop} alt="parallax-right-top" />
-            </div>
-          </div>
-          <div
-            ref={refPrlxRightMid}
-            style={{
-              transform: refHomeCont.current
-                ? `translateY(${0.6 * offsetY}px)`
-                : `translateY(0px)`,
-            }}
-            className="right-wrapper mid-wrap"
-          >
-            <div className="parallax-right-mid">
-              <img src={rightMid} alt="parallax-right-top" />
-            </div>
-          </div>
-          <div
-            ref={refPrlxRightEnd}
-            style={{
-              transform: refHomeCont.current
-                ? `translateY(${0.55 * offsetY}px)`
-                : 'translateY(0px)',
-            }}
-            className="right-wrapper end-wrap"
-          >
-            <div className="parallax-right-end">
-              <img src={rightEnd} alt="parallax-right-mid" />
-            </div>
-          </div>
+          {parallaxRight.map((val, idx) => {
+            const {src, position, speed} = val;
+            return (
+              <div
+                key={idx}
+                style={{
+                  transform: refHomeCont.current
+                    ? `translateY(${speed * offsetY}px)`
+                    : '',
+                  top: position,
+                }}
+                className="right-wrapper"
+              >
+                <div className="position-relative w-100 h-100">
+                  <img src={src} alt={`parallax-right-${idx}`} />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
+      {/* navbar */}
       <div className="navbar-ar-cont">
         <div
           className={`navbar-ar text-light ${
@@ -607,11 +506,11 @@ export default function Home() {
           </ul>
         </nav>
       </div>
+
+      {/* container of all content in home page */}
       <div
         className={`w-100 p-0 m-0 page-container ${open ? 'open' : 'close'}`}
       >
-        {/* navbar */}
-
         {/* top header */}
         <div className="top-header container mb-2">
           <div
@@ -1138,8 +1037,8 @@ export default function Home() {
             </section>
 
             {/* google maps */}
-            <section id="locationsArrayan" className="maps mt-4">
-              <text>this is reserve for maps</text>
+            <section id="locationsArrayan" className="maps p-0 mt-4">
+              <img src={maps} alt="google-maps" />
             </section>
 
             {/* footer */}
@@ -1150,7 +1049,7 @@ export default function Home() {
                     {/* footer logo */}
                     <section className="col-7 col-sm-8 col-md-12 col-lg-6 py-3">
                       <div className="w-100 logo-footer">
-                        <img src={arrayanIcon} alt="footer-logo" />
+                        <img src={arrayanIconColor} alt="footer-logo" />
                       </div>
                     </section>
 
