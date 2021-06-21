@@ -412,6 +412,7 @@ export default function Home() {
     <div className="w-100 p-0 m-0">
       <HomeHeader />
       {/* navbar */}
+<<<<<<< HEAD
       <div className="navbar-ar-cont">
         <div
           className={`navbar-ar text-light ${
@@ -456,6 +457,50 @@ export default function Home() {
               </button>
             </div>
           </div>
+=======
+      <div
+        className={`navbar-ar text-light fixed-top ${
+          visTopHeader || open ? '' : 'change-bg shadow'
+        } ${open ? 'close' : ''}`}
+      >
+        <div className="container h-100 d-flex align-items-center justify-content-between">
+          <div className="navbar-left container d-flex w-83 position-relative">
+            <div className="logo">
+              <img src={arrayanIcon} alt="icon-arrayan" />
+            </div>
+            <div className="contact">
+              <a
+                className="contact-button text-decoration-none text-white"
+                href="tel:(021)-2250-4920"
+              >
+                <div className="text-small">
+                  <text>
+                    <span>
+                      <FaHeadset />
+                    </span>{' '}
+                    Call Center
+                  </text>
+                </div>
+                021 2250 4920
+              </a>
+            </div>
+          </div>
+          <div
+            className={`w-17 d-flex justify-content-right position-relative ${
+              open ? 'open' : ''
+            }`}
+          >
+            <button
+              onClick={() => {
+                setOpen((x) => !x);
+              }}
+              type="button"
+              className={`menu-toggle ${visTopHeader ? '' : 'change-color'}`}
+            >
+              &nbsp;
+            </button>
+          </div>
+>>>>>>> c9418e5a8ad24c4a5deea938e335573b60e5761a
         </div>
       </div>
       <div className={open ? 'open' : ''}>
