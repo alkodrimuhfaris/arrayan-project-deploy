@@ -412,47 +412,49 @@ export default function Home() {
     <div className="w-100 p-0 m-0">
       <HomeHeader />
       {/* navbar */}
-      <div
-        className={`navbar-ar text-light fixed-top ${
-          visTopHeader || open ? '' : 'change-bg shadow'
-        } ${open ? 'close' : ''}`}
-      >
-        <div className="container h-100 d-flex align-items-center justify-content-between">
-          <div className="navbar-left container d-flex w-83 position-relative">
-            <div className="logo">
-              <img src={arrayanIcon} alt="icon-arrayan" />
+      <div className="navbar-ar-cont">
+        <div
+          className={`navbar-ar text-light ${
+            visTopHeader || open ? '' : 'change-bg shadow'
+          } ${open ? 'close' : ''}`}
+        >
+          <div className="container h-100 d-flex align-items-center justify-content-between">
+            <div className="navbar-left container d-flex w-83 position-relative">
+              <div className="logo">
+                <img src={arrayanIcon} alt="icon-arrayan" />
+              </div>
+              <div className="contact">
+                <a
+                  className="contact-button text-decoration-none text-white"
+                  href="tel:(021)-2250-4920"
+                >
+                  <div className="text-small">
+                    <text>
+                      <span>
+                        <FaHeadset />
+                      </span>{' '}
+                      Call Center
+                    </text>
+                  </div>
+                  021 2250 4920
+                </a>
+              </div>
             </div>
-            <div className="contact">
-              <a
-                className="contact-button text-decoration-none text-white"
-                href="tel:(021)-2250-4920"
-              >
-                <div className="text-small">
-                  <text>
-                    <span>
-                      <FaHeadset />
-                    </span>{' '}
-                    Call Center
-                  </text>
-                </div>
-                021 2250 4920
-              </a>
-            </div>
-          </div>
-          <div
-            className={`w-17 d-flex justify-content-right position-relative ${
-              open ? 'open' : ''
-            }`}
-          >
-            <button
-              onClick={() => {
-                setOpen((x) => !x);
-              }}
-              type="button"
-              className={`menu-toggle ${visTopHeader ? '' : 'change-color'}`}
+            <div
+              className={`w-17 d-flex justify-content-right position-relative ${
+                open ? 'open' : ''
+              }`}
             >
-              &nbsp;
-            </button>
+              <button
+                onClick={() => {
+                  setOpen((x) => !x);
+                }}
+                type="button"
+                className={`menu-toggle ${visTopHeader ? '' : 'change-color'}`}
+              >
+                &nbsp;
+              </button>
+            </div>
           </div>
         </div>
       </div>

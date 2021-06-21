@@ -233,61 +233,72 @@ ul.menu {
   }
 } 
 
-.navbar-ar {
+.navbar-ar-cont {
+  position: fixed;
+  z-index: 900;
   height: $h-nav;
-  transition: 1s ease;
-  position: relative;
+  width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
   background-color: transparent;
-  & .logo {
-    height: 1.5em;
-    aspect-ratio: 4.51;
-  }
-  & .logo img {
-    height: 100%;
-    object-fit: contain;
-  }
-  & .contact {
-    height: 100%;
-    position: absolute !important;
-    top: -60%;
-    right: 7%;
-    transform: translate(0, 50%);
+  top: 0;
+  & .navbar-ar {
+    height: $h-nav;
     transition: 1s ease;
-    & a.contact-button {
-      display: block;
-      padding: 5px 15px;
-      font-weight: $font-extrabold;
-      background-color: transparent;
-      color: white;
-      border-width: 2px;
-      border-style: solid;
-      border-color: transparent white white white;
-      border-radius: 100px;
-      position: relative;
-      font-size: 0.8em;
-      & div {
-        position: absolute;
+    position: relative;
+    background-color: transparent;
+    & .logo {
+      height: 1.5em;
+      aspect-ratio: 4.51;
+    }
+    & .logo img {
+      height: 100%;
+      object-fit: contain;
+    }
+    & .contact {
+      height: 100%;
+      position: absolute !important;
+      top: -60%;
+      right: 7%;
+      transform: translate(0, 50%);
+      transition: 1s ease;
+      & a.contact-button {
         display: block;
-        text-align: center;
-        width: 100%;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 0.6em;
-        font-weight: $font-bold;
+        padding: 5px 15px;
+        font-weight: $font-extrabold;
+        background-color: transparent;
+        color: white;
+        border-width: 2px;
+        border-style: solid;
+        border-color: transparent white white white;
+        border-radius: 100px;
+        position: relative;
+        font-size: 0.8em;
+        & div {
+          position: absolute;
+          display: block;
+          text-align: center;
+          width: 100%;
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 0.6em;
+          font-weight: $font-bold;
+        }
       }
     }
-  }
-  &.close .contact {
-    right: 55%;
-    transform: translate(-50%, 50%);
-    transition: 1s ease;
-  }
-  &.change-bg {
-    transition: 1s ease;
-    background-color: $color;
+    &.close .contact {
+      right: 55%;
+      transform: translate(-50%, 50%);
+      transition: 1s ease;
+    }
+    &.change-bg {
+      transition: 1s ease;
+      background-color: $color;
+    }
   }
 }
+
 
 .slider-btn-top {
   width: 13px;
@@ -867,65 +878,75 @@ div.footer-ar {
 
 // tablet or smaller
 @media (max-width: 768px) {
-  
-.navbar-ar {
-  height: $h-nav;
-  transition: 1s ease;
-  position: relative;
-  background-color: transparent;
-  & .logo {
-    height: 100%;
-    aspect-ratio: 4.51;
-  }
-  & .logo img {
-    margin-top: 0.5em;
-    height: 1.5em;
-    object-fit: contain;
-  }
-  & .contact {
-    height: 100%;
-    margin-top: 0px;
-    position: absolute !important;
-    top: -50%;
-    right: 0%;
-    transform: translate(0, 50%);
-    transition: 1s ease;
-    & a.contact-button {
-      display: block;
-      margin-top: 0.25em;
-      padding: 5px 15px;
-      font-weight: $font-extrabold;
-      background-color: transparent;
-      color: white;
-      border-width: 2px;
-      border-style: solid;
-      border-color: transparent white white white;
-      border-radius: 100px;
+
+  .navbar-ar-cont {
+    position: fixed;
+    z-index: 900;
+    height: 3.5em;
+    width: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: transparent;
+    top: 0;
+    & .navbar-ar {
+      height: 3.5em;
+      transition: 1s ease;
       position: relative;
-      font-size: 0.8em;
-      & div {
-        position: absolute;
-        display: block;
-        text-align: center;
-        width: 100%;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 0.6em;
-        font-weight: $font-bold;
+      background-color: transparent;
+      & .logo {
+        height: 100%;
+        aspect-ratio: 4.51;
+      }
+      & .logo img {
+        margin-top: 0.5em;
+        height: 1.5em;
+        object-fit: contain;
+      }
+      & .contact {
+        height: 100%;
+        margin-top: 0px;
+        position: absolute !important;
+        top: -50%;
+        right: 0%;
+        transform: translate(0, 50%);
+        transition: 1s ease;
+        & a.contact-button {
+          display: block;
+          margin-top: 0.25em;
+          padding: 5px 15px;
+          font-weight: $font-extrabold;
+          background-color: transparent;
+          color: white;
+          border-width: 2px;
+          border-style: solid;
+          border-color: transparent white white white;
+          border-radius: 100px;
+          position: relative;
+          font-size: 0.8em;
+          & div {
+            position: absolute;
+            display: block;
+            text-align: center;
+            width: 100%;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.6em;
+            font-weight: $font-bold;
+          }
+        }
+      }
+      &.close .contact {
+        right: 0%;
+        transform: translate(0, 50%);
+        transition: 1s ease;
+      }
+      &.change-bg {
+        transition: 1s ease;
+        background-color: $color;
       }
     }
   }
-  &.close .contact {
-    right: 0%;
-    transform: translate(0, 50%);
-    transition: 1s ease;
-  }
-  &.change-bg {
-    transition: 1s ease;
-    background-color: $color;
-  }
-}
 
   section.projects {
     & h1.title {
@@ -1027,9 +1048,6 @@ div.footer-ar {
     background: $burger-bar-white;
     transition: opacity 0.2s ease-out,
                 width 0.2s 0.2s ease-out;
-  }
-  .navbar-ar {
-    height: 3.5em;
   }
 
   .top-header {
@@ -1239,62 +1257,72 @@ div.footer-ar {
 
 // width more than tablet
 @media (min-width: 768px) and (max-width: 992px) {
-  .navbar-ar {
+  .navbar-ar-cont {
+    position: fixed;
+    z-index: 900;
+    width: 100%;
     height: $h-nav;
-    transition: 1s ease;
-    position: relative;
+    padding: 0 !important;
+    margin: 0 !important;
     background-color: transparent;
-    & .logo {
-      height: 100%;
-      aspect-ratio: 4.51;
-    }
-    & .logo img {
-      margin-top: 0.5em;
-      height: 1.5em;
-      object-fit: contain;
-    }
-    & .contact {
-      height: 100%;
-      padding-top: 0px;
-      position: absolute !important;
-      top: -50%;
-      right: 0%;
-      transform: translate(0, 50%);
+    top: 0; 
+    & .navbar-ar {
+      height: $h-nav;
       transition: 1s ease;
-      & a.contact-button {
-        display: block;
-        margin-top: 0.25em;
-        padding: 5px 15px;
-        font-weight: $font-extrabold;
-        background-color: transparent;
-        color: white;
-        border-width: 2px;
-        border-style: solid;
-        border-color: transparent white white white;
-        border-radius: 100px;
-        position: relative;
-        font-size: 0.8em;
-        & div {
-          position: absolute;
+      position: relative;
+      background-color: transparent;
+      & .logo {
+        height: 100%;
+        aspect-ratio: 4.51;
+      }
+      & .logo img {
+        margin-top: 0.5em;
+        height: 1.5em;
+        object-fit: contain;
+      }
+      & .contact {
+        height: 100%;
+        padding-top: 0px;
+        position: absolute !important;
+        top: -50%;
+        right: 0%;
+        transform: translate(0, 50%);
+        transition: 1s ease;
+        & a.contact-button {
           display: block;
-          text-align: center;
-          width: 100%;
-          top: 0;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 0.6em;
-          font-weight: $font-bold;
+          margin-top: 0.25em;
+          padding: 5px 15px;
+          font-weight: $font-extrabold;
+          background-color: transparent;
+          color: white;
+          border-width: 2px;
+          border-style: solid;
+          border-color: transparent white white white;
+          border-radius: 100px;
+          position: relative;
+          font-size: 0.8em;
+          & div {
+            position: absolute;
+            display: block;
+            text-align: center;
+            width: 100%;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.6em;
+            font-weight: $font-bold;
+          }
         }
       }
-    }
-    &.close .contact {
-      right: 0%;
-      transform: translate(0, 50%);
-      transition: 1s ease;
-    }
-    &.change-bg {
-      transition: 1s ease;
-      background-color: $color;
+      &.close .contact {
+        right: 0%;
+        transform: translate(0, 50%);
+        transition: 1s ease;
+      }
+      &.change-bg {
+        transition: 1s ease;
+        background-color: $color;
+      }
     }
   }
 
