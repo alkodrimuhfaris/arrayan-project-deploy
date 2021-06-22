@@ -794,9 +794,38 @@ div.footer-ar {
     width: 53%;
     aspect-ratio: $aspect-ratio-top-img;
     max-width: 750px;
-    & .slider-header-container {
-      background-color: #707070;
+    & .carousel-cont-absolute, & .slider-cont-absolute {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      width: 100%;
       height: 100%;
+    }
+    & ul.ar_carousel_track {
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      z-index: 2;
+      & li.ar_carousel_slide {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+        & img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+    & .slider-header-container {
+      // background-color: #707070;
+      height: 100%;
+      width: 100%;
       & .carousel-top-wrapper {
         height: 100%;
         width: 100%;
@@ -804,25 +833,6 @@ div.footer-ar {
           height: 100%;
           width: 100%;
           object-fit: cover;
-        }
-      }
-      & ul.ar_carousel_track {
-        height: 100%;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        & li.ar_carousel_slide {
-          height: 100%;
-          width: 100%;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          & img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
         }
       }
       & .slider-left, .slider-right {
@@ -838,6 +848,7 @@ div.footer-ar {
         top: 50%;
         transform: translate(0, -50%);
         outline: none;
+        z-index: 3;
         &:hover {
           transition: 0.2s ease;
           opacity: 0.8;

@@ -512,7 +512,7 @@ export default function Home() {
         className={`w-100 p-0 m-0 page-container ${open ? 'open' : 'close'}`}
       >
         {/* top header */}
-        <div className="top-header container mb-2">
+        <div className="top-header container-lg mb-2">
           <div
             ref={refTopHeader}
             className="text-ctn row row-eq-height no-gutters position-relative"
@@ -541,7 +541,7 @@ export default function Home() {
             </div>
 
             {/* text container */}
-            <div className="header-text col-12 order-3 order-md-1 panel col-md-10 bg-ar-dark">
+            <div className="header-text col-12 order-3 order-md-1 panel col-md-13 col-lg-10 bg-ar-dark">
               <div className="container pt-0 pt-md-5 pt-lg-0 mt-0 mt-md-5 mt-lg-0">
                 <section className="col-12 col-md-12 col-lg-6">
                   <h1 className="title text-uppercase">
@@ -562,57 +562,64 @@ export default function Home() {
             </div>
 
             {/* container image carousel */}
-            <div className="header-img col-12 col-md-12 col-lg-2 order-1 order-md-2 panel">
-              <div className="header-img-container">
-                <div
-                  className={`overflow-hidden slider-header-container ${
-                    open ? 'close' : ''
-                  } position-relative`}
-                >
-                  <ul
-                    ref={refCar}
-                    style={{
-                      transform: refCar.current
-                        ? `translate(-${
-                            refCar.current.offsetWidth * topCarousel
-                          }px, 0px)`
-                        : '',
-                      transition: '0.3s ease',
-                    }}
-                    className="ar_carousel_track position-relative"
-                  >
-                    {carouselTop.map((item, index) => {
-                      const setActive =
-                        index === topCarousel ? 'ar_car_active' : '';
-                      const widthCar = refCar.current
-                        ? refCar.current.offsetWidth
-                        : 0;
-                      return (
-                        <li
-                          style={{
-                            left: `${index * widthCar}px`,
-                          }}
-                          key={index}
-                          className={`ar_carousel_slide ${setActive}`}
-                        >
-                          <img src={item.src} alt={item.altText} />
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  {topSlider.map((val, index) => {
-                    const {Icon} = val;
-                    return (
-                      <button
-                        onClick={() => sliderTopCar(val.class)}
-                        key={index}
-                        type="button"
-                        className={`position-absolute d-flex align-items-center justify-content-center btn ${val.class}`}
-                      >
-                        <Icon />
-                      </button>
-                    );
-                  })}
+            <div className="header-img col-12 col-md-12 col-lg-2 order-1 order-md-2">
+              <div className="header-img-container overflow-hidden">
+                <div className="position-relative w-100 h-100">
+                  <div className="carousel-cont-absolute">
+                    <ul
+                      ref={refCar}
+                      style={{
+                        transform: refCar.current
+                          ? `translate(-${
+                              refCar.current.offsetWidth * topCarousel
+                            }px, 0px)`
+                          : '',
+                        transition: '0.3s ease',
+                        width: '100%',
+                      }}
+                      className="ar_carousel_track position-relative"
+                    >
+                      {carouselTop.map((item, index) => {
+                        const setActive =
+                          index === topCarousel ? 'ar_car_active' : '';
+                        const widthCar = refCar.current
+                          ? refCar.current.offsetWidth
+                          : 0;
+                        return (
+                          <li
+                            style={{
+                              left: `${index * widthCar}px`,
+                            }}
+                            key={index}
+                            className={`ar_carousel_slide ${setActive}`}
+                          >
+                            <img src={item.src} alt={item.altText} />
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div className="slider-cont-absolute">
+                    <div
+                      className={`overflow-hidden slider-header-container ${
+                        open ? 'close' : ''
+                      } position-relative`}
+                    >
+                      {topSlider.map((val, index) => {
+                        const {Icon} = val;
+                        return (
+                          <button
+                            onClick={() => sliderTopCar(val.class)}
+                            key={index}
+                            type="button"
+                            className={`position-absolute d-flex align-items-center justify-content-center btn ${val.class}`}
+                          >
+                            <Icon />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -712,7 +719,7 @@ export default function Home() {
           {/* testimony */}
           <section
             id="testimony"
-            className="testimony position-relative overflow-hidden text-center my-md-5 mb-0"
+            className="testimony position-relative overflow-hidden text-center my-lg-5 mb-0"
           >
             <section className="container">
               <h1 className="title mx-auto text-ar-dark">
@@ -833,7 +840,7 @@ export default function Home() {
           {/* form */}
           <section
             id="formContact"
-            className="mt-0 mt-md-3 form-contact bg-ar-dark text-white"
+            className="mt-0 mt-lg-3 form-contact bg-ar-dark text-white"
           >
             <section className="container text-center">
               <h1 className="title my-4 mx-auto">

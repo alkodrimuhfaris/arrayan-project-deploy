@@ -194,6 +194,93 @@
     }
   }
 
+  .testimony {
+    & .testi-container {
+      padding: 0 !important;
+      width: 100%;
+      aspect-ratio: 2.2 !important;
+      & .bg-img-container {
+        position: relative;
+        height: 100%;
+        aspect-ratio: 0.942;
+        & img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          filter: blur(2px);
+          opacity: 0.5;
+        }
+        & .testi-slider-left, & .testi-slider-right {
+          width: 2em;
+          height: 2em;
+          background-color: transparent;
+          padding: 0;
+          border-radius: 100px;
+          border-width: 1px;
+          border-color: #6a6a6a;
+          color: #6a6a6a;
+          transition: 0.2s ease;
+          top: 50%;
+          outline: none;
+          z-index: 3;
+          &:hover {
+            transition: 0.2s ease;
+            background-color: rgba(255, 255, 255, 0.5);
+          }
+          &:active {
+            outline: none;
+            background-color: white;
+            color: black;
+          }
+        }
+        & .testi-slider-left {
+          left: 25%;
+          transform: translate(-50%, -50%);
+        }
+        & .testi-slider-right {
+          right: 55%;
+          transform: translate(50%, -50%);
+        }
+      }
+      & article.testi-wrapper {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: 83%;
+        aspect-ratio: 2.4 !important;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        opacity: 1;
+        & .testi-inside-wrapper {
+          position: relative;
+          height: 100%;
+          & .testi-blur-right, & .testi-blur-left {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            z-index: 100;
+          }
+          & .testi-blur-left {
+            left: 0;
+            transform: translate(-100%, 0);
+          }
+          & .testi-blur-right {
+            right: -1px;
+            transform: translate(100%, 0);
+            backdrop-filter: blur(2px);
+          }
+          & .testi-individual {
+            aspect-ratio: 1.2 !important;
+            height: 100%;
+            padding: 0 12.5px;
+          }
+        }
+      }
+    }
+  }
+
   section.testimony {
     & .title {
       font-size: 2em;
