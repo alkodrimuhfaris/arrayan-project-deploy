@@ -258,22 +258,14 @@ export default function Home() {
   }, []);
 
   const parallaxLeft = [
-    {src: leftMid, position: '13%', speed: 0.2},
     {src: leftTop, position: '8%', speed: 0.7},
     {src: leftMid, position: '30%', speed: 0.5},
-    {src: leftEnd, position: '25%', speed: 0.58},
-    {src: leftTop, position: '25%', speed: 0.6},
-    {src: leftMid, position: '37%', speed: 0.7},
     {src: leftEnd, position: '35%', speed: 0.73},
   ];
 
   const parallaxRight = [
-    {src: rightTop, position: '0%', speed: 0.7},
-    {src: rightEnd, position: '-1%', speed: 0.6},
-    {src: rightEnd, position: '2%', speed: 0.5},
-    {src: rightTop, position: '20%', speed: 0.6},
-    {src: rightMid, position: '16%', speed: 0.7},
-    {src: rightTop, position: '44%', speed: 0.55},
+    {src: rightTop, position: '-1%', speed: 0.7},
+    {src: rightMid, position: '20%', speed: 0.7},
     {src: rightEnd, position: '45%', speed: 0.52},
   ];
 
