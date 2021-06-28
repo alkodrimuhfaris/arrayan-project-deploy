@@ -693,10 +693,8 @@ div.footer-ar {
       position: relative;
       & img {
         position: absolute;
-        top: 0;
-        height: 100%;
+        top: 0 !important;
         width: 100%;
-        object-fit: contain;
       }
     }
     & .footer-list {
