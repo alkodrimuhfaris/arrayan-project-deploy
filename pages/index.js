@@ -56,7 +56,7 @@ function useVisibiliyRef(options) {
 
 export default function Home() {
   // get windows dimension
-  const {width, height, sm, md} = getWindowDimensions();
+  const {width, height, sm, md, lg, xl} = getWindowDimensions();
 
   // get visibility of top header
   const [refTopHeader, visTopHeader] = useVisibiliyRef({treshold: 1.0});
@@ -109,6 +109,36 @@ export default function Home() {
       src: crsl4,
       altText: 'kemitraan-progresif',
       caption: 'Kemitraan yang Progresif',
+    },
+  ]);
+  const [carouselTextTop, setCarouselTextTop] = React.useState([
+    {
+      title:
+        'Well Established Property Company Specialized in Low Cost Housing',
+      subtitle:
+        'Arrayan Group is a market leader in providing Subsidy & Low cost housing located in Bekasi, Karawang & Purwakarta Region.',
+      btnText: 'Dapatkan Penawaran Menarik Sekarang',
+    },
+    {
+      title:
+        'Well Established Property Company Specialized in Low Cost Housing',
+      subtitle:
+        'Arrayan Group is a market leader in providing Subsidy & Low cost housing located in Bekasi, Karawang & Purwakarta Region.',
+      btnText: 'Dapatkan Penawaran Menarik Sekarang',
+    },
+    {
+      title:
+        'Well Established Property Company Specialized in Low Cost Housing',
+      subtitle:
+        'Arrayan Group is a market leader in providing Subsidy & Low cost housing located in Bekasi, Karawang & Purwakarta Region.',
+      btnText: 'Dapatkan Penawaran Menarik Sekarang',
+    },
+    {
+      title:
+        'Well Established Property Company Specialized in Low Cost Housing',
+      subtitle:
+        'Arrayan Group is a market leader in providing Subsidy & Low cost housing located in Bekasi, Karawang & Purwakarta Region.',
+      btnText: 'Dapatkan Penawaran Menarik Sekarang',
     },
   ]);
   const [projectList, setProjectList] = React.useState([
@@ -218,6 +248,7 @@ export default function Home() {
 
   // useRef initialization
   const refCar = React.useRef(null);
+  const refCarText = React.useRef(null);
   const refTesti = React.useRef(null);
   const refTestiWrapper = React.useRef(null);
   const refTestiIndv = React.useRef(null);
@@ -264,7 +295,7 @@ export default function Home() {
   ];
 
   const parallaxRight = [
-    {src: rightTop, position: '-1%', speed: 0.7},
+    {src: rightTop, position: '-1%', speed: 0.3},
     {src: rightMid, position: '20%', speed: 0.7},
     {src: rightEnd, position: '45%', speed: 0.52},
   ];
@@ -406,6 +437,7 @@ export default function Home() {
                   transform: refHomeCont.current
                     ? `translateY(${speed * offsetY}px)`
                     : '',
+                  width: idx === 0 ? '200%' : '100%',
                   top: position,
                 }}
                 className="right-wrapper"
@@ -535,20 +567,50 @@ export default function Home() {
             {/* text container */}
             <div className="header-text col-12 order-3 order-md-1 panel col-md-13 col-lg-10 bg-ar-dark">
               <div className="container pt-0 pt-md-5 pt-lg-0 mt-0 mt-md-5 mt-lg-0">
-                <section className="col-12 col-md-12 col-lg-6">
-                  <h1 className="title text-uppercase">
-                    Well Established Property Company Specialized in <br /> Low
-                    Cost Housing
-                  </h1>
-                  <p className="subtitle">
-                    Arrayan Group is a market leader in providing Subsidy & Low
-                    cost housing located in Bekasi, Karawang & Purwakarta
-                    Region.
-                  </p>
-                  <button type="button" className="btn btn-block">
-                    Dapatkan Penawaran Menarik Sekarang
-                  </button>
-                  <div className="container" />
+                <section className="col-12 col-md-12 col-lg-6 overflow-hidden">
+                  <div
+                    ref={refCarText}
+                    style={{
+                      height: sm
+                        ? '300px'
+                        : md
+                        ? '300px'
+                        : lg
+                        ? '350px'
+                        : xl
+                        ? '350px'
+                        : '350px',
+                      width: '100%',
+                      transform: refCarText.current
+                        ? `translate(-${
+                            refCarText.current.offsetWidth * topCarousel
+                          }px, 0px)`
+                        : '',
+                      transition: '0.3s ease',
+                    }}
+                    className="text-carousel-cont w-100 position-relative"
+                  >
+                    {carouselTextTop.map((val, idx) => {
+                      const widthCar = refCarText.current
+                        ? refCarText.current.offsetWidth
+                        : 0;
+                      return (
+                        <div
+                          style={{
+                            left: `${idx * widthCar}px`,
+                          }}
+                          className="text-carousel w-100 h-100 px-4 pb-2 position-absolute"
+                        >
+                          <h1 className="title text-uppercase">{val.title}</h1>
+                          <p className="subtitle">{val.subtitle}</p>
+                          <button type="button" className="btn btn-block">
+                            {val.btnText}
+                          </button>
+                        </div>
+                      );
+                    })}
+                    <div className="container" />
+                  </div>
                 </section>
               </div>
             </div>
@@ -621,7 +683,7 @@ export default function Home() {
         {/* content */}
         <section className="content mt-5 mt-md-2">
           {/* highlight part */}
-          <section className="awards container text-center">
+          <section className="awards mb-3 mb-md-0 container text-center">
             <section className="row no-gutters">
               {hightlight.map((val, index) => (
                 <div key={index} className="p-2 p-md-4 col-6 col-md-3">

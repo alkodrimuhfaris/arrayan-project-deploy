@@ -1,7 +1,7 @@
 @import './globals.scss';
 
 // width tablet
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 768px) and (max-width: 991px) {
   .parallax-left, .parallax-right {
     display: none;
   }
@@ -164,6 +164,21 @@
       left: 0;
       transform: translate(0, 0);
       margin-bottom: 1.5em;
+    }
+  }
+  
+  section.content {
+    & article.highlight {
+      color: $color;
+      & h1.title {
+        font-size: 1em !important;
+        font-weight: $font-bold;
+        margin: 0;
+      }
+      & text.subtitle {
+        font-size: 1.8em !important;
+        font-weight: $font-extrabold;
+      }
     }
   }
 

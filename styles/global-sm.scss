@@ -1,7 +1,7 @@
 @import './globals.scss';
 
 // tablet or smaller
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .parallax-left, .parallax-right {
     display: none;
   }
@@ -181,6 +181,17 @@
     & .header-text {
     padding-top: 0 !important;
     padding-bottom: 2em !important;
+      & h1.title {
+        font-size: 1.3em !important;
+        font-weight: $font-extrabold;
+      }
+      & p.subtitle {
+        font-size: 1em !important;
+        font-weight: $font-medium;
+      }
+      & button {
+        font-size: 0.8em !important;
+      }
     }
     & .header-img {
       padding: 0 !important;
@@ -264,6 +275,14 @@
   button.menu-toggle {
     right: 20%;
   }
+  & h1.title {
+    font-size: 1.8em !important;
+    font-weight: $font-extrabold;
+  }
+  & p.subtitle {
+    font-size: 1em !important;
+    font-weight: $font-medium;
+  }
   button.btn-ar {
     border-width: 0px;
     background-color: $color-light;
@@ -274,6 +293,21 @@
     &:hover {
       transition: 300ms ease-in-out;
       transform: scale(1.05);
+    }
+  }
+
+  section.content {
+    & article.highlight {
+      color: $color;
+      & h1.title {
+        font-size: 0.95em !important;
+        font-weight: $font-bold;
+        margin: 0;
+      }
+      & text.subtitle {
+        font-size: 1.8em !important;
+        font-weight: $font-extrabold;
+      }
     }
   }
 
