@@ -84,6 +84,7 @@ export default function Home() {
 
   // useState initialisation
   const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [topCarousel, setTopCarousel] = React.useState(0);
   const [divisionForm, setDivisionForm] = React.useState('');
   const [groupForm, setGroupForm] = React.useState('');
@@ -263,7 +264,14 @@ export default function Home() {
   // timer for testimony on second
   const testiTimer = 4;
 
+  // timer for loading
+  const loadingTime = 5;
+
   React.useEffect(() => {
+    const loadingID = setTimeout(() => {
+      setLoading(false);
+    }, loadingTime * 1000);
+
     const intervalID = setInterval(
       () =>
         setTopCarousel((x) => {
@@ -283,6 +291,7 @@ export default function Home() {
     );
 
     return () => {
+      clearTimeout(loadingID);
       clearInterval(intervalID);
       clearInterval(intervalTesti);
     };

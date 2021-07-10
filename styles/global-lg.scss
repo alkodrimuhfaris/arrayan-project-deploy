@@ -24,7 +24,6 @@
       & .left-wrapper {
         position: absolute;
         width: 100%;
-        aspect-ratio: 1;
         left: 0;
         & img {
           position: absolute;
@@ -49,7 +48,6 @@
       height: 100%;
       & .right-wrapper {
         position: absolute;
-        aspect-ratio: 1;
         right: 0;
         & img {
           position: absolute;
