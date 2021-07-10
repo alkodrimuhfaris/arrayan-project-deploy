@@ -773,10 +773,8 @@ div.footer-ar {
       position: relative;
       & img {
         position: absolute;
-        top: 0;
-        height: 100%;
+        top: 0 !important;
         width: 100%;
-        object-fit: contain;
       }
     }
     & .footer-list {
@@ -928,7 +926,7 @@ div.footer-ar {
         top: 50%;
         transform: translate(0, -50%);
         outline: none;
-        z-index: 3;
+        z-index: 801;
         &:hover {
           transition: 0.2s ease;
           opacity: 0.8;

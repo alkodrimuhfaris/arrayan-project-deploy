@@ -1126,16 +1126,16 @@ export default function Home() {
             <footer id="footerArrayan" className="footer mb-5">
               <div className="container">
                 <section className="row no-gutters w-100">
-                  <div className="col-12 col-md-6 row">
+                  <div className="col-12 col-md-6 row justify-content-between">
                     {/* footer logo */}
-                    <section className="col-7 col-sm-8 col-md-12 col-lg-6 py-3">
+                    <section className="col-6 col-sm-6 col-md-9 col-lg-6 py-3">
                       <div className="w-100 logo-footer">
                         <img src={arrayanIconColor} alt="footer-logo" />
                       </div>
                     </section>
 
                     {/* link */}
-                    <section className="footer-list col-5 col-sm-4 py-3 col-md-12 col-lg-6">
+                    <section className="footer-list col-5 col-sm-4 col-md-12 col-lg-4 col-xl-4 py-3">
                       <h3 className="title">Our Link</h3>
                       <ul className="list-footer">
                         {OurLink.map((val, idx) => (
