@@ -31,6 +31,7 @@ import rightMid from '../Assets/Parallax/kanan-mid.png';
 import rightEnd from '../Assets/Parallax/kanan-branch-end.png';
 import maps from '../Assets/Photos/GoogleMaps.png';
 import LoadingScreen from '../Components/LoadingScreen';
+import FooterElement from '../Components/Footer/FooterElement';
 
 function useVisibiliyRef(options) {
   const ref = React.useRef();
@@ -346,6 +347,12 @@ export default function Home() {
     {Award: Award2},
     {Award: Award3},
     {Award: Award4},
+  ];
+
+  const markers = [
+    {lat: -6.2644619, lng: 107.2672509},
+    {lat: -6.3645619, lng: 107.2672409},
+    {lat: -6.1646619, lng: 107.2672309},
   ];
 
   const socialMedia = [
@@ -1003,237 +1010,15 @@ export default function Home() {
             </form>
           </section>
 
-          {/* berita dari arrayan */}
-          <div className="footer-ar d-flex flex-column">
-            <section id="newsArrayan" className="news">
-              <section className="container text-center">
-                <h1 className="title my-4 mx-auto">Berita Tentang Arrayan</h1>
-              </section>
-
-              {/* news card */}
-              <div
-                ref={refNewsCont}
-                className={`container d-flex position-relative overflow-hidden ${
-                  !(refNewsCont.current && refNews.current)
-                    ? ' align-items-center justify-content-center'
-                    : refNewsCont.current.offsetWidth <
-                      refNews.current.offsetWidth * newsList.length
-                    ? ' align-items-center justify-content-start'
-                    : ' align-items-center justify-content-center'
-                }`}
-              >
-                <div
-                  className={
-                    !(refNewsCont.current && refNews.current)
-                      ? 'd-none'
-                      : refNewsCont.current.offsetWidth <
-                        refNews.current.offsetWidth * newsList.length
-                      ? 'position-absolute w-100 h-100 news-slider-container'
-                      : 'd-none'
-                  }
-                >
-                  {newsSlider.map((val, idx) => {
-                    const {Icon} = val;
-                    return (
-                      <button
-                        onClick={() => changeNewsSlide(val.class)}
-                        key={idx}
-                        type="button"
-                        className={`position-absolute d-flex align-items-center justify-content-center btn ${val.class}`}
-                      >
-                        <Icon />
-                      </button>
-                    );
-                  })}
-                </div>
-                <div
-                  style={{
-                    width: refNews.current
-                      ? `${refNews.current.offsetWidth * newsList.length}px`
-                      : '0px',
-                    transform: !(refNewsCont.current && refNews.current)
-                      ? 'translate(0%, 0%)'
-                      : !(
-                          refNewsCont.current.offsetWidth <
-                          refNews.current.offsetWidth * newsList.length
-                        )
-                      ? 'translate(0%, 0%)'
-                      : `translate(-${
-                          refNews.current.offsetWidth * newsOrder
-                        }px, 0px)`,
-                    transition: '0.3s ease',
-                  }}
-                  className="news-card-container mb-3 position-relative"
-                >
-                  {newsList.map((val, item) => {
-                    const widthNews = refNews.current
-                      ? refNews.current.offsetWidth
-                      : 0;
-                    return (
-                      <div
-                        ref={refNews}
-                        style={{
-                          left: `${item * widthNews}px`,
-                        }}
-                        className="news-card-absolute d-flex align-items-center justify-content-center"
-                      >
-                        <div key={item} className="card news-card shadow">
-                          <img
-                            className="card-img-top"
-                            src={val.picture}
-                            alt={`caption-${item}`}
-                          />
-                          <section className="card-body container caption-container">
-                            <div className="news-date mb-3 small d-flex align-items-center text-ar-dark">
-                              <div className="icon d-flex align-items-center">
-                                <BiCalendarAlt />
-                              </div>
-                              <text>{val.date}</text>
-                            </div>
-                            <article className="caption fading-text mb-3 text-grey">
-                              {val.title}
-                            </article>
-                            <div className="link-wrapper">
-                              <a className="text-ar-dark" href={val.link}>
-                                Baca Lebih Lanjut{' '}
-                                <span>
-                                  <AiOutlineArrowRight />
-                                </span>
-                              </a>
-                            </div>
-                          </section>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Click for more */}
-              <div className="button-wrapper container d-flex justify-content-center">
-                <button type="button" className="btn-ar rounded my-4">
-                  Lihat Lebih Lanjut
-                </button>
-              </div>
-            </section>
-
-            {/* google maps */}
-            <section id="locationsArrayan" className="maps p-0 mt-4">
-              <img src={maps} alt="google-maps" />
-            </section>
-
-            {/* footer */}
-            <footer id="footerArrayan" className="footer mb-5">
-              <div className="container">
-                <section className="row no-gutters w-100">
-                  <div className="col-12 col-md-6 row justify-content-between">
-                    {/* footer logo */}
-                    <section className="col-6 col-sm-6 col-md-9 col-lg-6 py-3">
-                      <div className="w-100 logo-footer">
-                        <img src={arrayanIconColor} alt="footer-logo" />
-                      </div>
-                    </section>
-
-                    {/* link */}
-                    <section className="footer-list col-5 col-sm-4 col-md-12 col-lg-4 col-xl-4 py-3">
-                      <h3 className="title">Our Link</h3>
-                      <ul className="list-footer">
-                        {OurLink.map((val, idx) => (
-                          <li key={idx}>
-                            <a className="footer-link" href={val.link}>
-                              {val.desc}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </section>
-                  </div>
-
-                  <div className="col-12 col-md-6 row">
-                    <section className="footer-list my-3 py-3 col-12 col-md-12 col-lg-6">
-                      <h3 className="title">Head Office</h3>
-                      <ul className="list-footer">
-                        {HeadOffice.map((val, idx) => (
-                          <li key={idx}>
-                            <a className="footer-link" href={val.link}>
-                              {val.desc}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </section>
-
-                    <section className="footer-list my-3 py-3 col-12 col-md-12 col-lg-6">
-                      <h3 className="title">Project Office</h3>
-                      <ul className="list-footer">
-                        {ProjectOffice.map((val, idx) => (
-                          <li key={idx}>
-                            <a className="footer-link" href={val.link}>
-                              {val.desc}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </section>
-                  </div>
-                </section>
-
-                <section className="row no-gutters w-100 my-4">
-                  <div className="col-12 col-md-6 mt-4 align-self-end order-2 order-md-1 row">
-                    <div className="col-12 d-flex">
-                      {socialMedia.map((val, idx) => {
-                        const {Logo} = val;
-                        return (
-                          <a key={idx} href={val.link} className="social-media">
-                            <Logo />
-                          </a>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  <div className="col-12 col-md-6 order-1 order-md-2 row">
-                    <section className="footer-list col-12 col-md-12 col-lg-6">
-                      <h3 className="title">Contact Info</h3>
-                      <ul className="list-footer">
-                        <li>
-                          <a className="footer-link" href="tel:(021) 8655 7890">
-                            Phone (021) 8655 7890
-                          </a>
-                        </li>
-                        <li>
-                          <a className="footer-link" href="tel:(021) 8655 7880">
-                            Fax (021) 8655 7880
-                          </a>
-                        </li>
-                      </ul>
-                    </section>
-
-                    <section className="footer-list align-self-end col-12 col-md-12 col-lg-6">
-                      <ul className="list-footer">
-                        <li>
-                          <text className="footer-link">Email</text>
-                        </li>
-                        <li>
-                          <a
-                            className="footer-link"
-                            href="mailto:mail@arrayangroup.com"
-                          >
-                            mail@arrayangroup.com
-                          </a>
-                        </li>
-                      </ul>
-                    </section>
-                  </div>
-                </section>
-              </div>
-
-              {/*  */}
-              <section className="container text-center">
-                <text className="text-c">© 2021 Arrayan Group</text>
-              </section>
-            </footer>
-          </div>
+          {/* footer element */}
+          <FooterElement
+            newsList={newsList}
+            OurLink={OurLink}
+            HeadOffice={HeadOffice}
+            ProjectOffice={ProjectOffice}
+            socialMedia={socialMedia}
+            markers={markers}
+          />
         </section>
       </div>
     </div>
