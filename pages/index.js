@@ -30,6 +30,7 @@ import rightTop from '../Assets/Parallax/kanan-branch-top.png';
 import rightMid from '../Assets/Parallax/kanan-mid.png';
 import rightEnd from '../Assets/Parallax/kanan-branch-end.png';
 import maps from '../Assets/Photos/GoogleMaps.png';
+import LoadingScreen from '../Components/LoadingScreen';
 
 function useVisibiliyRef(options) {
   const ref = React.useRef();
@@ -410,6 +411,7 @@ export default function Home() {
       className="position-relative w-100 page-full-cont overflow-hidden"
     >
       <HomeHeader />
+      <LoadingScreen loading={loading} />
       {/* left parallax */}
       <div className={`parallax-left ${open ? 'open' : ''}`}>
         <div className="parallax-left-relative">
