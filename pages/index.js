@@ -266,13 +266,23 @@ export default function Home() {
   const testiTimer = 4;
 
   // timer for loading
-  const loadingTime = 5;
+  const [loadingTime, setLoadingTime] = React.useState(5);
+  const [movingPart, setMovingPart] = React.useState(true);
 
   React.useEffect(() => {
     const loadingID = setTimeout(() => {
       setLoading(false);
     }, loadingTime * 1000);
+    const movingPartID = setTimeout(() => {
+      setMovingPart(false);
+    }, 4 * 1000);
+    return () => {
+      clearTimeout(movingPartID);
+      clearTimeout(loadingID);
+    };
+  }, []);
 
+  React.useEffect(() => {
     const intervalID = setInterval(
       () =>
         setTopCarousel((x) => {
@@ -292,7 +302,6 @@ export default function Home() {
     );
 
     return () => {
-      clearTimeout(loadingID);
       clearInterval(intervalID);
       clearInterval(intervalTesti);
     };
@@ -411,7 +420,7 @@ export default function Home() {
       className="position-relative w-100 page-full-cont overflow-hidden"
     >
       <HomeHeader />
-      <LoadingScreen loading={loading} />
+      <LoadingScreen movingPart={movingPart} loading={loading} />
       {/* left parallax */}
       <div className={`parallax-left ${open ? 'open' : ''}`}>
         <div className="parallax-left-relative">

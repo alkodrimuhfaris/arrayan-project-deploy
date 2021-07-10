@@ -102,13 +102,48 @@ body:not(.modal-open) {
       }
     }
   }
-  &.loaded {
-    border-radius: 10000px;
-    width: 0%;
-    height: 0%;
-    transition: 0.2s ease;
+  &.stop-move {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    transition: 0.25s ease;
     & div {
-      display: none;
+      width: 100px;
+      height: 100px;
+      overflow: visible;
+      position: relative;
+      width: 100px;
+      height: 100px;
+      & div {
+        width: 100%;
+        height: 10px;
+        background-color: white;
+        left: 0;
+        &.animation-top {
+          top: -10px;
+          animation: loading-animation-top-stop 1s ease-out infinite;
+        }
+        &.animation-center {
+          top: 5px;
+          animation: none;
+        }
+        &.animation-bottom {
+          top: 10px;
+          animation: none;
+        }
+      }
+    }
+    &.loaded {
+      border-radius: 10000px;
+      width: 0%;
+      height: 0%;
+      transition: 0.2s ease;
+      & div {
+        display: none;
+      }
     }
   }
 }
@@ -979,6 +1014,52 @@ div.footer-ar {
   }
 }
 
+@keyframes loading-animation-top-stop {
+  0% {
+    transform: translateY(0px);
+    transition: ease;
+  }
+  99.9% {
+    transform: translateY(10px);
+    transition: ease;
+  }
+}
+
+@keyframes loading-animation-top {
+  0% {
+    transform: translateY(-10px);
+    transition: ease;
+  }
+  14.285% {
+    transform: translateY(0px);
+    transition: ease;
+  }
+  28.57% {
+    transform: translateY(0px);
+    transition: ease;
+  }
+  42.855% {
+    transform: translateY(0px);
+    transition: ease;
+  }
+  57.14% {
+    transform: translateY(0px);
+    transition: ease;
+  }
+  71.425% {
+    transform: translateY(0px);
+    transition: ease;
+  }
+  85.71% {
+    transform: translateY(10px);
+    transition: ease;
+  }
+  100% {
+    transform: translateY(-10px);
+    transition: ease;
+  }
+}
+
 @keyframes loading-animation-center {
   0% {
     transform: translateY(0px);
@@ -1008,7 +1089,7 @@ div.footer-ar {
     transform: translateY(0px);
     transition: ease;
   }
-  100% {
+  99.9% {
     transform: translateY(0px);
     transition: ease;
   }
@@ -1048,7 +1129,7 @@ div.footer-ar {
     transform: translateY(0px);
     transition: ease;
   }
-  100% {
+  99.9% {
     transform: translateY(0px);
     transition: ease;
   }
