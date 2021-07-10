@@ -1,13 +1,10 @@
 import React from 'react';
 
-export default function LoadingScreen({loading = false}) {
+export default function LoadingScreen({movingPart = false, loading = false}) {
   return (
     <div
-      className={`loading-screen ${
-        loading
-          ? 'd-flex align-items-center justify-content-center bg-ar-dark'
-          : 'loaded'
-      }`}
+      className={`loading-screen d-flex align-items-center justify-content-center bg-ar-dark
+      ${movingPart ? '' : 'stop-move'} ${loading ? '' : 'loaded'}`}
     >
       <div>
         <div className="animation-top" />

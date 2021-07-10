@@ -200,6 +200,22 @@ export default function Home() {
 
   // contact person
   const cpNumber = '021-2250-4920';
+  // timer for loading
+  const loadingTime = 5;
+  const [movingPart, setMovingPart] = React.useState(true);
+
+  React.useEffect(() => {
+    const loadingID = setTimeout(() => {
+      setLoading(false);
+    }, loadingTime * 1000);
+    const movingPartID = setTimeout(() => {
+      setMovingPart(false);
+    }, (loadingTime - (loadingTime % 2)) * 1000);
+    return () => {
+      clearTimeout(movingPartID);
+      clearTimeout(loadingID);
+    };
+  }, []);
 
   const highlight = [
     {title: 'Berdiri Sejak', desc: '2010'},
@@ -265,7 +281,7 @@ export default function Home() {
     >
       <HomeHeader />
 
-      <LoadingScreen loading={loading} />
+      <LoadingScreen movingPart={movingPart} loading={loading} />
       <ParallaxLeft
         refHomeCont={refHomeCont}
         offsetY={offsetY}
