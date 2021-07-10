@@ -16,7 +16,11 @@
     &.open {
       transform: scale(0.97) translateX(-5px);
       transition: transform 0.3s 0.45s ease-out;
-}
+    }
+    &.loading {
+      transform: scale(1.2) translateX(-10px);
+      transition: 0.4s ease-out;
+    }
     & .parallax-left-relative {
       position: relative;
       width: 100%;
@@ -42,7 +46,11 @@
     &.open {
       transform: scale(0.97) translateX(5px);
       transition: transform 0.3s 0.45s ease-out;
-}
+    }
+    &.loading {
+      transform: scale(1.2) translateX(10px);
+      transition: 0.4s ease-out;
+    }
     & .parallax-right-relative {
       position: relative;
       width: 100%;
@@ -180,7 +188,6 @@
   button.menu-toggle {
     right: 50%;
   }
-
   
   button.btn-ar {
     border-width: 0px;
