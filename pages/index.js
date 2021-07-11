@@ -212,7 +212,7 @@ export default function Home() {
     }, loadingTime * 1000);
     const movingPartID = setTimeout(() => {
       setMovingPart(false);
-    }, (loadingTime - (loadingTime % 2)) * 1000);
+    }, (loadingTime - 1) * 1000);
     return () => {
       clearTimeout(movingPartID);
       clearTimeout(loadingID);

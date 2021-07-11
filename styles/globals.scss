@@ -114,8 +114,8 @@ body:not(.modal-open) {
         background-color: white;
         left: 0;
         &.animation-top {
-          top: -10px;
-          animation: loading-animation-top-stop 1s ease-out infinite;
+          transform: translateX(-10px);
+          transition: 0.4s ease-in;
         }
         &.animation-center {
           top: 5px;
@@ -140,86 +140,6 @@ body:not(.modal-open) {
   &.loading {
     transform: scale(1.2);
     transition: 0.4 ease;
-  }
-}
-
-.loading-screen {
-  position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  z-index: 999999;
-  transition: 0.25s ease;
-  & div {
-    width: 100px;
-    height: 100px;
-    overflow: visible;
-    position: relative;
-    width: 100px;
-    height: 100px;
-    & div {
-      width: 100%;
-      height: 10px;
-      background-color: white;
-      left: 0;
-      &.animation-top {
-        top: 0px;
-        animation: loading-animation-top 2s ease-out infinite;
-      }
-      &.animation-center {
-        top: 5px;
-        animation: loading-animation-center 2s ease-out infinite;
-      }
-      &.animation-bottom {
-        top: 10px;
-        animation: loading-animation-bottom 2s ease-out infinite;
-      }
-    }
-  }
-  &.stop-move {
-    position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    z-index: 999999;
-    transition: 0.25s ease;
-    & div {
-      width: 100px;
-      height: 100px;
-      overflow: visible;
-      position: relative;
-      width: 100px;
-      height: 100px;
-      & div {
-        width: 100%;
-        height: 10px;
-        background-color: white;
-        left: 0;
-        &.animation-top {
-          top: -10px;
-          animation: loading-animation-top-stop 1s ease-out infinite;
-        }
-        &.animation-center {
-          top: 5px;
-          animation: none;
-        }
-        &.animation-bottom {
-          top: 10px;
-          animation: none;
-        }
-      }
-    }
-    &.loaded {
-      border-radius: 10000px;
-      width: 0%;
-      height: 0%;
-      transition: 0.2s ease;
-      & div {
-        display: none;
-      }
-    }
   }
 }
 
@@ -1102,11 +1022,19 @@ div.footer-ar {
 
 @keyframes loading-animation-top-stop {
   0% {
-    transform: translateY(0px);
+    transform: translateY(-10px);
     transition: ease;
   }
+  // 14.285% {
+  //   transform: translateY(0px);
+  //   transition: ease;
+  // }
   99.9% {
-    transform: translateY(10px);
+    transform: translateY(-10px);
+    transition: ease;
+  }
+  100% {
+    transform: translateY(-10px);
     transition: ease;
   }
 }
@@ -1138,6 +1066,10 @@ div.footer-ar {
   }
   85.71% {
     transform: translateY(10px);
+    transition: ease;
+  }
+  99.9% {
+    transform: translateY(-10px);
     transition: ease;
   }
   100% {
