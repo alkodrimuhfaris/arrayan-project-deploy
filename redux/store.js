@@ -4,9 +4,6 @@ import promiseMiddleware from 'redux-promise-middleware';
 
 import rootReducer from './reducers';
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(promiseMiddleware, logger),
-);
-
-export default store;
+export default process.env.NEXT_PUBLIC_STAGE === 'DEV'
+  ? createStore(rootReducer, applyMiddleware(promiseMiddleware, logger))
+  : createStore(rootReducer, applyMiddleware(promiseMiddleware));
