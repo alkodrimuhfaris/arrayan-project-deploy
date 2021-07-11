@@ -5,9 +5,9 @@ import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 export default function Projects({projectList = []}) {
   const {sm, md, lg, xl} = useWindowDimensions();
   const ref1 = React.useRef(null);
-  const ref1Width = getComponentWidth(ref1);
+  const [ref1Width, h1] = getComponentWidth(ref1);
   const ref2 = React.useRef(null);
-  const ref2Width = getComponentWidth(ref2);
+  const [ref2Width, h2] = getComponentWidth(ref2);
 
   return (
     <section id="ourProject" className="projects my-5">
