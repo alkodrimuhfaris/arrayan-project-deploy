@@ -6,6 +6,7 @@ import rightEnd from '../Assets/Parallax/kanan-branch-end.png';
 export default function ParallaxRight({
   offsetY = 0,
   open = false,
+  loading = false,
   refHomeCont = {current: null},
 }) {
   const parallaxRight = [
@@ -15,7 +16,11 @@ export default function ParallaxRight({
   ];
 
   return (
-    <div className={`parallax-right ${open ? 'open' : ''}`}>
+    <div
+      className={`parallax-right ${loading ? 'loading' : ''} ${
+        open ? 'open' : ''
+      }`}
+    >
       <div className="parallax-right-relative">
         {parallaxRight.map((val, idx) => {
           const {src, position, speed} = val;

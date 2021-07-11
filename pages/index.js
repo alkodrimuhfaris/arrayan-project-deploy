@@ -1,21 +1,10 @@
 import React from 'react';
-import Head from 'next/head';
-import {BiCalendarAlt} from 'react-icons/bi';
-import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
 import {ImFacebook} from 'react-icons/im';
 import {IoLogoInstagram, IoLogoYoutube} from 'react-icons/io';
-import {FaHeadset} from 'react-icons/fa';
-import MultiCarousel from 'react-multi-carousel';
-import {Input, Form, FormGroup} from 'reactstrap';
-import responsive from '../helpers/topCarousel';
-import st from '../styles/Home.module.css';
-import CustomDot from '../helpers/customDot';
-import getWindowDimensions from '../helpers/getWindowDimensions';
 import crsl1 from '../Assets/Photos/crsl1.jpg';
 import crsl2 from '../Assets/Photos/crsl2.jpg';
 import crsl3 from '../Assets/Photos/crsl3.jpg';
 import crsl4 from '../Assets/Photos/crsl4.jpg';
-import arrayanIcon from '../Assets/Icons/arrayanIcon.svg';
 import HomeHeader from './header/home';
 import LoadingScreen from '../Components/LoadingScreen';
 import FooterElement from '../Components/Footer/FooterElement';
@@ -26,48 +15,13 @@ import Testimony from '../Components/Home/Testimony';
 import Projects from '../Components/Home/Projects';
 import Highlight from '../Components/Home/Highlight';
 import TopHeader from '../Components/Home/TopHeader';
-
-function useVisibiliyRef(options) {
-  const ref = React.useRef();
-  const [visible, setVisibility] = React.useState(true);
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setVisibility(entry.isIntersecting);
-    });
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [ref, options]);
-
-  return [ref, visible];
-}
+import useVisibiliyRef from '../componentHelpers/useVisibilityRef';
+import Navbar from '../Components/Navbar';
+import Menu from '../Components/Menu';
 
 export default function Home() {
-  // get windows dimension
-  const {width, height, sm, md, lg, xl} = getWindowDimensions();
-
   // get visibility of top header
   const [refTopHeader, visTopHeader] = useVisibiliyRef({treshold: 1.0});
-  const [refPrlxLeftTop, visPrlxLeftTop] = useVisibiliyRef({treshold: 1.0});
-  const [refPrlxLeftMid, visPrlxLeftMid] = useVisibiliyRef({treshold: 1.0});
-  const [refPrlxLeftEnd, visPrlxLeftEnd] = useVisibiliyRef({treshold: 1.0});
-  const [refPrlxRightTop, visPrlxRightTop] = useVisibiliyRef({
-    treshold: 1.0,
-  });
-  const [refPrlxRightMid, visPrlxRightMid] = useVisibiliyRef({
-    treshold: 1.0,
-  });
-  const [refPrlxRightEnd, visPrlxRightEnd] = useVisibiliyRef({
-    treshold: 1.0,
-  });
 
   // scroll amount store
   const [offsetY, setOffsetY] = React.useState(0);
@@ -81,7 +35,6 @@ export default function Home() {
   // useState initialisation
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
-  const [topCarousel, setTopCarousel] = React.useState(0);
   const [carouselTop, setCarouselTop] = React.useState([
     {
       src: crsl1,
@@ -200,7 +153,6 @@ export default function Home() {
       rating: 3.8,
     },
   ]);
-  const [newsOrder, setNewsOrder] = React.useState(0);
   const [newsList, setNewsList] = React.useState([
     {
       title:
@@ -260,7 +212,7 @@ export default function Home() {
     }, loadingTime * 1000);
     const movingPartID = setTimeout(() => {
       setMovingPart(false);
-    }, 4 * 1000);
+    }, (loadingTime - (loadingTime % 2)) * 1000);
     return () => {
       clearTimeout(movingPartID);
       clearTimeout(loadingID);
@@ -310,89 +262,28 @@ export default function Home() {
       <HomeHeader />
       <LoadingScreen movingPart={movingPart} loading={loading} />
       {/* left parallax */}
-      <ParallaxLeft offsetY={offsetY} refHomeCont={refHomeCont} open={open} />
+      <ParallaxLeft
+        offsetY={offsetY}
+        refHomeCont={refHomeCont}
+        open={open}
+        loading={loading}
+      />
       {/* right parallax */}
-      <ParallaxRight offsetY={offsetY} refHomeCont={refHomeCont} open={open} />
+      <ParallaxRight
+        offsetY={offsetY}
+        refHomeCont={refHomeCont}
+        open={open}
+        loading={loading}
+      />
       {/* navbar */}
-      <div className="navbar-ar-cont">
-        <div
-          className={`navbar-ar text-light ${
-            visTopHeader || open ? '' : 'change-bg shadow'
-          } ${open ? 'close' : ''}`}
-        >
-          <div className="container h-100 d-flex align-items-center justify-content-between">
-            <div className="navbar-left container d-flex w-83 position-relative">
-              <div className="logo">
-                <img src={arrayanIcon} alt="icon-arrayan" />
-              </div>
-              <div className="contact">
-                <a
-                  className="contact-button text-decoration-none text-white"
-                  href={`tel:${cpNumber}`}
-                >
-                  <div className="text-small">
-                    <text>
-                      <span>
-                        <FaHeadset />
-                      </span>{' '}
-                      Call Center
-                    </text>
-                  </div>
-                  {cpNumber}
-                </a>
-              </div>
-            </div>
-            <div
-              className={`w-17 d-flex justify-content-right position-relative ${
-                open ? 'open' : ''
-              }`}
-            >
-              <button
-                onClick={() => {
-                  setOpen((x) => !x);
-                }}
-                type="button"
-                className={`menu-toggle ${visTopHeader ? '' : 'change-color'}`}
-              >
-                &nbsp;
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Navbar
+        open={open}
+        setOpen={setOpen}
+        cpNumber={cpNumber}
+        visTopHeader={visTopHeader}
+      />
 
-      <div className={open ? 'open' : ''}>
-        <nav>
-          <ul className="menu">
-            <li data-text="Projects">
-              <a className="text-decoration-none text-white" href="#ourProject">
-                Projects
-              </a>
-            </li>
-            <li data-text="Testimony">
-              <a className="text-decoration-none text-white" href="#testimony">
-                Testimony
-              </a>
-            </li>
-            <li data-text="Contact">
-              <a
-                className="text-decoration-none text-white"
-                href="#formContact"
-              >
-                Contact
-              </a>
-            </li>
-            <li data-text="News">
-              <a
-                className="text-decoration-none text-white"
-                href="#newsArrayan"
-              >
-                News
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <Menu open={open} />
 
       {/* container of all content in home page */}
       <div

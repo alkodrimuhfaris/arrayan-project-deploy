@@ -12,10 +12,14 @@
   }
   .parallax-left {
     left: 0;
-    transition: 0.2s ease-out;
+    transition: 0.4s ease-out;
     &.open {
       transform: scale(0.97) translateX(-5px);
       transition: transform 0.3s 0.45s ease-out;
+    }
+    &.loading {
+      transform: translateX(-100px);
+      transition: 0.4s ease-out;
     }
     & .parallax-left-relative {
       position: relative;
@@ -37,10 +41,14 @@
   }
   .parallax-right {
     right: 0;
-    transition: 0.2s ease-out;
+    transition: 0.4s ease-out;
     &.open {
       transform: scale(0.97) translateX(5px);
       transition: transform 0.3s 0.45s ease-out;
+    }
+    &.loading {
+      transform: translateX(100px);
+      transition: 0.4s ease-out;
     }
     & .parallax-right-relative {
       position: relative;
@@ -84,6 +92,7 @@
         display: flex;
         align-items: flex-start;
         justify-content: center;
+        position: relative;
         &.even {
           flex-direction: row-reverse;
         }
@@ -91,14 +100,14 @@
           flex-direction: row;
         }
         & .project-img-container {
-          width: 60.6%;
-          aspect-ratio: 1.902;
+          // width: 60.6%;
+          // aspect-ratio: 1.902;
           position: relative;
           & img.img-main {
             position: absolute;
             top: 0;
-            width: 90.14%;
-            aspect-ratio: 2.087;
+            // width: 90.14%;
+            // aspect-ratio: 2.087;
             z-index: 2;
             object-fit: cover;
             &.img-main-odd {

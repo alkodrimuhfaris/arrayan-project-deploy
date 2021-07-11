@@ -1,5 +1,5 @@
 import React from 'react';
-import useWindowDimensions from '../../helpers/getWindowDimensions';
+import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 import HeaderImg from './HeaderImg';
 import HeaderText from './HeaderText';
 

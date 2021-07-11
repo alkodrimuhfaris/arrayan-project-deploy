@@ -1,7 +1,7 @@
 import React from 'react';
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
 import Testi from './Testi';
-import useWindowDimensions from '../../helpers/getWindowDimensions';
+import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
 export default function Testimony({
   testimonyList = [],

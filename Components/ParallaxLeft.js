@@ -6,6 +6,7 @@ import leftEnd from '../Assets/Parallax/kiri-end.png';
 export default function ParallaxLeft({
   offsetY = 0,
   open = false,
+  loading = false,
   refHomeCont = {current: null},
 }) {
   const parallaxLeft = [
@@ -15,7 +16,11 @@ export default function ParallaxLeft({
   ];
 
   return (
-    <div className={`parallax-left ${open ? 'open' : ''}`}>
+    <div
+      className={`parallax-left ${loading ? 'loading' : ''} ${
+        open ? 'open' : ''
+      }`}
+    >
       <div className="parallax-left-relative">
         {parallaxLeft.map((val, idx) => {
           const {src, position, speed} = val;

@@ -1,5 +1,5 @@
 import React from 'react';
-import useWindowDimensions from '../../helpers/getWindowDimensions';
+import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
 export default function HeaderText({carouselTextTop = [], topCarousel = 0}) {
   const {sm, md, lg, xl} = useWindowDimensions();
