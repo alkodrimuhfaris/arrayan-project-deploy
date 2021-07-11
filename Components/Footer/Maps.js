@@ -56,7 +56,7 @@ export default function Maps({
         scale={4}
         apiKey={process.env.NEXT_PUBLIC_APP_API_KEY_GMAPS}
       >
-        <Marker.Group label="Arrayan Residence" color="brown">
+        <Marker.Group label="Arrayan Residence" color="red">
           {markers.map((val, index) => (
             <Marker key={index} location={val} />
           ))}
