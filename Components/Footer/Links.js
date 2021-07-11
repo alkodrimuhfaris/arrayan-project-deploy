@@ -1,5 +1,6 @@
 import React from 'react';
 import arrayanIconColor from '../../Assets/Icons/arrayanIconColor.svg';
+import getComponentWidth from '../../componentHelpers/getComponentWidth';
 
 export default function Links({
   OurLink = [],
@@ -7,14 +8,27 @@ export default function Links({
   ProjectOffice = [],
   socialMedia = [],
 }) {
+  const ref1 = React.useRef(null);
+  const ref2 = React.useRef(null);
+  const [wRef1, hRef1] = getComponentWidth(ref1);
+  const [wRef2, hRef2] = getComponentWidth(ref2);
   return (
     <footer id="footerArrayan" className="footer mb-5">
       <div className="container">
         <section className="row no-gutters w-100">
           <div className="col-12 col-md-6 row justify-content-between">
             {/* footer logo */}
-            <section className="col-6 col-sm-6 col-md-9 col-lg-6 py-3">
-              <div className="w-100 logo-footer">
+            <section
+              ref={ref1}
+              className="col-6 col-sm-6 col-md-9 col-lg-6 py-3"
+            >
+              <div
+                ref={ref2}
+                style={{
+                  height: wRef1 === wRef2 ? `${wRef1 / 2}px` : '7.5em',
+                }}
+                className="w-100 logo-footer"
+              >
                 <img src={arrayanIconColor} alt="footer-logo" />
               </div>
             </section>

@@ -725,10 +725,10 @@ div.footer-ar {
       border-width: 0px;
       border-radius: 15px;
       width: 85%;
-      aspect-ratio: 0.925;
+      // aspect-ratio: 0.925;
       & img {
         width: 100%;
-        aspect-ratio: 1.85;
+        // aspect-ratio: 1.85;
         border-radius: 15px;
         object-fit: cover;
       }
@@ -755,7 +755,7 @@ div.footer-ar {
   & section.maps {
     position: relative;
     width: 100%;
-    aspect-ratio: 2.66667;
+    height: calc(100vw / 2.666677);
     background-color: gray;
     overflow: hidden;
     & img {
@@ -773,7 +773,7 @@ div.footer-ar {
     & .logo-footer {
       width: 15em;
       max-width: 100%;
-      aspect-ratio: 2;
+      // aspect-ratio: 2;
       position: relative;
       & img {
         position: absolute;
@@ -874,7 +874,7 @@ div.footer-ar {
     right: 0;
     top: $h-nav + 1.5em;
     width: 53%;
-    aspect-ratio: $aspect-ratio-top-img;
+    // aspect-ratio: 1.936;
     max-width: 750px;
     & .carousel-cont-absolute, & .slider-cont-absolute {
       position: absolute;

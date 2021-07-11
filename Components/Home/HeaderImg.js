@@ -1,5 +1,7 @@
 import React from 'react';
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
+import getComponentWidth from '../../componentHelpers/getComponentWidth';
+import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
 export default function HeaderImg({
   carouselTop = [],
@@ -7,7 +9,10 @@ export default function HeaderImg({
   open = false,
   setTopCarousel = () => {},
 }) {
+  const {xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
   const refCar = React.useRef(null);
+  const ref1 = React.useRef(null);
+  const [wRef1, hRef1] = getComponentWidth(ref1);
 
   const topSlider = [
     {class: 'slider-left', Icon: AiOutlineArrowLeft},
@@ -25,7 +30,13 @@ export default function HeaderImg({
 
   return (
     <div className="header-img col-12 col-md-12 col-lg-2 order-1 order-md-2">
-      <div className="header-img-container overflow-hidden">
+      <div
+        ref={ref1}
+        style={{
+          height: `${wRef1 / 1.936}px`,
+        }}
+        className="header-img-container overflow-hidden"
+      >
         <div className="position-relative w-100 h-100">
           <div className="carousel-cont-absolute">
             <ul

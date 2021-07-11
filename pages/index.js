@@ -319,14 +319,14 @@ export default function Home() {
           <RegistrationForm />
 
           {/* footer element */}
-          {/* <FooterElement
+          <FooterElement
             newsList={newsList}
             OurLink={OurLink}
             HeadOffice={HeadOffice}
             ProjectOffice={ProjectOffice}
             socialMedia={socialMedia}
             markers={markers}
-          /> */}
+          />
         </section>
       </div>
     </div>

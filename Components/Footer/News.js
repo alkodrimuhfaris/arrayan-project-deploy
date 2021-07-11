@@ -84,15 +84,19 @@ export default function News({newsList = []}) {
             return (
               <div
                 key={item}
-                ref={refNews}
+                ref={item === 0 ? refNews : null}
                 style={{
                   left: `${item * widthNews}px`,
+                  height: `${(widthNews * 1.1) / 0.925}px`,
                 }}
                 className="news-card-absolute d-flex align-items-center justify-content-center"
               >
                 <div key={item} className="card news-card shadow">
                   <img
                     className="card-img-top"
+                    style={{
+                      height: `${widthNews / 1.85}px`,
+                    }}
                     src={val.picture}
                     alt={`caption-${item}`}
                   />
