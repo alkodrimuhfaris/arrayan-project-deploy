@@ -17,7 +17,7 @@ export default function FooterElement({
       <News newsList={newsList} />
 
       {/* google maps */}
-      <Maps markers={markers} />
+      {/* <Maps markers={markers} /> */}
 
       {/* footer */}
       <Links
