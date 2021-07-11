@@ -89,14 +89,14 @@
           flex-direction: row;
         }
         & .project-img-container {
-          // width: 60.6%;
-          // aspect-ratio: 1.902;
+          width: 60.6%;
+          aspect-ratio: 1.902;
           position: relative;
           & img.img-main {
             position: absolute;
             top: 0;
-            // width: 90.14%;
-            // aspect-ratio: 2.087;
+            width: 90.14%;
+            aspect-ratio: 2.087;
             z-index: 2;
             object-fit: cover;
             &.img-main-odd {

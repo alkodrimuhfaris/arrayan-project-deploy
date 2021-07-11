@@ -8,6 +8,8 @@ import '../styles/global-lg.scss';
 import '../styles/global-xl.scss';
 import '../styles/width.css';
 import '../styles/height.css';
+import '../styles/IconStyle.scss';
+import '../styles/ModalLoading.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function MyApp({Component, pageProps}) {

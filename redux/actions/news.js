@@ -2,8 +2,8 @@
 import services from '../../helpers/services';
 
 export default {
-  getCarousel: () => ({
+  getNews: () => ({
     type: 'GET_NEWS',
-    payload: services().get(`news?`),
+    payload: services().get(`/article`),
   }),
 };

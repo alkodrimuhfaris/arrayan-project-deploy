@@ -81,6 +81,8 @@ export default function News({newsList = []}) {
         >
           {newsList.map((val, item) => {
             const widthNews = refNews.current ? refNews.current.offsetWidth : 0;
+            const image = process.env.NEXT_PUBLIC_URL_BACKEND + val.image;
+            const href = process.env.NEXT_PUBLIC_URL_BACKEND + val.href;
             return (
               <div
                 key={item}
@@ -97,7 +99,7 @@ export default function News({newsList = []}) {
                     style={{
                       height: `${widthNews / 1.85}px`,
                     }}
-                    src={val.picture}
+                    src={image}
                     alt={`caption-${item}`}
                   />
                   <section className="card-body container caption-container">
@@ -105,13 +107,13 @@ export default function News({newsList = []}) {
                       <div className="icon d-flex align-items-center">
                         <BiCalendarAlt />
                       </div>
-                      <text>{val.date}</text>
+                      <text>{val.date.split('T')[0]}</text>
                     </div>
                     <article className="caption fading-text mb-3 text-grey">
                       {val.title}
                     </article>
                     <div className="link-wrapper">
-                      <a className="text-ar-dark" href={val.link}>
+                      <a className="text-ar-dark" href={href}>
                         Baca Lebih Lanjut{' '}
                         <span>
                           <AiOutlineArrowRight />

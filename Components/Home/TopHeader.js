@@ -7,24 +7,28 @@ export default function TopHeader({
   open = false,
   refTopHeader = {current: null},
   carouselTop = [],
-  carouselTextTop = [],
   topCarTimer = 10,
 }) {
   const {md} = useWindowDimensions();
   const [topCarousel, setTopCarousel] = React.useState(0);
 
   React.useEffect(() => {
-    const intervalID = setInterval(
-      () =>
-        setTopCarousel((x) => {
-          x = x === carouselTop.length - 1 ? 0 : x + 1;
-          return x;
-        }),
-      topCarTimer * 1000,
-    );
+    let intervalID;
+    if (carouselTop.length > 1) {
+      intervalID = setInterval(
+        () =>
+          setTopCarousel((x) => {
+            x = x === carouselTop.length - 1 ? 0 : x + 1;
+            return x;
+          }),
+        topCarTimer * 1000,
+      );
+    }
 
     return () => {
-      clearInterval(intervalID);
+      if (carouselTop.length < 1) {
+        clearInterval(intervalID);
+      }
     };
   }, []);
 
@@ -58,10 +62,7 @@ export default function TopHeader({
         </div>
 
         {/* text container */}
-        <HeaderText
-          carouselTextTop={carouselTextTop}
-          topCarousel={topCarousel}
-        />
+        <HeaderText carouselTop={carouselTop} topCarousel={topCarousel} />
 
         {/* container image carousel */}
         <HeaderImg

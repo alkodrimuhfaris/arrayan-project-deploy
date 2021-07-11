@@ -2,7 +2,7 @@ const initialState = {
   success: false,
   error: false,
   pending: false,
-  data: [],
+  news: [],
   message: '',
 };
 
@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
     default: {
       return state;
     }
-    case 'GET_CAROUSEL_PENDING': {
+    case 'GET_NEWS_PENDING': {
       return {
         ...state,
         success: false,
@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
         message: 'Mendapatkan data...',
       };
     }
-    case 'GET_CAROUSEL_REJECTED': {
+    case 'GET_NEWS_REJECTED': {
       return {
         ...state,
         success: false,
@@ -29,13 +29,13 @@ export default (state = initialState, action) => {
         message: 'Pengambilan data gagal, silahkan muat ulang halaman',
       };
     }
-    case 'GET_CAROUSEL_FULFILLED': {
+    case 'GET_NEWS_FULFILLED': {
       return {
         ...state,
         success: true,
         error: false,
         pending: false,
-        data: action.payload.data.results,
+        news: action.payload.data.data,
         message: 'Pengambilan data sukses!',
       };
     }

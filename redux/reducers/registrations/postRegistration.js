@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
         error: false,
         pending: false,
         message:
-          'Form anda telah terkirim! Tim kami akan segera menghubungi anda',
+          'Pesan anda telah terkirim! Kami akan segera mengirimkan respon ke kontak anda',
       };
     }
     case 'CLEAR_REGISTRATION_NOTIF': {

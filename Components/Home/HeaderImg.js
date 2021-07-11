@@ -57,6 +57,7 @@ export default function HeaderImg({
                 const widthCar = refCar.current
                   ? refCar.current.offsetWidth
                   : 0;
+                const image = process.env.NEXT_PUBLIC_URL_BACKEND + item.image;
                 return (
                   <li
                     style={{
@@ -65,7 +66,7 @@ export default function HeaderImg({
                     key={index}
                     className={`ar_carousel_slide ${setActive}`}
                   >
-                    <img src={item.src} alt={item.altText} />
+                    <img src={image} alt={`carousel-${index}`} />
                   </li>
                 );
               })}

@@ -1,32 +1,21 @@
 import {combineReducers} from 'redux';
-// carousel
-import getAllCarousel from './carousel/getAllCarousel';
 
 // news
-import getAllNews from './news/getAllNews';
-
-// projects
-import getAllProjects from './projects/getAllProjects';
+import newsData from './news/newsData';
 
 // registrations
 import postRegistration from './registrations/postRegistration';
 
-// testimony
-import getAllTestimony from './testimony/getAllTestimony';
+// home
+import homeData from './home/home';
 
 export default combineReducers({
-  // carousel
-  getAllCarousel,
-
   // news
-  getAllNews,
+  newsData,
 
   // registration
   postRegistration,
 
-  // projects
-  getAllProjects,
-
-  // testimony
-  getAllTestimony,
+  // home
+  homeData,
 });

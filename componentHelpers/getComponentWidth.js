@@ -9,7 +9,7 @@ export default function getComponentWidth(ref = {current: null}) {
   React.useEffect(() => {
     setW(() => (ref.current ? ref.current.offsetWidth : 0));
     setH(() => (ref.current ? ref.current.offsetHeight : 0));
-  }, [width, height]);
+  }, [width, height, ref.current]);
 
   return [w, h];
 }

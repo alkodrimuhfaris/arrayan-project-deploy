@@ -1,7 +1,7 @@
 import React from 'react';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
-export default function HeaderText({carouselTextTop = [], topCarousel = 0}) {
+export default function HeaderText({carouselTop = [], topCarousel = 0}) {
   const {sm, md, lg, xl} = useWindowDimensions();
   const refCarText = React.useRef(null);
   return (
@@ -30,7 +30,7 @@ export default function HeaderText({carouselTextTop = [], topCarousel = 0}) {
             }}
             className="text-carousel-cont w-100 position-relative"
           >
-            {carouselTextTop.map((val, idx) => {
+            {carouselTop.map((val, idx) => {
               const widthCar = refCarText.current
                 ? refCarText.current.offsetWidth
                 : 0;
@@ -43,9 +43,9 @@ export default function HeaderText({carouselTextTop = [], topCarousel = 0}) {
                   className="text-carousel w-100 h-100 px-4 pb-2 position-absolute"
                 >
                   <h1 className="title text-uppercase">{val.title}</h1>
-                  <p className="subtitle">{val.subtitle}</p>
+                  <p className="subtitle">{val.description}</p>
                   <button type="button" className="btn btn-block">
-                    {val.btnText}
+                    Dapatkan Penawaran Menarik sekarang
                   </button>
                 </div>
               );

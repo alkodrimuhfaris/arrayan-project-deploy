@@ -194,8 +194,8 @@
       position: relative;
       & article.project-wrapper {
         overflow: hidden;
-        // width: 100%;
-        // aspect-ratio: 1;
+        width: 100%;
+        aspect-ratio: 1;
         position: relative;
         & .project-img-container {
           width: 100%;
@@ -314,7 +314,7 @@
     }
     & .testi-container {
       padding: 0 !important;
-      // width: 100% !important;
+      width: 100% !important;
       // aspect-ratio: 1.4 !important;
       & .bg-img-container {
         height: 100%;

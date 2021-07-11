@@ -3,12 +3,9 @@ import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
 import Testi from './Testi';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
+import testiImg from '../../Assets/Photos/testiImg.jpg';
 
-export default function Testimony({
-  testimonyList = [],
-  testiTimer = 10,
-  testiImg = '',
-}) {
+export default function Testimony({testimonyList = [], testiTimer = 10}) {
   const {xsO, smO, md, mdO, lgO, xlO} = useWindowDimensions();
   const [testi, setTesti] = React.useState(0);
   const refTesti = React.useRef(null);
@@ -27,17 +24,22 @@ export default function Testimony({
   ];
 
   React.useEffect(() => {
-    const intervalTesti = setInterval(
-      () =>
+    let intervalTesti;
+    if (testimonyList.length) {
+      intervalTesti = setInterval(() => {
         setTesti((x) => {
           x = x === testimonyList.length - 1 ? 0 : x + 1;
           return x;
-        }),
-      testiTimer * 1000,
-    );
+        });
+      }, testiTimer * 1000);
+    }
 
-    return clearInterval(intervalTesti);
-  }, []);
+    return () => {
+      if (testimonyList.length) {
+        clearInterval(intervalTesti);
+      }
+    };
+  }, [testimonyList]);
 
   const changeTestiSlide = (dir) => {
     setTesti((x) => {
@@ -60,32 +62,23 @@ export default function Testimony({
           pendapat orang yang sudah memiliki property di Arrayan Group.
         </p>
       </section>
-      <div ref={ref1} className="w-100">
+      <div className="">
         <section
           style={{
-            width:
-              xsO || smO
-                ? `100%`
-                : mdO
-                ? `100%`
-                : lgO
-                ? `100%`
-                : xlO
-                ? `100%`
-                : `100%`,
             height:
               xsO || smO
-                ? `${wRef1 / 1.25}px`
+                ? `${wRefTesti / 1.25}px`
                 : mdO
-                ? `${wRef1 / 1.4}px`
+                ? `${wRefTesti / 1.4}px`
                 : lgO
-                ? `${wRef1 / 2.2}px`
+                ? `${wRefTesti / 2.2}px`
                 : xlO
-                ? `${wRef1 / 3.516}px`
-                : `${wRef1 / 3.516}px`,
+                ? `${wRefTesti / 3.516}px`
+                : `${wRefTesti / 3.516}px`,
             maxHeight: '500px',
+            aspectRatio: xsO || smO ? 1.25 : mdO ? 1.4 : lgO ? 2.2 : 3.516,
           }}
-          className="testi-container container position-relative"
+          className="testi-container container-lg position-relative"
           ref={refTesti}
         >
           <div
@@ -148,24 +141,24 @@ export default function Testimony({
               <div
                 className="testi-blur-left"
                 style={{
-                  width: md
-                    ? refTestiWrapper.current && refTestiIndv.current
+                  width:
+                    md && refTestiWrapper.current && refTestiIndv.current
                       ? `${refTestiIndv.current.offsetWidth / 4}px` // dibagi 4 karena panjangnya hanya seperempat
-                      : '0%'
-                    : '0%',
+                      : '0%',
                 }}
               />
               <div
                 className="testi-blur-right"
                 style={{
-                  width: md
-                    ? `${refTestiIndv.current.offsetWidth / 4}px` // dibagi 4 karena panjangnya hanya seperempat
-                    : refTestiWrapper.current && refTestiIndv.current
-                    ? `${
-                        refTestiWrapper.current.offsetWidth -
-                        2 * refTestiIndv.current.offsetWidth
-                      }px`
-                    : '0%',
+                  width:
+                    md && refTestiIndv.current
+                      ? `${refTestiIndv.current.offsetWidth / 4}px` // dibagi 4 karena panjangnya hanya seperempat
+                      : refTestiWrapper.current && refTestiIndv.current
+                      ? `${
+                          refTestiWrapper.current.offsetWidth -
+                          2 * refTestiIndv.current.offsetWidth
+                        }px`
+                      : '0%',
                 }}
                 ref={refTestiBlur}
               />
@@ -196,6 +189,7 @@ export default function Testimony({
                   //   : 0;
                   return (
                     <div
+                      key={idx}
                       ref={firstRef}
                       className="testi-individual h-100 position-absolute"
                       style={{
@@ -214,8 +208,8 @@ export default function Testimony({
                       }}
                     >
                       <Testi
-                        name={val.name}
-                        comment={val.testi}
+                        name={val.project}
+                        comment={`${hRef2} ${val.description}`}
                         rating={val.rating}
                         bp={md}
                       />

@@ -2,8 +2,8 @@
 import services from '../../helpers/services';
 
 export default {
-  getOurProjects: () => ({
-    type: 'GET_PROJECTS',
-    payload: services().get(`projects?`),
+  getHome: () => ({
+    type: 'GET_HOME',
+    payload: services().get(`/home`),
   }),
 };

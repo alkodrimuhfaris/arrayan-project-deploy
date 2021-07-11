@@ -77,8 +77,11 @@ body:not(.modal-open) {
     & div {
       width: 100%;
       height: 10px;
-      background-color: white;
+      background-color: transparent;
       left: 0;
+      & img {
+        width: 100%;
+      }
       &.animation-top {
         top: 0px;
         animation: loading-animation-top 2s ease-out infinite;
@@ -111,8 +114,11 @@ body:not(.modal-open) {
       & div {
         width: 100%;
         height: 10px;
-        background-color: white;
+        background-color: transparent;
         left: 0;
+        & img {
+          width: 100%;
+        }
         &.animation-top {
           transform: translateX(-10px);
           transition: 0.4s ease-in;
@@ -127,19 +133,15 @@ body:not(.modal-open) {
         }
       }
     }
-    &.loaded {
-      border-radius: 10000px;
-      width: 0%;
-      height: 0%;
-      transition: 0.2s ease;
-      & div {
-        display: none;
-      }
-    }
   }
-  &.loading {
-    transform: scale(1.2);
-    transition: 0.4 ease;
+  &.loaded {
+    border-radius: 10000px;
+    width: 0%;
+    height: 0%;
+    transition: 0.2s ease;
+    & div {
+      display: none;
+    }
   }
 }
 
@@ -543,7 +545,7 @@ ul.menu {
 .testimony {
   & .testi-container {
     padding: 0 !important;
-    // width: 100%;
+    width: 100%;
     // aspect-ratio: 3.516;
     & .bg-img-container {
       position: relative;

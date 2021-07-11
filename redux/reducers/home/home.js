@@ -2,7 +2,9 @@ const initialState = {
   success: false,
   error: false,
   pending: false,
-  data: [],
+  sliders: [],
+  testimonials: [],
+  projects: [],
   message: '',
 };
 
@@ -11,7 +13,7 @@ export default (state = initialState, action) => {
     default: {
       return state;
     }
-    case 'GET_NEWS_PENDING': {
+    case 'GET_HOME_PENDING': {
       return {
         ...state,
         success: false,
@@ -20,7 +22,7 @@ export default (state = initialState, action) => {
         message: 'Mendapatkan data...',
       };
     }
-    case 'GET_NEWS_REJECTED': {
+    case 'GET_HOME_REJECTED': {
       return {
         ...state,
         success: false,
@@ -29,13 +31,16 @@ export default (state = initialState, action) => {
         message: 'Pengambilan data gagal, silahkan muat ulang halaman',
       };
     }
-    case 'GET_NEWS_FULFILLED': {
+    case 'GET_HOME_FULFILLED': {
+      const {sliders, testimonials, projects} = action.payload.data.data;
       return {
         ...state,
         success: true,
         error: false,
         pending: false,
-        data: action.payload.data.results,
+        sliders,
+        testimonials,
+        projects,
         message: 'Pengambilan data sukses!',
       };
     }
