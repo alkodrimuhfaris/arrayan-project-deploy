@@ -2,18 +2,24 @@ import React from 'react';
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
 import Testi from './Testi';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
+import getComponentWidth from '../../componentHelpers/getComponentWidth';
 
 export default function Testimony({
   testimonyList = [],
   testiTimer = 10,
   testiImg = '',
 }) {
-  const {md} = useWindowDimensions();
+  const {xsO, smO, md, mdO, lgO, xlO} = useWindowDimensions();
   const [testi, setTesti] = React.useState(0);
   const refTesti = React.useRef(null);
   const refTestiWrapper = React.useRef(null);
   const refTestiIndv = React.useRef(null);
   const refTestiBlur = React.useRef(null);
+  const ref1 = React.useRef(null);
+  const ref2 = React.useRef(null);
+  const [wRef1, hRef1] = getComponentWidth(ref1);
+  const [wRef2, hRef2] = getComponentWidth(ref2);
+  const [wRefTesti, hRefTesti] = getComponentWidth(refTesti);
 
   const testiSlider = [
     {class: 'testi-slider-left', Icon: AiOutlineArrowLeft},
@@ -54,12 +60,48 @@ export default function Testimony({
           pendapat orang yang sudah memiliki property di Arrayan Group.
         </p>
       </section>
-      <div className="">
+      <div ref={ref1} className="w-100">
         <section
+          style={{
+            width:
+              xsO || smO
+                ? `100%`
+                : mdO
+                ? `100%`
+                : lgO
+                ? `100%`
+                : xlO
+                ? `100%`
+                : `100%`,
+            height:
+              xsO || smO
+                ? `${wRef1 / 1.25}px`
+                : mdO
+                ? `${wRef1 / 1.4}px`
+                : lgO
+                ? `${wRef1 / 2.2}px`
+                : xlO
+                ? `${wRef1 / 3.516}px`
+                : `${wRef1 / 3.516}px`,
+            maxHeight: '500px',
+          }}
           className="testi-container container position-relative"
           ref={refTesti}
         >
-          <div className="bg-img-container">
+          <div
+            style={{
+              height: `100%`,
+              width:
+                xsO || smO || mdO
+                  ? `100%`
+                  : lgO
+                  ? `${hRefTesti * 0.7}px`
+                  : xlO
+                  ? `${hRefTesti * 0.942}px`
+                  : `${hRefTesti * 0.942}px`,
+            }}
+            className="bg-img-container position-relative"
+          >
             <img src={testiImg} alt="testimony" />
             {testiSlider.map((val, idx) => {
               const {Icon} = val;
@@ -75,7 +117,24 @@ export default function Testimony({
               );
             })}
           </div>
-          <article ref={refTestiWrapper} className="testi-wrapper">
+          <article
+            style={{
+              width:
+                xsO || smO ? `100%` : mdO ? `100%` : lgO || xlO ? `83%` : `83%`,
+              height:
+                xsO || smO
+                  ? `${wRefTesti / 1.4}px`
+                  : mdO
+                  ? `${wRefTesti / 1.8}px`
+                  : lgO
+                  ? `${wRefTesti / 2.4}px`
+                  : xlO
+                  ? `${wRefTesti / 3.6475}px`
+                  : `${wRefTesti / 3.6475}px`,
+            }}
+            ref={refTestiWrapper}
+            className="testi-wrapper"
+          >
             <div
               style={{
                 width: md
@@ -125,6 +184,7 @@ export default function Testimony({
                       }px, 0px)`,
                   transition: '0.3s ease',
                 }}
+                ref={ref2}
               >
                 {testimonyList.map((val, idx) => {
                   const firstRef = idx === 0 ? refTestiIndv : null;
@@ -142,6 +202,15 @@ export default function Testimony({
                         left: md
                           ? `${widthRefTesti / 4 + idx * widthRefTesti}px`
                           : `${idx * widthRefTesti}px`,
+                        width:
+                          xsO || smO || mdO
+                            ? `calc(100%/1.5)`
+                            : lgO
+                            ? `${hRef2 * 1.453}px`
+                            : xlO
+                            ? `${hRef2 * 1.2}px`
+                            : `${hRef2 * 1.453}px`,
+                        height: `${hRef2}px`,
                       }}
                     >
                       <Testi

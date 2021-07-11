@@ -216,12 +216,12 @@
   .testimony {
     & .testi-container {
       padding: 0 !important;
-      width: 100%;
-      aspect-ratio: 2.2 !important;
+      // width: 100%;
+      // aspect-ratio: 2.2 !important;
       & .bg-img-container {
         position: relative;
-        height: 100%;
-        aspect-ratio: 0.942;
+        // height: 100%;
+        // aspect-ratio: 0.942;
         & img {
           height: 100%;
           width: 100%;
@@ -266,8 +266,8 @@
         right: 0;
         top: 50%;
         transform: translate(0, -50%);
-        width: 83%;
-        aspect-ratio: 2.4 !important;
+        // width: 83%;
+        // aspect-ratio: 2.4 !important;
         padding: 0;
         margin: 0;
         overflow: hidden;
@@ -291,8 +291,8 @@
             backdrop-filter: blur(2px);
           }
           & .testi-individual {
-            aspect-ratio: 1.2 !important;
-            height: 100%;
+            // aspect-ratio: 1.2 !important;
+            // height: 100%;
             padding: 0 12.5px;
           }
         }

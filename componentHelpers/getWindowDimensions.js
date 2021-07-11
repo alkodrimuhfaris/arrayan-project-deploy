@@ -10,6 +10,11 @@ function getWindowDimensions() {
   const md = width < 992;
   const lg = width < 1200;
   const xl = width >= 1200;
+  const xsO = width < 576;
+  const smO = width < 768 && width >= 576;
+  const mdO = width < 992 && width >= 768;
+  const lgO = width < 1200 && width >= 992;
+  const xlO = width >= 1200;
 
   return {
     width,
@@ -19,11 +24,16 @@ function getWindowDimensions() {
     md,
     lg,
     xl,
+    xsO,
+    smO,
+    mdO,
+    lgO,
+    xlO,
   };
 }
 
 export default function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState({width: -1, height: -1,  xs : false, sm : false, md: false, lg: false, xl: false});
+  const [windowDimensions, setWindowDimensions] = useState({width: -1, height: -1,  xs : false, sm : false, md: false, lg: false, xl: false, xsO : false, smO : false, mdO: false, lgO: false, xlO: false});
 
   useEffect(() => {
     if (windowDimensions.width === -1) {

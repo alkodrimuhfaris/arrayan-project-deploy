@@ -91,7 +91,7 @@
         padding: 0px !important;
         top: 0;
         max-width: 100% !important;
-        aspect-ratio: $aspect-ratio-top-img;
+        aspect-ratio: 1.936;
         & img {
           width: 100% !important;
           height: 100% !important;
@@ -313,8 +313,8 @@
     }
     & .testi-container {
       padding: 0 !important;
-      width: 100% !important;
-      aspect-ratio: 1.4 !important;
+      // width: 100% !important;
+      // aspect-ratio: 1.4 !important;
       & .bg-img-container {
         height: 100%;
         width: 100%;
@@ -369,8 +369,8 @@
         right: 0;
         top: 50%;
         transform: translate(0, -50%);
-        width: 100% !important;
-        aspect-ratio: 1.8 !important;
+        // width: 100% !important;
+        // aspect-ratio: 1.8 !important;
         padding: 0;
         margin: 0;
         overflow: hidden;

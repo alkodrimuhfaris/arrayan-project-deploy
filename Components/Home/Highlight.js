@@ -3,6 +3,7 @@ import Award1 from '../../Assets/Icons/Awards-01.svg';
 import Award2 from '../../Assets/Icons/Awards-02.svg';
 import Award3 from '../../Assets/Icons/Awards-03.svg';
 import Award4 from '../../Assets/Icons/Awards-04.svg';
+import getComponentWidth from '../../componentHelpers/getComponentWidth';
 
 export default function Highlight() {
   const highlight = [
@@ -18,6 +19,9 @@ export default function Highlight() {
     {Award: Award3},
     {Award: Award4},
   ];
+
+  const ref1 = React.useRef(null);
+  const [w1, hRef1] = getComponentWidth(ref1);
 
   return (
     <section className="awards mb-3 mb-md-0 container text-center">
@@ -40,10 +44,18 @@ export default function Highlight() {
           const {Award} = val;
           return (
             <div key={index} className="p-2 p-md-4 col-6 col-md-3">
-              <div className="award-container d-flex justify-content-center align-items-center">
-                <article className="award rounded">
-                  <img src={Award} alt={`awards-${index + 1}`} />
-                </article>
+              <div ref={index === 0 ? ref1 : null} className="w-100">
+                <div
+                  style={{
+                    width: `${w1}px`,
+                    height: `${w1 / 1.85}px`,
+                  }}
+                  className="award-container d-flex justify-content-center align-items-center"
+                >
+                  <article className="award rounded">
+                    <img src={Award} alt={`awards-${index + 1}`} />
+                  </article>
+                </div>
               </div>
             </div>
           );

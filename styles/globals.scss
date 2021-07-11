@@ -472,8 +472,8 @@ ul.menu {
       overflow-y: clip;
       overflow-x: auto;
       & div.award-container {
-        width: 100%;
-        aspect-ratio: 1.85;
+        // width: 100%;
+        // aspect-ratio: 1.85;
       }
       .award {
         background-color: white;
@@ -539,12 +539,12 @@ ul.menu {
 .testimony {
   & .testi-container {
     padding: 0 !important;
-    width: 100%;
-    aspect-ratio: 3.516;
+    // width: 100%;
+    // aspect-ratio: 3.516;
     & .bg-img-container {
       position: relative;
-      height: 100%;
-      aspect-ratio: 0.942;
+      // height: 100%;
+      // aspect-ratio: 0.942;
       & img {
         height: 100%;
         width: 100%;
@@ -589,8 +589,8 @@ ul.menu {
       right: 0;
       top: 50%;
       transform: translate(0, -50%);
-      width: 83%;
-      aspect-ratio: 3.6475;
+      // width: 83%;
+      // aspect-ratio: 3.6475;
       padding: 0;
       margin: 0;
       overflow: hidden;
@@ -614,8 +614,8 @@ ul.menu {
           backdrop-filter: blur(2px);
         }
         & .testi-individual {
-          aspect-ratio: 1.453;
-          height: 100%;
+          // aspect-ratio: 1.453;
+          // height: 100%;
           padding: 0 12.5px;
         }
       }
