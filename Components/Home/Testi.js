@@ -2,7 +2,7 @@ import React from 'react';
 import {GoQuote} from 'react-icons/go';
 import {AiOutlineStar, AiFillStar} from 'react-icons/ai';
 
-export default function Testimony({
+export default function Testi({
   rating = 3.5,
   comment = '',
   name = '',
