@@ -1,15 +1,17 @@
 import React from 'react';
 import {GoQuote} from 'react-icons/go';
 import {AiOutlineStar, AiFillStar} from 'react-icons/ai';
+import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
 export default function Testi({
   rating = 3.5,
   comment = '',
   name = '',
   bp,
-  md,
   ...props
 }) {
+  const {md} = useWindowDimensions();
+
   return (
     <div className="h-100 d-flex align-items-center justify-content-center">
       <article className="h-85">
@@ -28,6 +30,7 @@ export default function Testi({
                 dif >= 20 ? '0%' : dif < 0 ? '100%' : `${100 - dif * 5}%`;
               return (
                 <div
+                  key={index}
                   style={{height: '1em'}}
                   className="star position-relative p-3"
                 >

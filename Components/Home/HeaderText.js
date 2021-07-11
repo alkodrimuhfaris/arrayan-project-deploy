@@ -4,7 +4,6 @@ import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 export default function HeaderText({carouselTextTop = [], topCarousel = 0}) {
   const {sm, md, lg, xl} = useWindowDimensions();
   const refCarText = React.useRef(null);
-
   return (
     <div className="header-text col-12 order-3 order-md-1 panel col-md-13 col-lg-10 bg-ar-dark">
       <div className="container pt-0 pt-md-5 pt-lg-0 mt-0 mt-md-5 mt-lg-0">
@@ -37,6 +36,7 @@ export default function HeaderText({carouselTextTop = [], topCarousel = 0}) {
                 : 0;
               return (
                 <div
+                  key={idx}
                   style={{
                     left: `${idx * widthCar}px`,
                   }}

@@ -187,17 +187,17 @@ export default function Home() {
         'https://cdn.statically.io/img/langgam.id/f=auto/wp-content/uploads/2020/10/313e1003-51a7-45bc-bf06-4c1888533a32.jpg',
     },
   ]);
+
   const esgrim =
     'https://media.istockphoto.com/photos/ice-cream-picture-id147273409?k=6&m=147273409&s=612x612&w=0&h=7g3kiKizrqiUs7owHgEJvqzddjIcysmmWVK1ejss9p4=';
 
   // useRef initialization
   const refHomeCont = React.useRef(null);
 
-  // timer carousel on second
-  const topCarTimer = 3.5;
-
   // timer for testimony on second
   const testiTimer = 4;
+  const topCarTimer = 10;
+  const loadingTimer = 5;
 
   // cp number
   const cpNumber = '021-2250-4920';
