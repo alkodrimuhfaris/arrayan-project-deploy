@@ -84,6 +84,7 @@ export default function HeaderImg({
                   <button
                     onClick={() => sliderTopCar(val.class)}
                     key={index}
+                    name={val.class}
                     type="button"
                     className={`position-absolute d-flex align-items-center justify-content-center btn ${val.class}`}
                   >

@@ -24,7 +24,7 @@ export default function Home() {
   // timer for testimony on second
   const testiTimer = 4;
   const topCarTimer = 10;
-  const loadingTime = 5;
+  const loadingTime = 3;
 
   // cp number
   const cpNumber = '021-2250-4920';

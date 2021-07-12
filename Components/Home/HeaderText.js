@@ -44,7 +44,11 @@ export default function HeaderText({carouselTop = [], topCarousel = 0}) {
                 >
                   <h1 className="title text-uppercase">{val.title}</h1>
                   <p className="subtitle">{val.description}</p>
-                  <button type="button" className="btn btn-block">
+                  <button
+                    name={`get-offering-btn-${idx}`}
+                    type="button"
+                    className="btn btn-block"
+                  >
                     Dapatkan Penawaran Menarik sekarang
                   </button>
                 </div>

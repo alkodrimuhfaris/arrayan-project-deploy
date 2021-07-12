@@ -53,6 +53,7 @@ export default function ModalConfirm({
           <Button
             color="success"
             outline
+            name="confirm-modal"
             onClick={(e) => doConfirm(e)}
             className="rounded-pill px-4 border-0"
           >
@@ -61,6 +62,7 @@ export default function ModalConfirm({
           {useOneBtn ? null : (
             <Button
               color="danger"
+              name="close-modal"
               outline
               onClick={(e) => doCancel(e)}
               className="rounded-pill px-4 border-0"

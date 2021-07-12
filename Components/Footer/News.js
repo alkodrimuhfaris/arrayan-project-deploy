@@ -55,6 +55,7 @@ export default function News({newsList = []}) {
                 onClick={() => changeNewsSlide(val.class)}
                 key={idx}
                 type="button"
+                name={val.class}
                 className={`position-absolute d-flex align-items-center justify-content-center btn ${val.class}`}
               >
                 <Icon />
@@ -129,7 +130,7 @@ export default function News({newsList = []}) {
       </div>
 
       <div className="button-wrapper container d-flex justify-content-center">
-        <button type="button" className="btn-ar rounded my-4">
+        <button name="open-news" type="button" className="btn-ar rounded my-4">
           Lihat Lebih Lanjut
         </button>
       </div>

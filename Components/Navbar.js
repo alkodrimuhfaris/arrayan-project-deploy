@@ -63,6 +63,7 @@ export default function Navbar({
                 setOpen((x) => !x);
               }}
               type="button"
+              name="open-menu-btn"
               className={`menu-toggle ${visTopHeader ? '' : 'change-color'}`}
             >
               &nbsp;

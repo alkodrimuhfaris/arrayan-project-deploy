@@ -50,7 +50,12 @@ export default function Form({submitForm = () => {}}) {
           handleBlur,
         } = props;
         return (
-          <form onSubmit={handleSubmit} className="form ar-form">
+          <form
+            onSubmit={handleSubmit}
+            id="contact-us"
+            name="contact-us"
+            className="form ar-form"
+          >
             <div className="container d-flex flex-column justify-content-center align-items-center mx-auto">
               <div className="row w-100 no-gutters">
                 <div className="col-12 pt-2 pb-3 col-md-6">
@@ -147,7 +152,11 @@ export default function Form({submitForm = () => {}}) {
                   ) : null}
                 </div>
               </div>
-              <button type="submit" className="btn-ar rounded btn-form my-4">
+              <button
+                name="contact-us"
+                type="submit"
+                className="btn-ar rounded btn-form my-4"
+              >
                 Hubungi Kami
               </button>
             </div>

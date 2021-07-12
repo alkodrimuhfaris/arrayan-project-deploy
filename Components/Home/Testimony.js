@@ -102,6 +102,7 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
                 <button
                   onClick={() => changeTestiSlide(val.class)}
                   key={idx}
+                  name={val.class}
                   type="button"
                   className={`position-absolute d-flex align-items-center justify-content-center btn ${val.class}`}
                 >

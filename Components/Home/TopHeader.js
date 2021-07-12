@@ -51,6 +51,7 @@ export default function TopHeader({
                 <button
                   key={index}
                   type="button"
+                  name={`dot-carousel-${index}`}
                   className={`slider-btns ar_carousel_slider_btn mx-1 ${setActive}`}
                   onClick={() => setTopCarousel(index)}
                 >
