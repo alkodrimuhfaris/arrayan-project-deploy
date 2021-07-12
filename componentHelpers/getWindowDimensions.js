@@ -39,7 +39,7 @@ export default function useWindowDimensions() {
     if (windowDimensions.width === -1) {
       setWindowDimensions(getWindowDimensions());
     }
-  });
+  }, []);
 
   useEffect(() => {
     function handleResize() {

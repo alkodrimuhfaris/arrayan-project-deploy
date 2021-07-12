@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {ImFacebook} from 'react-icons/im';
 import {IoLogoInstagram, IoLogoYoutube} from 'react-icons/io';
-import HomeHeader from './header/home';
+import HomeHeader from '../header/home';
 import LoadingScreen from '../Components/LoadingScreen';
 import FooterElement from '../Components/Footer/FooterElement';
 import ParallaxRight from '../Components/ParallaxRight';

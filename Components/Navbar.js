@@ -2,6 +2,7 @@ import React from 'react';
 import {FaHeadset} from 'react-icons/fa';
 import arrayanIcon from '../Assets/Icons/arrayanIcon.svg';
 import getComponentWidth from '../componentHelpers/getComponentWidth';
+import callCenter from '../Assets/Icons/Call_Center.svg';
 
 export default function Navbar({
   open = false,
@@ -10,7 +11,9 @@ export default function Navbar({
   setOpen = () => {},
 }) {
   const ref1 = React.useRef(null);
-  const [w1, h1] = getComponentWidth(ref1);
+  const [w1, hRef1] = getComponentWidth(ref1);
+  const ref2 = React.useRef(null);
+  const [w2, hRef2] = getComponentWidth(ref2);
   return (
     <div className="navbar-ar-cont">
       <div
@@ -32,10 +35,13 @@ export default function Navbar({
             </div>
             <div className="contact">
               <a
+                ref={ref2}
+                // style={{aspectRatio: 4.51, width: `${hRef2 * 4.51}px`}}
                 className="contact-button text-decoration-none text-white"
                 href={`tel:${cpNumber}`}
               >
-                <div className="text-small">
+                <img src={callCenter} alt="call-center-arrayan" />
+                {/* <div className="text-small">
                   <text>
                     <span>
                       <FaHeadset />
@@ -43,7 +49,7 @@ export default function Navbar({
                     call centre
                   </text>
                 </div>
-                {cpNumber}
+                {cpNumber} */}
               </a>
             </div>
           </div>

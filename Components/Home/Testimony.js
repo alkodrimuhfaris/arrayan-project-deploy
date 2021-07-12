@@ -209,7 +209,7 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
                     >
                       <Testi
                         name={val.project}
-                        comment={`${hRef2} ${val.description}`}
+                        comment={val.description}
                         rating={val.rating}
                         bp={md}
                       />

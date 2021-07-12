@@ -347,7 +347,7 @@ ul.menu {
     position: relative;
     background-color: transparent;
     & .logo {
-      // height: 1.5em;
+      height: 1.5em;
       // aspect-ratio: 4.51;
     }
     & .logo img {
@@ -363,27 +363,34 @@ ul.menu {
       transition: 1s ease;
       & a.contact-button {
         display: block;
-        padding: 5px 15px;
-        font-weight: $font-extrabold;
-        background-color: transparent;
-        color: white;
-        border-width: 2px;
-        border-style: solid;
-        border-color: transparent white white white;
-        border-radius: 100px;
-        position: relative;
-        font-size: 0.8em;
-        & div {
-          position: absolute;
-          display: block;
-          text-align: center;
-          width: 100%;
-          top: 0;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 0.6em;
-          font-weight: $font-bold;
+        height: 1.8em;
+        width: calc(1.8em * 4.51);
+        // aspect-ratio: 4.51;
+        & img {
+          height: 100%;
+          object-fit: contain;
         }
+        // padding: 5px 15px;
+        // font-weight: $font-extrabold;
+        // background-color: transparent;
+        // color: white;
+        // border-width: 2px;
+        // border-style: solid;
+        // border-color: transparent white white white;
+        // border-radius: 100px;
+        // position: relative;
+        // font-size: 0.8em;
+        // & div {
+        //   position: absolute;
+        //   display: block;
+        //   text-align: center;
+        //   width: 100%;
+        //   top: 0;
+        //   left: 50%;
+        //   transform: translate(-50%, -50%);
+        //   font-size: 0.6em;
+        //   font-weight: $font-bold;
+        // }
       }
     }
     &.close .contact {
