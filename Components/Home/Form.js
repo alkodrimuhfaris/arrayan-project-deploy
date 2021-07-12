@@ -4,12 +4,12 @@ import * as Yup from 'yup';
 import {Formik} from 'formik';
 
 const schemaID = Yup.object().shape({
-  target: Yup.string('pilih target yang ingin dihubungi!').required(
+  target: Yup.string('pilih target yang ingin dihubungi').required(
     'pilih target yang ingin dihubungi!',
   ),
-  project_id: Yup.number(
-    'pilih kluster perumahan yang ingin dihubungi',
-  ).required('pilih kluster perumahan yang ingin dihubungi'),
+  project_id: Yup.number('pilih kluster perumahan yang ingin dihubungi')
+    .min(1, 'pilih kluster perumahan yang ingin dihubungi')
+    .required('pilih kluster perumahan yang ingin dihubungi'),
   name: Yup.string('nama hanya terdiri dari huruf')
     .min(2, 'nama harus lebih dari 2 huruf')
     .max(30, 'nama terlalu panjang')
@@ -89,7 +89,7 @@ export default function Form({submitForm = () => {}}) {
                     id="project_id"
                     className="input-form rounded-0 py-2"
                   >
-                    <option value="" selected className="d-none">
+                    <option value="null" selected className="d-none">
                       Perumahan Arrayan Group
                     </option>
                     {projects.map((val, index) => (
