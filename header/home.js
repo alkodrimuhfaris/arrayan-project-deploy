@@ -3,7 +3,11 @@ import Head from 'next/head';
 function HomeHeader() {
   return (
     <Head>
-      <title>Home Arrayan</title>
+      <title>
+        Arrayan Group | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan
+        Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan
+        Villa Kencana Cikarang
+      </title>
       <meta
         property="og:title"
         content="Arrayan Group | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang"
