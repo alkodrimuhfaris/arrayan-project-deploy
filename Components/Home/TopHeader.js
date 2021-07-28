@@ -33,7 +33,7 @@ export default function TopHeader({
   }, []);
 
   return (
-    <div className="top-header container-lg mb-2">
+    <div className="top-header container-lg mb-5 mb-md-2">
       <div
         ref={refTopHeader}
         className="text-ctn row row-eq-height no-gutters position-relative"

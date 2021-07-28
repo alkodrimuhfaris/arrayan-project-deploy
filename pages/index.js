@@ -1,23 +1,14 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {ImFacebook} from 'react-icons/im';
-import {IoLogoInstagram, IoLogoYoutube} from 'react-icons/io';
 import HomeHeader from '../header/home';
-import LoadingScreen from '../Components/LoadingScreen';
-import FooterElement from '../Components/Footer/FooterElement';
-import ParallaxRight from '../Components/ParallaxRight';
-import ParallaxLeft from '../Components/ParallaxLeft';
-import RegistrationForm from '../Components/Home/RegistrationForm';
 import Testimony from '../Components/Home/Testimony';
 import Projects from '../Components/Home/Projects';
 import Highlight from '../Components/Home/Highlight';
 import TopHeader from '../Components/Home/TopHeader';
 import useVisibiliyRef from '../componentHelpers/useVisibilityRef';
-import Navbar from '../Components/Navbar';
-import Menu from '../Components/Menu';
-import getScrollAmount from '../componentHelpers/getScrollAmount';
 import actions from '../redux/actions/index';
 import ModalConfirm from '../Components/ModalConfirm/ModalConfirm';
+import Layout from '../Components/Layout';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -26,14 +17,8 @@ export default function Home() {
   const topCarTimer = 10;
   const loadingTime = 3;
 
-  // cp number
-  const cpNumber = '021-2250-4920';
-
   // get visibility of top header
   const [refTopHeader, visTopHeader] = useVisibiliyRef({treshold: 1.0});
-
-  // scroll amount store
-  const offsetY = getScrollAmount();
 
   // useState initialisation
   const [open, setOpen] = React.useState(false);
@@ -41,19 +26,15 @@ export default function Home() {
   const [movingPart, setMovingPart] = React.useState(true);
   const [openNotif, setOpenNotif] = React.useState(false);
   const [propNotif, setPropNotif] = React.useState({
-    content: () => <text>Telah terjadi error, coba lagi</text>,
+    content: () => <p>Telah terjadi error, coba lagi</p>,
     confirm: () => {
       dispatch(actions.homeActions.getHome());
-      dispatch(actions.newsActions.getNews());
     },
     confirmTxt: 'Coba Lagi',
     useOneBtn: true,
     icon: 'e',
     title: 'Error',
   });
-
-  // useRef initialization
-  const refHomeCont = React.useRef(null);
 
   // useSelector initialization
   const {
@@ -68,12 +49,10 @@ export default function Home() {
     pending: pendingNews,
     error: errorNews,
     success: successNews,
-    news,
   } = useSelector((state) => state.newsData);
 
   React.useEffect(() => {
     dispatch(actions.homeActions.getHome());
-    dispatch(actions.newsActions.getNews());
   }, []);
 
   React.useEffect(() => {
@@ -101,45 +80,13 @@ export default function Home() {
     }
   }, [errorNews, errorHome, pendingHome, pendingNews]);
 
-  const markers = [
-    {lat: -6.2644619, lng: 107.2672509},
-    {lat: -6.3645619, lng: 107.2672409},
-    {lat: -6.1646619, lng: 107.2672309},
-  ];
-
-  const socialMedia = [
-    {socmed: 'facebook', link: '#', Logo: ImFacebook},
-    {socmed: 'instagram', link: '#', Logo: IoLogoInstagram},
-    {socmed: 'youtube', link: '#', Logo: IoLogoYoutube},
-  ];
-
-  const OurLink = [
-    {desc: 'Home', link: '#'},
-    {desc: 'About', link: '#'},
-    {desc: 'Our Project', link: '#'},
-    {desc: 'Investor', link: '#'},
-    {desc: 'News', link: '#'},
-  ];
-
-  const HeadOffice = [
-    {desc: 'Graha Iskandarsyah 2nd Floor', link: '#'},
-    {desc: 'Jl. Iskandarsyah NO 66-C', link: '#'},
-    {desc: 'Kebayoran Baru, Jaksel', link: '#'},
-    {desc: 'DKI Jakarta 12160', link: '#'},
-  ];
-
-  const ProjectOffice = [
-    {desc: 'Cikarang Square Blok B 18', link: '#'},
-    {desc: 'Jl. Raya Cikarang Bekasi', link: '#'},
-    {desc: 'Jawa Barat 17530', link: '#'},
-  ];
-
-  // function goes here
-
   return (
-    <div
-      ref={refHomeCont}
-      className="position-relative w-100 page-full-cont overflow-hidden"
+    <Layout
+      className="home"
+      neverTransparentNavbar={false}
+      visTopHeader={visTopHeader}
+      loading={loading}
+      movingPart={movingPart}
     >
       <HomeHeader />
       <ModalConfirm
@@ -147,70 +94,22 @@ export default function Home() {
         setModalOpen={setOpenNotif}
         {...propNotif}
       />
-      <LoadingScreen movingPart={movingPart} loading={loading} />
-      {/* left parallax */}
-      <ParallaxLeft
-        offsetY={offsetY}
-        refHomeCont={refHomeCont}
+      {/* top header */}
+      <TopHeader
         open={open}
-        loading={loading}
-      />
-      {/* right parallax */}
-      <ParallaxRight
-        offsetY={offsetY}
-        refHomeCont={refHomeCont}
-        open={open}
-        loading={loading}
-      />
-      {/* navbar */}
-      <Navbar
-        open={open}
-        setOpen={setOpen}
-        cpNumber={cpNumber}
-        visTopHeader={visTopHeader}
+        refTopHeader={refTopHeader}
+        carouselTop={sliders}
+        topCarTimer={topCarTimer}
       />
 
-      <Menu open={open} />
+      {/* highlight part */}
+      <Highlight />
 
-      {/* container of all content in home page */}
-      <div
-        className={`w-100 p-0 m-0 page-container ${
-          loading ? 'loading' : 'loaded'
-        } ${open ? 'open' : 'close'}`}
-      >
-        {/* top header */}
-        <TopHeader
-          open={open}
-          refTopHeader={refTopHeader}
-          carouselTop={sliders}
-          topCarTimer={topCarTimer}
-        />
+      {/* project */}
+      <Projects projectList={projects} />
 
-        {/* content */}
-        <section className="content mt-5 mt-md-2">
-          {/* highlight part */}
-          <Highlight />
-
-          {/* project */}
-          <Projects projectList={projects} />
-
-          {/* testimony */}
-          <Testimony testimonyList={testimonials} testiTimer={testiTimer} />
-
-          {/* form */}
-          <RegistrationForm />
-
-          {/* footer element */}
-          <FooterElement
-            newsList={news}
-            OurLink={OurLink}
-            HeadOffice={HeadOffice}
-            ProjectOffice={ProjectOffice}
-            socialMedia={socialMedia}
-            markers={markers}
-          />
-        </section>
-      </div>
-    </div>
+      {/* testimony */}
+      <Testimony testimonyList={testimonials} testiTimer={testiTimer} />
+    </Layout>
   );
 }

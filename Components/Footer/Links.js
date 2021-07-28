@@ -8,10 +8,8 @@ export default function Links({
   ProjectOffice = [],
   socialMedia = [],
 }) {
-  const ref1 = React.useRef(null);
-  const ref2 = React.useRef(null);
-  const [wRef1, hRef1] = getComponentWidth(ref1);
-  const [wRef2, hRef2] = getComponentWidth(ref2);
+  const [ref1, wRef1, hRef1] = getComponentWidth();
+  const [ref2, wRef2, hRef2] = getComponentWidth();
   return (
     <footer id="footerArrayan" className="footer mb-5">
       <div className="container">
@@ -111,7 +109,7 @@ export default function Links({
             <section className="footer-list align-self-end col-12 col-md-12 col-lg-6">
               <ul className="list-footer">
                 <li>
-                  <text className="footer-link">Email</text>
+                  <p className="footer-link">Email</p>
                 </li>
                 <li>
                   <a
@@ -129,7 +127,7 @@ export default function Links({
 
       {/*  */}
       <section className="container text-center">
-        <text className="text-c">© 2021 Arrayan Group</text>
+        <p className="text-c">© 2021 Arrayan Group</p>
       </section>
     </footer>
   );

@@ -1,16 +1,16 @@
 import React from 'react';
+import {useRouter} from 'next/router';
+import Link from 'next/link';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
 export default function Projects({projectList = []}) {
   const {sm, md, lg, xl} = useWindowDimensions();
   const {xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
-  const ref1 = React.useRef(null);
-  const [ref1Width, hR1] = getComponentWidth(ref1);
-  const ref2 = React.useRef(null);
-  const [ref2Width, hR2] = getComponentWidth(ref2);
-  const ref3 = React.useRef(null);
-  const [ref3Width, hR3] = getComponentWidth(ref3);
+  const [ref1, ref1Width, hR1] = getComponentWidth();
+  const [ref2, ref2Width, hR2] = getComponentWidth();
+  const [ref3, ref3Width, hR3] = getComponentWidth();
+  const router = useRouter();
 
   return (
     <section id="ourProject" className="projects my-5">
@@ -108,9 +108,9 @@ export default function Projects({projectList = []}) {
                     <p className={`project-desc ${even ? 'even' : 'odd'}`}>
                       {val.description}
                     </p>
-                    <a className="project-btn" href={val.link}>
-                      Info lebih lanjut
-                    </a>
+                    <Link href={`/projects/${val.slug}`}>
+                      <a className="project-btn">Info lebih lanjut</a>
+                    </Link>
                   </div>
                 </article>
               </div>

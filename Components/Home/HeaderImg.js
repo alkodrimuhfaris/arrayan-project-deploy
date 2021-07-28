@@ -11,8 +11,7 @@ export default function HeaderImg({
 }) {
   const {xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
   const refCar = React.useRef(null);
-  const ref1 = React.useRef(null);
-  const [wRef1, hRef1] = getComponentWidth(ref1);
+  const [ref1, wRef1, hRef1] = getComponentWidth();
 
   const topSlider = [
     {class: 'slider-left', Icon: AiOutlineArrowLeft},

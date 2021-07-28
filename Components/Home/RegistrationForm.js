@@ -16,7 +16,7 @@ export default function RegistrationForm() {
   });
   const [openNotif, setOpenNotif] = React.useState(false);
   const [propNotif, setPropNotif] = React.useState({
-    content: () => <text>Are you sure want to continue</text>,
+    content: () => <p>Are you sure want to continue</p>,
     confirm: () => {},
     confirmTxt: 'Ya',
     close: () => {},
@@ -41,7 +41,7 @@ export default function RegistrationForm() {
     if (success) {
       setLoading(false);
       setPropNotif({
-        content: () => <text>{message}</text>,
+        content: () => <p>{message}</p>,
         confirm: () => resForm.reset(),
         confirmTxt: 'Kembali',
         useOneBtn: true,
@@ -53,7 +53,7 @@ export default function RegistrationForm() {
     if (error) {
       setLoading(false);
       setPropNotif({
-        content: () => <text>{message}</text>,
+        content: () => <p>{message}</p>,
         confirmTxt: 'Kirim Ulang?',
         confirm: () => submitForm(payload),
         closeTxt: 'Batal',

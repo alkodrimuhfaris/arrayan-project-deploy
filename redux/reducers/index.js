@@ -9,6 +9,9 @@ import postRegistration from './registrations/postRegistration';
 // home
 import homeData from './home/home';
 
+// project
+import projectData from './project/projectSlug';
+
 export default combineReducers({
   // news
   newsData,
@@ -18,4 +21,7 @@ export default combineReducers({
 
   // home
   homeData,
+
+  // project
+  projectData,
 });

@@ -4,7 +4,6 @@ import Maps from './Maps';
 import News from './News';
 
 export default function FooterElement({
-  newsList = [],
   OurLink = [],
   HeadOffice = [],
   ProjectOffice = [],
@@ -14,7 +13,7 @@ export default function FooterElement({
   return (
     <div className="footer-ar d-flex flex-column">
       {/* News from arrayan */}
-      <News newsList={newsList} />
+      <News />
 
       {/* google maps */}
       <Maps markers={markers} />

@@ -8,15 +8,12 @@ import testiImg from '../../Assets/Photos/testiImg.jpg';
 export default function Testimony({testimonyList = [], testiTimer = 10}) {
   const {xsO, smO, md, mdO, lgO, xlO} = useWindowDimensions();
   const [testi, setTesti] = React.useState(0);
-  const refTesti = React.useRef(null);
+  const [refTesti, wRefTesti, hRefTesti] = getComponentWidth();
   const refTestiWrapper = React.useRef(null);
   const refTestiIndv = React.useRef(null);
   const refTestiBlur = React.useRef(null);
-  const ref1 = React.useRef(null);
-  const ref2 = React.useRef(null);
-  const [wRef1, hRef1] = getComponentWidth(ref1);
-  const [wRef2, hRef2] = getComponentWidth(ref2);
-  const [wRefTesti, hRefTesti] = getComponentWidth(refTesti);
+  const [ref1, wRef1, hRef1] = getComponentWidth();
+  const [ref2, wRef2, hRef2] = getComponentWidth();
 
   const testiSlider = [
     {class: 'testi-slider-left', Icon: AiOutlineArrowLeft},

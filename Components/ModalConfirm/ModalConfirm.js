@@ -6,7 +6,7 @@ export default function ModalConfirm({
   modalOpen = false,
   setModalOpen = () => {},
   clearFunction = () => {},
-  content = () => <text>Are you sure want to continue</text>,
+  content = () => <p>Are you sure want to continue</p>,
   confirm = () => {},
   confirmTxt = 'Ya',
   close = () => {},
@@ -46,7 +46,7 @@ export default function ModalConfirm({
           </div>
         </div>
         <div className="text-center my-3">
-          <text className="font-weight-bold h5">{title}</text>
+          <p className="font-weight-bold h5">{title}</p>
         </div>
         <div className="text-center">{content()}</div>
         <div className="d-flex my-3 justify-content-around">
@@ -57,7 +57,7 @@ export default function ModalConfirm({
             onClick={(e) => doConfirm(e)}
             className="rounded-pill px-4 border-0"
           >
-            <text className="border-bottom">{confirmTxt}</text>
+            <p className="border-bottom">{confirmTxt}</p>
           </Button>
           {useOneBtn ? null : (
             <Button
@@ -67,7 +67,7 @@ export default function ModalConfirm({
               onClick={(e) => doCancel(e)}
               className="rounded-pill px-4 border-0"
             >
-              <text className="border-bottom">{closeTxt}</text>
+              <p className="border-bottom">{closeTxt}</p>
             </Button>
           )}
         </div>

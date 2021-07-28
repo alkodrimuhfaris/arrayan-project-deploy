@@ -15,8 +15,7 @@ export default function Maps({
     {lat: -6.1646619, lng: 107.2672309},
   ],
 }) {
-  const ref1 = React.useRef(null);
-  const [wRef1, hRef1] = getComponentWidth(ref1);
+  const [ref1, wRef1, hRef1] = getComponentWidth();
   // const MapComponent = withScriptjs(
   //   withGoogleMap((props) => (
   //     <GoogleMap defaultZoom={10} defaultCenter={markers[0]}>

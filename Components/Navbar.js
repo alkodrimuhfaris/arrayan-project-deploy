@@ -1,5 +1,6 @@
 import React from 'react';
 import {FaHeadset} from 'react-icons/fa';
+import Link from 'next/link';
 import arrayanIcon from '../Assets/Icons/arrayanIcon.svg';
 import getComponentWidth from '../componentHelpers/getComponentWidth';
 import callCenter from '../Assets/Icons/Call_Center.svg';
@@ -7,32 +8,37 @@ import callCenter from '../Assets/Icons/Call_Center.svg';
 export default function Navbar({
   open = false,
   visTopHeader = false,
+  neverTransparentBG = false,
   cpNumber = '021-2250-4920',
   setOpen = () => {},
+  refNavBar = {current: null},
 }) {
-  const ref1 = React.useRef(null);
-  const [w1, hRef1] = getComponentWidth(ref1);
-  const ref2 = React.useRef(null);
-  const [w2, hRef2] = getComponentWidth(ref2);
+  const [ref1, w1, hRef1] = getComponentWidth();
+  const [ref2, w2, hRef2] = getComponentWidth();
   return (
-    <div className="navbar-ar-cont">
+    <div ref={refNavBar} className="navbar-ar-cont">
       <div
         ref={ref1}
         className={`navbar-ar text-light ${
-          visTopHeader || open ? '' : 'change-bg shadow'
+          !(visTopHeader || open) || (neverTransparentBG && !open)
+            ? 'change-bg shadow'
+            : ''
         } ${open ? 'close' : ''}`}
       >
         <div className="container h-100 d-flex align-items-center justify-content-between">
           <div className="navbar-left container d-flex w-83 position-relative">
-            <div
-              className="logo"
-              style={{
-                height: `1.5em`,
-                width: `calc(1.5em * 4.51)`,
-              }}
-            >
-              <img src={arrayanIcon} alt="icon-arrayan" />
-            </div>
+            <Link href="/">
+              <div
+                className="logo"
+                style={{
+                  height: `1.5em`,
+                  width: `calc(1.5em * 4.51)`,
+                  cursor: 'pointer',
+                }}
+              >
+                <img src={arrayanIcon} alt="icon-arrayan" />
+              </div>
+            </Link>
             <div className="contact">
               <a
                 ref={ref2}
@@ -42,12 +48,12 @@ export default function Navbar({
               >
                 <img src={callCenter} alt="call-center-arrayan" />
                 {/* <div className="text-small">
-                  <text>
+                  <p>
                     <span>
                       <FaHeadset />
                     </span>{' '}
                     call centre
-                  </text>
+                  </p>
                 </div>
                 {cpNumber} */}
               </a>
@@ -64,7 +70,9 @@ export default function Navbar({
               }}
               type="button"
               name="open-menu-btn"
-              className={`menu-toggle ${visTopHeader ? '' : 'change-color'}`}
+              className={`menu-toggle ${
+                !visTopHeader || neverTransparentBG ? 'change-color' : ''
+              }`}
             >
               &nbsp;
             </button>

@@ -1,11 +1,25 @@
 import React from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import {BiCalendarAlt} from 'react-icons/bi';
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
+import actions from '../../redux/actions';
 
-export default function News({newsList = []}) {
+export default function News() {
   const refNews = React.useRef(null);
   const refNewsCont = React.useRef(null);
   const [newsOrder, setNewsOrder] = React.useState(0);
+  const dispatch = useDispatch();
+
+  const {
+    pending: pendingNews,
+    error: errorNews,
+    success: successNews,
+    news: newsList,
+  } = useSelector((state) => state.newsData);
+
+  React.useEffect(() => {
+    dispatch(actions.newsActions.getNews());
+  }, []);
 
   const newsSlider = [
     {class: 'news-slider-left', Icon: AiOutlineArrowLeft},
@@ -80,60 +94,70 @@ export default function News({newsList = []}) {
           }}
           className="news-card-container mb-3 position-relative"
         >
-          {newsList.map((val, item) => {
-            const widthNews = refNews.current ? refNews.current.offsetWidth : 0;
-            const image = process.env.NEXT_PUBLIC_URL_BACKEND + val.image;
-            const href = process.env.NEXT_PUBLIC_URL_BACKEND + val.href;
-            return (
-              <div
-                key={item}
-                ref={item === 0 ? refNews : null}
-                style={{
-                  left: `${item * widthNews}px`,
-                  height: `${(widthNews * 1.1) / 0.925}px`,
-                }}
-                className="news-card-absolute d-flex align-items-center justify-content-center"
-              >
-                <div key={item} className="card news-card shadow">
-                  <img
-                    className="card-img-top"
+          {!newsList.length && errorNews
+            ? null
+            : newsList.map((val, item) => {
+                const widthNews = refNews.current
+                  ? refNews.current.offsetWidth
+                  : 0;
+                const image = process.env.NEXT_PUBLIC_URL_BACKEND + val.image;
+                const href = process.env.NEXT_PUBLIC_URL_BACKEND + val.href;
+                return (
+                  <div
+                    key={item}
+                    ref={item === 0 ? refNews : null}
                     style={{
-                      height: `${widthNews / 1.85}px`,
+                      left: `${item * widthNews}px`,
+                      height: `${(widthNews * 1.1) / 0.925}px`,
                     }}
-                    src={image}
-                    alt={`caption-${item}`}
-                  />
-                  <section className="card-body container caption-container">
-                    <div className="news-date mb-3 small d-flex align-items-center text-ar-dark">
-                      <div className="icon d-flex align-items-center">
-                        <BiCalendarAlt />
-                      </div>
-                      <text>{val.date.split('T')[0]}</text>
+                    className="news-card-absolute d-flex align-items-center justify-content-center"
+                  >
+                    <div key={item} className="card news-card shadow">
+                      <img
+                        className="card-img-top"
+                        style={{
+                          height: `${widthNews / 1.85}px`,
+                        }}
+                        src={image}
+                        alt={`caption-${item}`}
+                      />
+                      <section className="card-body container caption-container">
+                        <p className="news-date mb-3 small d-flex align-items-center text-ar-dark">
+                          <div className="icon d-flex align-items-center">
+                            <BiCalendarAlt />
+                          </div>
+                          <span>{val.date.split('T')[0]}</span>
+                        </p>
+                        <article className="caption fading-text mb-3 text-grey">
+                          {val.title}
+                        </article>
+                        <div className="link-wrapper">
+                          <a className="text-ar-dark" href={href}>
+                            Baca Lebih Lanjut{' '}
+                            <span>
+                              <AiOutlineArrowRight />
+                            </span>
+                          </a>
+                        </div>
+                      </section>
                     </div>
-                    <article className="caption fading-text mb-3 text-grey">
-                      {val.title}
-                    </article>
-                    <div className="link-wrapper">
-                      <a className="text-ar-dark" href={href}>
-                        Baca Lebih Lanjut{' '}
-                        <span>
-                          <AiOutlineArrowRight />
-                        </span>
-                      </a>
-                    </div>
-                  </section>
-                </div>
-              </div>
-            );
-          })}
+                  </div>
+                );
+              })}
         </div>
       </div>
 
-      <div className="button-wrapper container d-flex justify-content-center">
-        <button name="open-news" type="button" className="btn-ar rounded my-4">
-          Lihat Lebih Lanjut
-        </button>
-      </div>
+      {!newsList.length && errorNews ? null : (
+        <div className="button-wrapper container d-flex justify-content-center">
+          <button
+            name="open-news"
+            type="button"
+            className="btn-ar rounded my-4"
+          >
+            Lihat Lebih Lanjut
+          </button>
+        </div>
+      )}
     </section>
   );
 }

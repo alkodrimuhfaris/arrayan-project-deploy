@@ -20,8 +20,7 @@ export default function Highlight() {
     {Award: Award4},
   ];
 
-  const ref1 = React.useRef(null);
-  const [w1, hRef1] = getComponentWidth(ref1);
+  const [ref1, w1, hRef1] = getComponentWidth();
 
   return (
     <section className="awards mb-3 mb-md-0 container text-center">
@@ -31,7 +30,7 @@ export default function Highlight() {
             <div className="d-flex justify-content-center align-items-center">
               <article className="highlight d-flex flex-column align-items-center justify-content-center">
                 <h1 className="m-0 title">{val.title}</h1>
-                <text className="m-0 subtitle">{val.desc}</text>
+                <p className="m-0 subtitle">{val.desc}</p>
               </article>
             </div>
           </div>
