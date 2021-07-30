@@ -11,6 +11,7 @@ import Navbar from './Navbar';
 import Menu from './Menu';
 import getScrollAmount from '../componentHelpers/getScrollAmount';
 import useWindowDimensions from '../componentHelpers/getWindowDimensions';
+import WaIcon from '../Assets/Icons/WA-Icon.svg';
 
 export default function Layout({
   neverTransparentNavbar = false,
@@ -127,7 +128,12 @@ export default function Layout({
             rel="noreferrer"
           >
             <div className="d-flex align-items-center justify-content-center">
-              <AiOutlineWhatsApp size={sm ? 30 : 45} />
+              <img
+                src={WaIcon}
+                width="100%"
+                height="100%"
+                alt="icon-whatsapp-call"
+              />
             </div>
           </a>
 
