@@ -26,7 +26,10 @@ export default function Maps({
   // );
 
   return (
-    <section ref={ref1} className="maps mt-5">
+    <section
+      ref={ref1}
+      className="maps d-flex justify-content-center align-items-center mt-5"
+    >
       {/* <MapComponent
         //
         isMarkerShown
@@ -49,7 +52,7 @@ export default function Maps({
         }
         mapElement={<div style={{height: `100%`}} />}
       /> */}
-      <StaticGoogleMap
+      {/* <StaticGoogleMap
         zoom={10}
         size={`${wRef1}x${hRef1}`}
         scale={4}
@@ -60,7 +63,8 @@ export default function Maps({
             <Marker key={index} location={val} />
           ))}
         </Marker.Group>
-      </StaticGoogleMap>
+      </StaticGoogleMap> */}
+      <p>THIS IS RESERVE FOR MAPS</p>
     </section>
     // <section id="locationsArrayan" className="maps p-0 mt-4">
     // </section>

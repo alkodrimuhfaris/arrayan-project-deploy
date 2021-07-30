@@ -1,6 +1,7 @@
 import React from 'react';
 import {ImFacebook} from 'react-icons/im';
 import {IoLogoInstagram, IoLogoYoutube} from 'react-icons/io';
+import {AiOutlineWhatsApp} from 'react-icons/ai';
 import LoadingScreen from './LoadingScreen';
 import FooterElement from './Footer/FooterElement';
 import ParallaxRight from './ParallaxRight';
@@ -118,6 +119,17 @@ export default function Layout({
           {/* top header */}
 
           {props.children}
+
+          <a
+            href="https://api.whatsapp.com/send?phone=628997665593&text=Halo%20Assalamualaikum%0A%0ANama%20saya:%0ADaerah%20Tinggal:%0A%0ASaya%20tertarik%20dengan%20produk%20Arrayan%20Group.%20Bisa%20jelaskan%20detailnya%20kepada%20saya.%0ATerima%20Kasih."
+            className="wa-float"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="d-flex align-items-center justify-content-center">
+              <AiOutlineWhatsApp size={sm ? 30 : 45} />
+            </div>
+          </a>
 
           {/* form */}
           <RegistrationForm />

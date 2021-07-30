@@ -88,6 +88,28 @@
     }
   }
 
+  .content {
+    & a.wa-float{
+      position:fixed;
+      width:60px;
+      height:60px;
+      bottom:20px;
+      right:20px;
+      background-color:#25d366;
+      color:#FFF;
+      border-radius:50px;
+      text-align:center;
+      font-size:30px;
+      box-shadow: 2px 2px 3px #999;
+      z-index:802;
+      & div {
+        position: relative;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
   .content.home {
     &.top-header {
       & .header-text {
@@ -171,7 +193,7 @@
             & p.project-desc {
               overflow: hidden;
               position: relative;
-              height: calc(1.2em * 5); /* exactly three lines */
+              height: calc(1.2em * 8); /* exactly 6 lines */
               line-height: 1.2em;
               color: #6a6a6a;
               font-weight: $font-medium;

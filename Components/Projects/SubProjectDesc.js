@@ -1,4 +1,5 @@
 import React from 'react';
+import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
 export default function SubProjectDesc({title = '', area = '', specs = ''}) {
   React.useEffect(() => {
@@ -6,13 +7,17 @@ export default function SubProjectDesc({title = '', area = '', specs = ''}) {
     console.log(area);
     console.log(specs);
   }, []);
+  const {sm} = useWindowDimensions();
+
   return (
     <article className="subproject-desc container">
-      <div className="row">
-        <div className="col-12 subproject-title">
-          <h1>{title}</h1>
+      {!sm ? (
+        <div className="row">
+          <div className="col-12 subproject-title">
+            <h1>{title}</h1>
+          </div>
         </div>
-      </div>
+      ) : null}
       <div className="row">
         <div className="col-6 col-md-12 subproject-area">
           <h3>Area Rumah</h3>

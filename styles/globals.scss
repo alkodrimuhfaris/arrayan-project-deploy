@@ -617,6 +617,10 @@ ul.menu {
         height: 100%;
         object-fit: cover !important;
       }
+      & p {
+        color: white;
+        font-weight: $font-bold;
+      }
     }
   
     & footer.footer {
@@ -1098,11 +1102,19 @@ ul.menu {
   }
 
   & section.sub-projects {
+    color: $color;
+    font-weight: $font-bold;
+    & .subproject-title {
+      & h1 {
+        font-weight: $font-bold;
+        margin-bottom: 0.5em;
+      }
+    }
     & .subproject-img-cont {
-      width: 100%;
       height: 650px;
+      width: 100%;
       position: relative;
-      background-color: #e2e2e2;
+      background-color: transparent;
       overflow: hidden;
       & button.sp-slider-img {
         height: 100%;
@@ -1125,8 +1137,8 @@ ul.menu {
         &:hover {
           opacity: 0.6;
           transition: 0.2s ease;
-          background-color: $color-light;
-          color: white;
+          background-color: white;
+          color: $color-light;
         }
       }
       & .subproject-img-tracker {
@@ -1144,6 +1156,7 @@ ul.menu {
         bottom: 5px;
         height: auto;
         opacity: 0.6;
+        height: 12.5px;
         & button {
           width: 10px;
           height: 10px;
@@ -1190,7 +1203,6 @@ ul.menu {
       }
     }
   }
-
 }
 
 @keyframes menu-animation {
