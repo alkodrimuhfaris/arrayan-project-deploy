@@ -41,14 +41,14 @@ export default function ProjectGallery() {
   React.useEffect(() => {
     const widthPhoto =
       smO || xsO
-        ? wref3
+        ? wref2 - 100
         : mdO
-        ? wref3 / 2
+        ? (wref2 - 100) / 2
         : lgO
-        ? wref3 / 3
+        ? (wref2 - 100) / 3
         : xlO
-        ? wref3 / 4
-        : wref3 / 4;
+        ? (wref2 - 100) / 4
+        : (wref2 - 100) / 4;
     setWPhoto(widthPhoto);
   }, [width]);
 
@@ -72,27 +72,25 @@ export default function ProjectGallery() {
       className="project-gallery-carousel mb-3 w-100"
     >
       <div ref={ref2} className="pg-carousel-container p-0 container h-100">
-        {hideBtn
-          ? null
-          : slider.map((val, idx) => {
-              const {class: cls, Icon} = val;
-              return (
-                <div
-                  key={idx}
-                  className={`pg-slider-btn-cont ${cls} slider-inside`}
+        {slider.map((val, idx) => {
+          const {class: cls, Icon} = val;
+          return (
+            <div
+              key={idx}
+              className={`pg-slider-btn-cont ${cls} slider-inside`}
+            >
+              <div className="position-relative h-100 w-100">
+                <button
+                  type="button"
+                  onClick={() => sliderGallery(cls)}
+                  className={`pg-slider-btn color-white ${cls}`}
                 >
-                  <div className="position-relative h-100 w-100">
-                    <button
-                      type="button"
-                      onClick={() => sliderGallery(cls)}
-                      className={`pg-slider-btn color-white ${cls}`}
-                    >
-                      <Icon />
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+                  <Icon />
+                </button>
+              </div>
+            </div>
+          );
+        })}
         <div
           ref={ref3}
           style={{
