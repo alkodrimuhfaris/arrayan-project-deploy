@@ -15,6 +15,7 @@ export default function ProjectGallery() {
   const [wPhoto, setWPhoto] = React.useState(0);
   const {width, xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
   const [hideBtn, setHideBtn] = React.useState(false);
+  const [subTitleExist, setSubTitleExist] = React.useState(false);
 
   const slider = [
     {class: 'left', Icon: AiOutlineArrowLeft},
@@ -55,7 +56,13 @@ export default function ProjectGallery() {
     setHideBtn(() => wref3 >= subTitleProject.length * wPhoto);
   }, [subTitleProject, wref3, wPhoto]);
 
-  return !subTitleProject.length ? null : (
+  React.useEffect(() => {
+    if (subTitleProject.length) {
+      setSubTitleExist(true);
+    }
+  }, [subTitleProject]);
+
+  return (
     <section
       ref={ref1}
       style={{

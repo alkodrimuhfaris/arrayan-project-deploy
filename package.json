@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@agney/react-loading": "^0.1.2",
+    "@types/gtag.js": "^0.0.7",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.21.1",

@@ -32,6 +32,11 @@ export default function Form({submitForm = () => {}}) {
   };
   const projects = useSelector((state) => state.homeData.projects);
 
+  const forceNum = (e, setValue) => {
+    const value = e.target.value.replace(/[^\d]+/g, '');
+    setValue(value);
+  };
+
   return (
     <Formik
       enableReinitialize
@@ -48,6 +53,7 @@ export default function Form({submitForm = () => {}}) {
           values,
           handleChange,
           handleBlur,
+          setFieldValue,
         } = props;
         return (
           <form
@@ -125,7 +131,11 @@ export default function Form({submitForm = () => {}}) {
                     id="contact"
                     name="contact"
                     value={values.contact}
-                    onChange={handleChange}
+                    onChange={(e) =>
+                      forceNum(e, (val) => {
+                        setFieldValue('contact', val);
+                      })
+                    }
                     onBlur={handleBlur}
                     className="input-form rounded-0 py-2 w-100"
                     placeholder="Nomor Telepon"
