@@ -75,7 +75,7 @@ export default function Form({submitForm = () => {}}) {
                     className="input-form rounded-0 py-2"
                     placeholder="Bagian Yang Ingin Dihubungi"
                   >
-                    <option value="" selected className="d-none">
+                    <option value="" defaultValue="null" className="d-none">
                       Bagian Yang Ingin Dihubungi
                     </option>
                     <option value="SALES">Sales</option>
@@ -95,7 +95,7 @@ export default function Form({submitForm = () => {}}) {
                     id="project_id"
                     className="input-form rounded-0 py-2"
                   >
-                    <option value="null" selected className="d-none">
+                    <option value="null" defaultValue="null" className="d-none">
                       Perumahan Arrayan Group
                     </option>
                     {projects.map((val, index) => (

@@ -6,8 +6,12 @@ import ProjectGalleryPhoto from './ProjectGalleryPhoto';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
 export default function ProjectGallery() {
+  const carouselTransition = '0.3s ease';
+  const [transition, setTransition] = React.useState(carouselTransition);
   const [carousel, setCarousel] = React.useState(0);
-  const {subTitleProject} = useSelector((state) => state.projectData);
+  const {subTitleProject: subTitleProjectReal, success} = useSelector(
+    (state) => state.projectData,
+  );
   const [ref1, wref1, href1] = getComponentWidth();
   const [ref2, wref2, href2] = getComponentWidth();
   const [ref3, wref3, href3] = getComponentWidth();
@@ -16,6 +20,8 @@ export default function ProjectGallery() {
   const {width, xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
   const [hideBtn, setHideBtn] = React.useState(false);
   const [subTitleExist, setSubTitleExist] = React.useState(false);
+  const [subTitleProject, setSubTitleProject] = React.useState([]);
+  const ref = React.useRef(null);
 
   const slider = [
     {class: 'left', Icon: AiOutlineArrowLeft},
@@ -25,11 +31,35 @@ export default function ProjectGallery() {
   const sliderGallery = (dir) => {
     setCarousel((x) => {
       x = dir === 'left' ? x - 1 : x + 1;
-      x = dir === 'left' && x < 0 ? subTitleProject.length - 1 : x;
-      x = dir === 'right' && x > subTitleProject.length - 1 ? 0 : x;
+      // x = dir === 'left' && x < 0 ? subTitleProject.length - 1 : x;
+      if (dir === 'left') {
+        if (x < 0) {
+          subTitleProject.unshift(...subTitleProjectReal);
+          setTransition('none');
+          return ref.current;
+        }
+      }
+      if (dir === 'right') {
+        const y = x === subTitleProject.length ? 0 : x - 1;
+        subTitleProject.push(subTitleProject[y]);
+      }
       return x;
     });
   };
+
+  React.useEffect(() => {
+    if (transition === 'none') {
+      setTransition(carouselTransition);
+      setCarousel((x) => x - 1);
+    }
+  }, [transition]);
+
+  React.useEffect(() => {
+    if (!ref.current && subTitleProjectReal.length) {
+      setSubTitleProject(() => subTitleProjectReal.map((val) => val));
+      ref.current = subTitleProjectReal.length;
+    }
+  }, [subTitleProjectReal]);
 
   React.useEffect(() => {
     if (ref1.current && ref2.current) {
@@ -102,7 +132,7 @@ export default function ProjectGallery() {
           <div
             style={{
               transform: `translate(-${wPhoto * carousel}px)`,
-              transition: '0.3s ease',
+              transition,
               width: '100%',
               height: `100%`,
             }}
@@ -112,7 +142,7 @@ export default function ProjectGallery() {
               const idx = val + 1;
               return (
                 <div
-                  key={idx}
+                  key={index}
                   style={{
                     left: `${index * wPhoto}px`,
                     width: `${wPhoto}px`,

@@ -123,9 +123,9 @@ export default function News() {
                       />
                       <section className="card-body container caption-container">
                         <p className="news-date mb-3 small d-flex align-items-center text-ar-dark">
-                          <div className="icon d-flex align-items-center">
+                          <span className="icon d-flex align-items-center">
                             <BiCalendarAlt />
-                          </div>
+                          </span>
                           <span>{val.date.split('T')[0]}</span>
                         </p>
                         <article className="caption fading-text mb-3 text-grey">
