@@ -5,6 +5,7 @@ export default function carouselControler(
   transition = '0.3s ease',
   rightDir = 'right',
   leftDir = 'left',
+  loopNumber = 100,
   infinity = true,
 ) {
   const [showCarousel, setShowCarousel] = React.useState([]);
@@ -83,21 +84,11 @@ export default function carouselControler(
   React.useEffect(() => {
     if (!ref.current && carousel.length) {
       if (infinity) {
-        const infinityCar = carousel.map((val) => val);
-        setShowCarousel([
-          ...infinityCar,
-          ...infinityCar,
-          ...infinityCar,
-          ...infinityCar,
-          ...infinityCar,
-          ...infinityCar,
-          ...infinityCar,
-          ...infinityCar,
-          ...infinityCar,
-          ...infinityCar,
-          ...infinityCar,
-          ...infinityCar,
-        ]);
+        const infinityCar = [];
+        for (let i = 0; i < loopNumber; i++) {
+          infinityCar.push(...carousel);
+        }
+        setShowCarousel(infinityCar);
       } else {
         setShowCarousel(() => carousel.map((val) => val));
       }
