@@ -8,74 +8,29 @@ import carouselControler from '../../componentHelpers/carouselControler';
 
 export default function ProjectGallery() {
   const carouselTransition = '0.3s ease';
-  // const [transition, setTransition] = React.useState(carouselTransition);
-  // const [carousel, setCarousel] = React.useState(0);
   const {subTitleProject: subTitleProjectReal} = useSelector(
     (state) => state.projectData,
   );
   const [ref1, wref1, href1] = getComponentWidth();
   const [ref2, wref2, href2] = getComponentWidth();
   const [ref3, wref3, href3] = getComponentWidth();
-  // const [sliderInside, setSliderInside] = React.useState(false);
   const [wPhoto, setWPhoto] = React.useState(0);
   const {width, xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
   const [hideBtn, setHideBtn] = React.useState(false);
   const [subTitleExist, setSubTitleExist] = React.useState(false);
-  // const [subTitleProject, setSubTitleProject] = React.useState([]);
-  // const ref = React.useRef(null);
 
   const slider = [
     {class: 'right', Icon: AiOutlineArrowRight},
     {class: 'left', Icon: AiOutlineArrowLeft},
   ];
 
-  const [subTitleProject, carousel, transition, sliderGallery] =
+  const [subTitleProject, carousel, transition, sliderGallery, DotBtn] =
     carouselControler(
       subTitleProjectReal,
       carouselTransition,
       slider[0].class,
       slider[1].class,
     );
-
-  // const sliderGallery = (dir) => {
-  //   setCarousel((x) => {
-  //     x = dir === 'left' ? x - 1 : x + 1;
-  //     // x = dir === 'left' && x < 0 ? subTitleProject.length - 1 : x;
-  //     if (dir === 'left') {
-  //       if (x < 0) {
-  //         subTitleProject.unshift(...subTitleProjectReal);
-  //         setTransition('none');
-  //         return ref.current;
-  //       }
-  //     }
-  //     if (dir === 'right') {
-  //       const y = x === subTitleProject.length ? 0 : x - 1;
-  //       subTitleProject.push(subTitleProject[y]);
-  //     }
-  //     return x;
-  //   });
-  // };
-
-  // React.useEffect(() => {
-  //   if (transition === 'none') {
-  //     setTransition(carouselTransition);
-  //     setCarousel((x) => x - 1);
-  //   }
-  // }, [transition]);
-
-  // React.useEffect(() => {
-  //   if (!ref.current && subTitleProjectReal.length) {
-  //     setSubTitleProject(() => subTitleProjectReal.map((val) => val));
-  //     ref.current = subTitleProjectReal.length;
-  //   }
-  // }, [subTitleProjectReal]);
-
-  // React.useEffect(() => {
-  //   if (ref1.current && ref2.current) {
-  //     setSliderInside(wref1 > wref3 + 100);
-  //     setCarousel(0);
-  //   }
-  // }, [ref1, ref2, wref1, wref2]);
 
   React.useEffect(() => {
     const widthPhoto =
@@ -89,7 +44,7 @@ export default function ProjectGallery() {
         ? (wref2 - 100) / 4
         : (wref2 - 100) / 4;
     setWPhoto(widthPhoto);
-  }, [width]);
+  }, [width, carousel]);
 
   React.useEffect(() => {
     setHideBtn(() => wref3 >= subTitleProject.length * wPhoto);
@@ -111,25 +66,27 @@ export default function ProjectGallery() {
       className="project-gallery-carousel mb-3 w-100"
     >
       <div ref={ref2} className="pg-carousel-container p-0 container h-100">
-        {slider.map((val, idx) => {
-          const {class: cls, Icon} = val;
-          return (
-            <div
-              key={idx}
-              className={`pg-slider-btn-cont ${cls} slider-inside`}
-            >
-              <div className="position-relative h-100 w-100">
-                <button
-                  type="button"
-                  onClick={() => sliderGallery(cls)}
-                  className={`pg-slider-btn color-white ${cls}`}
+        {!subTitleProject.length
+          ? null
+          : slider.map((val, idx) => {
+              const {class: cls, Icon} = val;
+              return (
+                <div
+                  key={idx}
+                  className={`pg-slider-btn-cont ${cls} slider-inside`}
                 >
-                  <Icon />
-                </button>
-              </div>
-            </div>
-          );
-        })}
+                  <div className="position-relative h-100 w-100">
+                    <button
+                      type="button"
+                      onClick={() => sliderGallery(cls)}
+                      className={`pg-slider-btn color-white ${cls}`}
+                    >
+                      <Icon />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
         <div
           ref={ref3}
           style={{
@@ -166,6 +123,7 @@ export default function ProjectGallery() {
           </div>
         </div>
       </div>
+      <DotBtn />
     </section>
   );
 }

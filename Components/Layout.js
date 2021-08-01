@@ -21,7 +21,9 @@ export default function Layout({
   movingPart = false,
   ...props
 }) {
-  const {sm} = useWindowDimensions();
+  const [screenSize, setScreenSize] = React.useState('');
+  const {sm, xsO, smO, mdO, lgO, xlO, width} = useWindowDimensions();
+
   // cp number
   const cpNumber = '021-2250-4920';
 
@@ -69,6 +71,12 @@ export default function Layout({
   ];
 
   // function goes here
+  React.useEffect(() => {
+    setScreenSize((x) => {
+      x = xsO || smO ? 'sm' : mdO ? 'md' : lgO ? 'lg' : xlO ? 'xl' : 'xl';
+      return x;
+    });
+  }, [width, xsO, smO, mdO, lgO, xlO]);
 
   return (
     <div
@@ -109,7 +117,7 @@ export default function Layout({
         } ${open ? 'open' : 'close'}`}
       >
         {/* content */}
-        <section className={`content ${className}`}>
+        <section className={`content ${screenSize} ${className}`}>
           <div
             style={{
               height: neverTransparentNavbar ? (sm ? `3.5em` : '5em') : '0px',

@@ -112,7 +112,7 @@
     }
   }
   
-  .content {
+  .content.sm {
     & a.wa-float{
       position:fixed;
       width:120px;
@@ -129,7 +129,7 @@
     }
   }
 
-  .content.home {
+  .content.sm.home {
     & .top-header {
       background-color: $color;
       & .header-text {

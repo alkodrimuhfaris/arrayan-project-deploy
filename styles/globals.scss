@@ -431,15 +431,6 @@ ul.menu {
   bottom: 0.5em;
   left: 50%;
   transform: translate(-50%, 0);
-  // & button.slider-btns {
-  //   width: 13px;
-  //   height: 13px;
-  //   border-radius: 15px;
-  //   transition: 300ms ease;
-  //   background-color: grey;
-  //   border-width: 0;
-  //   padding: 0;
-  // }
   & button.slider-btns {
     width: 10px;
     height: 10px;
@@ -448,15 +439,38 @@ ul.menu {
     background-color: #e2e2e2;
     border-width: 0;
     padding: 0;
+    &.active {
+      width: 12.5px;
+      height: 12.5px;
+      border-radius: 15px;
+      transition: 300ms ease;
+      background-color: $color-light;
+      border-width: 0;
+      padding: 0;
+    }
   }
-  & button.slider-btns.active {
-    width: 12.5px;
-    height: 12.5px;
+}
+
+.slider-btn-global {
+  width: 100%;
+  height: 15px;
+  & button.slider-btns {
+    width: 10px;
+    height: 10px;
     border-radius: 15px;
     transition: 300ms ease;
-    background-color: $color-light;
+    background-color: #e2e2e2;
     border-width: 0;
     padding: 0;
+    &.active {
+      width: 12.5px;
+      height: 12.5px;
+      border-radius: 15px;
+      transition: 300ms ease;
+      background-color: $color-light;
+      border-width: 0;
+      padding: 0;
+    }
   }
 }
 

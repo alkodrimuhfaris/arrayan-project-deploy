@@ -86,7 +86,7 @@
     }
   }
 
-  .content {
+  .content.xl {
     & a.wa-float{
       position:fixed;
       width:150px;
@@ -103,7 +103,7 @@
     }
   }
 
-  .content.home {
+  .content.xl.home {
     & section.projects {
       & h1.title {
         color: $color;

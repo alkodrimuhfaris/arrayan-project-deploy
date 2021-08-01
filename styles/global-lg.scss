@@ -88,7 +88,7 @@
     }
   }
 
-  .content {
+  .content.lg {
     & a.wa-float{
       position:fixed;
       width:150px;
@@ -105,7 +105,7 @@
     }
   }
 
-  .content.home {
+  .content.lg.home {
     &.top-header {
       & .header-text {
         & h1.title {

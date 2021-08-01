@@ -1,7 +1,7 @@
 @import './globals.scss';
 
 // width tablet
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 768px) and (max-width: 991px) {
   body {
     & .parallax-left, & .parallax-right {
       display: none;
@@ -114,7 +114,7 @@
     }
   }
 
-  .content {
+  .content.md {
     & a.wa-float{
       position:fixed;
       width:150px;
@@ -131,7 +131,7 @@
     }
   }
   
-  .content.home {
+  .content.md.home {
     & .top-header {
       background-color: $color;
       & .header-text {

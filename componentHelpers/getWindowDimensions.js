@@ -10,7 +10,7 @@ function getWindowDimensions() {
   const md = width <= 991;
   const lg = width <= 1199;
   const xl = width >= 1200;
-  const xsO = width < 576;
+  const xsO = width <= 575;
   const smO = width <= 767 && width >= 576;
   const mdO = width <= 991 && width >= 768;
   const lgO = width <= 1199 && width >= 992;
