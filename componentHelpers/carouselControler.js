@@ -3,6 +3,8 @@ import React from 'react';
 export default function carouselControler(
   carousel = [],
   transition = '0.3s ease',
+  rightDir = 'right',
+  leftDir = 'left',
 ) {
   const [showCarousel, setShowCarousel] = React.useState([]);
   const [tr, setTransition] = React.useState(transition);
@@ -11,15 +13,15 @@ export default function carouselControler(
 
   const sliderFunc = (dir) => {
     setIdxCarousel((x) => {
-      x = dir === 'left' ? x - 1 : x + 1;
-      if (dir === 'left') {
+      x = dir === leftDir ? x - 1 : x + 1;
+      if (dir === leftDir) {
         if (x < 0) {
           showCarousel.unshift(...carousel);
           setTransition('none');
           return ref.current;
         }
       }
-      if (dir === 'right') {
+      if (dir === rightDir) {
         const y = x === showCarousel.length ? 0 : x - 1;
         showCarousel.push(showCarousel[y]);
       }
@@ -28,16 +30,16 @@ export default function carouselControler(
   };
 
   React.useEffect(() => {
-    if (transition === 'none') {
+    if (tr === 'none') {
       setTransition(transition);
       setIdxCarousel((x) => x - 1);
     }
-  }, [transition]);
+  }, [tr]);
 
   React.useEffect(() => {
     if (!ref.current && carousel.length) {
-      setShowCarousel(() => showCarousel.map((val) => val));
-      ref.current = showCarousel.length;
+      setShowCarousel(() => carousel.map((val) => val));
+      ref.current = carousel.length;
     }
   }, [carousel]);
 

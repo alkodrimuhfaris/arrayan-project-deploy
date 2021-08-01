@@ -4,69 +4,78 @@ import {useSelector} from 'react-redux';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
 import ProjectGalleryPhoto from './ProjectGalleryPhoto';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
+import carouselControler from '../../componentHelpers/carouselControler';
 
 export default function ProjectGallery() {
   const carouselTransition = '0.3s ease';
-  const [transition, setTransition] = React.useState(carouselTransition);
-  const [carousel, setCarousel] = React.useState(0);
-  const {subTitleProject: subTitleProjectReal, success} = useSelector(
+  // const [transition, setTransition] = React.useState(carouselTransition);
+  // const [carousel, setCarousel] = React.useState(0);
+  const {subTitleProject: subTitleProjectReal} = useSelector(
     (state) => state.projectData,
   );
   const [ref1, wref1, href1] = getComponentWidth();
   const [ref2, wref2, href2] = getComponentWidth();
   const [ref3, wref3, href3] = getComponentWidth();
-  const [sliderInside, setSliderInside] = React.useState(false);
+  // const [sliderInside, setSliderInside] = React.useState(false);
   const [wPhoto, setWPhoto] = React.useState(0);
   const {width, xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
   const [hideBtn, setHideBtn] = React.useState(false);
   const [subTitleExist, setSubTitleExist] = React.useState(false);
-  const [subTitleProject, setSubTitleProject] = React.useState([]);
-  const ref = React.useRef(null);
+  // const [subTitleProject, setSubTitleProject] = React.useState([]);
+  // const ref = React.useRef(null);
 
   const slider = [
-    {class: 'left', Icon: AiOutlineArrowLeft},
     {class: 'right', Icon: AiOutlineArrowRight},
+    {class: 'left', Icon: AiOutlineArrowLeft},
   ];
 
-  const sliderGallery = (dir) => {
-    setCarousel((x) => {
-      x = dir === 'left' ? x - 1 : x + 1;
-      // x = dir === 'left' && x < 0 ? subTitleProject.length - 1 : x;
-      if (dir === 'left') {
-        if (x < 0) {
-          subTitleProject.unshift(...subTitleProjectReal);
-          setTransition('none');
-          return ref.current;
-        }
-      }
-      if (dir === 'right') {
-        const y = x === subTitleProject.length ? 0 : x - 1;
-        subTitleProject.push(subTitleProject[y]);
-      }
-      return x;
-    });
-  };
+  const [subTitleProject, carousel, transition, sliderGallery] =
+    carouselControler(
+      subTitleProjectReal,
+      carouselTransition,
+      slider[0].class,
+      slider[1].class,
+    );
 
-  React.useEffect(() => {
-    if (transition === 'none') {
-      setTransition(carouselTransition);
-      setCarousel((x) => x - 1);
-    }
-  }, [transition]);
+  // const sliderGallery = (dir) => {
+  //   setCarousel((x) => {
+  //     x = dir === 'left' ? x - 1 : x + 1;
+  //     // x = dir === 'left' && x < 0 ? subTitleProject.length - 1 : x;
+  //     if (dir === 'left') {
+  //       if (x < 0) {
+  //         subTitleProject.unshift(...subTitleProjectReal);
+  //         setTransition('none');
+  //         return ref.current;
+  //       }
+  //     }
+  //     if (dir === 'right') {
+  //       const y = x === subTitleProject.length ? 0 : x - 1;
+  //       subTitleProject.push(subTitleProject[y]);
+  //     }
+  //     return x;
+  //   });
+  // };
 
-  React.useEffect(() => {
-    if (!ref.current && subTitleProjectReal.length) {
-      setSubTitleProject(() => subTitleProjectReal.map((val) => val));
-      ref.current = subTitleProjectReal.length;
-    }
-  }, [subTitleProjectReal]);
+  // React.useEffect(() => {
+  //   if (transition === 'none') {
+  //     setTransition(carouselTransition);
+  //     setCarousel((x) => x - 1);
+  //   }
+  // }, [transition]);
 
-  React.useEffect(() => {
-    if (ref1.current && ref2.current) {
-      setSliderInside(wref1 > wref3 + 100);
-      setCarousel(0);
-    }
-  }, [ref1, ref2, wref1, wref2]);
+  // React.useEffect(() => {
+  //   if (!ref.current && subTitleProjectReal.length) {
+  //     setSubTitleProject(() => subTitleProjectReal.map((val) => val));
+  //     ref.current = subTitleProjectReal.length;
+  //   }
+  // }, [subTitleProjectReal]);
+
+  // React.useEffect(() => {
+  //   if (ref1.current && ref2.current) {
+  //     setSliderInside(wref1 > wref3 + 100);
+  //     setCarousel(0);
+  //   }
+  // }, [ref1, ref2, wref1, wref2]);
 
   React.useEffect(() => {
     const widthPhoto =
