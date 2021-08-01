@@ -107,7 +107,7 @@ export default function carouselControler(
 
   const dotBtn = ({className = ''}) => (
     <div
-      className={`slider-btn-global bg-primary justify-content-center align-items-center d-flex w-100 ${className}`}
+      className={`slider-btn-global justify-content-center align-items-center d-flex w-100 ${className}`}
     >
       {carousel.map((_, index) => {
         const setActive = index === lastAddedCar ? 'active' : '';
