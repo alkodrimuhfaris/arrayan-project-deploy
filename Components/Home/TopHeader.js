@@ -7,7 +7,7 @@ export default function TopHeader({
   open = false,
   refTopHeader = {current: null},
   carouselTop = [],
-  topCarTimer = 10,
+  topCarTimer = 1,
 }) {
   const {md} = useWindowDimensions();
   const [topCarousel, setTopCarousel] = React.useState(0);
@@ -26,11 +26,11 @@ export default function TopHeader({
     }
 
     return () => {
-      if (carouselTop.length < 1) {
+      if (carouselTop.length > 1) {
         clearInterval(intervalID);
       }
     };
-  }, []);
+  }, [carouselTop]);
 
   return (
     <div className="top-header container-lg mb-5 mb-md-2">

@@ -14,7 +14,7 @@ export default function Home() {
   const dispatch = useDispatch();
   // timer for testimony on second
   const testiTimer = 4;
-  const topCarTimer = 10;
+  const topCarTimer = 5;
   const loadingTime = 3;
 
   // get visibility of top header

@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
     default: {
       return state;
     }
-    case 'GET_NEWS_PENDING': {
+    case 'GET_NEWS_MAIN_PENDING': {
       return {
         ...state,
         success: false,
@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
         message: 'Mendapatkan data...',
       };
     }
-    case 'GET_NEWS_REJECTED': {
+    case 'GET_NEWS_MAIN_REJECTED': {
       return {
         ...state,
         success: false,
@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
         message: 'Pengambilan data gagal, silahkan muat ulang halaman',
       };
     }
-    case 'GET_NEWS_FULFILLED': {
+    case 'GET_NEWS_MAIN_FULFILLED': {
       return {
         ...state,
         success: true,
@@ -43,5 +43,11 @@ export default (state = initialState, action) => {
         message: 'Pengambilan data sukses!',
       };
     }
+    // case 'GET_PAGINATION': {
+    //   return {
+    //     ...state,
+    //     meta: action.payload,
+    //   };
+    // }
   }
 };

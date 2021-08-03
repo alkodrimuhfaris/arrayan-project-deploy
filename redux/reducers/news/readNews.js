@@ -1,21 +1,15 @@
-/* eslint-disable camelcase */
-import projectSlug from '../../../helpers/projectSlug';
-
 const initialState = {
   success: false,
   error: false,
   pending: false,
-
-  // data
   id: 0,
-  title: '',
   slug: '',
-  description: '',
+  title: '',
+  shortContent: '',
   image: '',
-  subTitleProject: [],
-  subProjects: [],
+  date: '',
+  href: '',
   message: '',
-  banner: '',
 };
 
 export default (state = initialState, action) => {
@@ -23,50 +17,46 @@ export default (state = initialState, action) => {
     default: {
       return state;
     }
-    case 'GET_PROJECT_SLUG_PENDING': {
+    case 'GET_NEWS_SLUG_PENDING': {
       return {
         ...state,
         success: false,
         error: false,
         pending: true,
-        message: 'Mendapatkan data project...',
+        message: 'Mendapatkan data...',
       };
     }
-    case 'GET_PROJECT_SLUG_REJECTED': {
+    case 'GET_NEWS_SLUG_REJECTED': {
       return {
         ...state,
         success: false,
-        error: true,
+        error: false,
         pending: false,
         message: 'Pengambilan data gagal, silahkan muat ulang halaman',
       };
     }
-    case 'GET_PROJECT_SLUG_FULFILLED': {
+    case 'GET_NEWS_SLUG_FULFILLED': {
       const {
         id,
-        title,
         slug,
-        description,
+        title,
+        short_content: shortContent,
         image,
-        sub_projects,
-        banner,
-        ...subData
+        date,
+        href,
       } = action.payload.data.data;
-      const subTitleProject = projectSlug.subImage(subData);
-      const subProjects = projectSlug.subProjects(sub_projects);
       return {
         ...state,
         success: true,
         error: false,
         pending: false,
         id,
-        title,
         slug,
-        description,
+        title,
+        shortContent,
         image,
-        subTitleProject,
-        subProjects,
-        banner,
+        date,
+        href,
         message: 'Pengambilan data sukses!',
       };
     }

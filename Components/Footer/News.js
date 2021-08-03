@@ -2,6 +2,7 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {BiCalendarAlt} from 'react-icons/bi';
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
+import Link from 'next/link';
 import actions from '../../redux/actions';
 
 export default function News() {
@@ -149,13 +150,16 @@ export default function News() {
 
       {!newsList.length && errorNews ? null : (
         <div className="button-wrapper container d-flex justify-content-center">
-          <button
-            name="open-news"
-            type="button"
-            className="btn-ar rounded my-4"
+          <Link
+            href={{
+              pathname: '/news',
+              page: 1,
+            }}
           >
-            Lihat Lebih Lanjut
-          </button>
+            <a name="open-news" className="btn-ar d-flex justify-content-center align-items-center rounded my-4">
+              <span>Lihat Lebih Lanjut</span>
+            </a>
+          </Link>
         </div>
       )}
     </section>

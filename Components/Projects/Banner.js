@@ -5,13 +5,7 @@ import imageStorage from '../../helpers/imageStorage';
 
 export default function Banner() {
   const [bannerRef, bannerW, bannerH] = getComponentWidth();
-  const {image, slug} = useSelector((state) => state.projectData);
-
-  React.useEffect(() => {
-    if (image) {
-      console.log(image);
-    }
-  }, [image]);
+  const {banner, slug} = useSelector((state) => state.projectData);
 
   return (
     <section
@@ -22,7 +16,7 @@ export default function Banner() {
       }}
       className="banner"
     >
-      <img src={imageStorage(image)} alt={`Banner-${slug}`} />
+      <img src={imageStorage(banner)} alt={`Banner-${slug}`} />
     </section>
   );
 }

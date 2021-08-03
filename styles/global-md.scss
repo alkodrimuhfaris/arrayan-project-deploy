@@ -112,6 +112,20 @@
         transform: scale(1.05);
       }
     }
+    & a.btn-ar {
+      border-width: 0px;
+      background-color: $color-light;
+      text-decoration: none;
+      display: block;
+      color: white;
+      width: 15em;
+      height: 3em;
+      transition: 300ms ease-in-out;
+      &:hover {
+        transition: 300ms ease-in-out;
+        transform: scale(1.05);
+      }
+    }
   }
 
   .content.md {
@@ -178,18 +192,19 @@
               z-index: 10;
               width: 2em;
               height: 2em;
-              background-color: transparent;
+              background-color: $color;
               padding: 0;
               border-radius: 100px;
               border-width: 1px;
               border-color: white;
-              opacity: 0.2;
+              color: white;
+              opacity: 0.8;
               transition: 0.2s ease;
               top: 50%;
               transform: translate(0, -50%);
               &:hover {
                 transition: 0.2s ease;
-                opacity: 0.8;
+                opacity: 1;
               }
             }
             & .slider-left {
@@ -442,6 +457,17 @@
   }
 
   
+  .content.md.news {
+    & .list-news {
+      & .list-news-card {
+        border-radius: 10px;
+        overflow: hidden;
+        & .img-news-cont {
+          height: 300px;
+        }
+      }
+    }
+  }
 
   
   

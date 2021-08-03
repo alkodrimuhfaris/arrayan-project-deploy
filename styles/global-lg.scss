@@ -86,6 +86,20 @@
         transform: scale(1.05);
       }
     }
+    & a.btn-ar {
+      display: block;
+      text-decoration: none;
+      border-width: 0px;
+      background-color: $color-light;
+      color: white;
+      width: 15em;
+      height: 3em;
+      transition: 300ms ease-in-out;
+      &:hover {
+        transition: 300ms ease-in-out;
+        transform: scale(1.05);
+      }
+    }
   }
 
   .content.lg {

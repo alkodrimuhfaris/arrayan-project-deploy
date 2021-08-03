@@ -63,7 +63,7 @@ export default function ProjectGallery() {
         height: `${wref1 / 7.68}px`,
         minHeight: '200px',
       }}
-      className="project-gallery-carousel mb-3 w-100"
+      className="project-gallery-carousel mb-5 w-100"
     >
       <div ref={ref2} className="pg-carousel-container p-0 container h-100">
         {!subTitleProject.length
@@ -123,7 +123,9 @@ export default function ProjectGallery() {
           </div>
         </div>
       </div>
-      <DotBtn />
+      <div className="mb-5">
+        <DotBtn />
+      </div>
     </section>
   );
 }

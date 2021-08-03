@@ -1,20 +1,17 @@
 import Head from 'next/head';
 
-function ProjectHeader({
-  title = '',
-  description = 'Pusat Rumah Murah Subsidi Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Murah Bersubsidi Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang',
+function NewsReadHeader({
+  title = 'Arrayan Update and News',
+  description = 'Baca Update dan Berita Terbaru dari Arrayan, Berita Terikini Seputar Rumah dan Dunia Properti di Indonesia, Tips Jual Beli Properti',
   image = '',
 }) {
   return (
     <Head>
       {/* <!-- Primary Meta Tags --> */}
-      <title>
-        {title} - Arrayan Projects | Pusat Rumah Murah Bersubsidi Di Daerah
-        Ibukota
-      </title>
+      <title>{title} | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota</title>
       <meta
         property="og:title"
-        content={`${title} - Arrayan Projects | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
+        content={`${title} | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
         key="title"
       />
       <meta name="description" content={description} />
@@ -24,20 +21,20 @@ function ProjectHeader({
       <meta property="og:url" content={process.env.NEXT_PUBLIC_URL} />
       <meta
         property="og:title"
-        content={`${title} - Arrayan Projects | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
+        content={`${title} | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
       />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
+      {image === '' ? null : <meta property="og:image" content={image} />}
 
       {/* <!-- Twitter --> */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={process.env.NEXT_PUBLIC_URL} />
       <meta
         property="twitter:title"
-        content={`${title} - Arrayan Projects | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
+        content={`${title} | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
       />
       <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={image} />
+      {image === '' ? null : <meta property="twitter:image" content={image} />}
 
       <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
       <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
@@ -100,4 +97,4 @@ function ProjectHeader({
   );
 }
 
-export default ProjectHeader;
+export default NewsReadHeader;
