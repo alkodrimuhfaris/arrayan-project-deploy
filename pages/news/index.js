@@ -20,11 +20,9 @@ export default function index() {
   React.useEffect(() => {
     if (!page) {
       // get page 1
-      console.log('get page 1 nothing in query');
       dispatch(actions.newsActions.getNewsMain({page: 1}));
     } else {
       // get page
-      console.log(`get page ${page}`);
       dispatch(actions.newsActions.getNewsMain({page}));
     }
   }, [page]);

@@ -19,7 +19,6 @@ export default function ReadNews() {
   const [ref1, wRef1, hRef1] = getComponentWidth();
   const {
     title,
-    shortContent,
     content,
     image: img,
     slug,
@@ -37,12 +36,10 @@ export default function ReadNews() {
     if (img && dt) {
       setImage((x) => {
         x = imageStorage(img);
-        console.log(x);
         return x;
       });
       setDate((x) => {
         x = timeParser(dt);
-        console.log(x);
         return x;
       });
     }
@@ -57,7 +54,7 @@ export default function ReadNews() {
         className="col-12 container-md image order-3 order-md-1 mb-3 p-0"
       >
         <img
-          height={wRef1 ? `${(wRef1 * 3) / 4}px` : `${(wRef1 * 3) / 4}px`}
+          height={wRef1 ? `${(wRef1 * 9) / 16}px` : `${(wRef1 * 3) / 4}px`}
           src={image}
           alt={`${slug}-photos`}
         />

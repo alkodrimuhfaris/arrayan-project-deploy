@@ -8,49 +8,19 @@ export default function HeaderImg({
   topCarousel = 0,
   open = false,
   setTopCarousel = () => {},
+  transition,
+  topSlider = [],
+  handleTouchEnd,
+  handleTouchMove,
+  handleTouchStart,
 }) {
   const {xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
   const refCar = React.useRef(null);
   const [ref1, wRef1, hRef1] = getComponentWidth();
 
-  const [touchStart, setTouchStart] = React.useState(0);
-  const [touchEnd, setTouchEnd] = React.useState(0);
-
-  const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const topSlider = [
-    {class: 'slider-left', Icon: AiOutlineArrowLeft},
-    {class: 'slider-right', Icon: AiOutlineArrowRight},
-  ];
-
   const sliderTopCar = (dir) => {
-    setTopCarousel((x) => {
-      x = dir === 'slider-left' ? x - 1 : x + 1;
-      x = dir === 'slider-left' && x < 0 ? carouselTop.length - 1 : x;
-      x = dir === 'slider-right' && x > carouselTop.length - 1 ? 0 : x;
-      return x;
-    });
+    setTopCarousel(dir);
   };
-
-  React.useEffect(() => {
-    if (touchStart - touchEnd > 150) {
-      // do your stuff here for left swipe
-      // moveSliderRight();
-      setTopCarousel((x) => x + 1);
-    }
-
-    if (touchStart - touchEnd < -150) {
-      // do your stuff here for right swipe
-      // moveSliderLeft();
-      setTopCarousel((x) => x - 1);
-    }
-  }, [touchEnd, touchStart]);
 
   return (
     <div className="header-img col-12 col-md-12 col-lg-2 order-1 order-md-2">
@@ -71,7 +41,7 @@ export default function HeaderImg({
                       refCar.current.offsetWidth * topCarousel
                     }px, 0px)`
                   : '',
-                transition: '0.3s ease',
+                transition,
                 width: '100%',
               }}
               className="ar_carousel_track position-relative"
@@ -92,7 +62,8 @@ export default function HeaderImg({
                   >
                     <img
                       onTouchStart={handleTouchStart}
-                      onTouchEnd={handleTouchMove}
+                      onTouchEnd={handleTouchEnd}
+                      onTouchMove={handleTouchMove}
                       src={image}
                       alt={`carousel-${index}`}
                     />

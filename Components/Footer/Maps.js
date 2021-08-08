@@ -154,7 +154,7 @@ export default function Maps() {
                       <img src={photo} alt={name} />
                       <div className="text-map d-flex flex-column align-items-center justify-content-center">
                         <h3>{name}</h3>
-                        <p>{address}</p>
+                        <p className="w-100">{address}</p>
                       </div>
                     </a>
                   </div>

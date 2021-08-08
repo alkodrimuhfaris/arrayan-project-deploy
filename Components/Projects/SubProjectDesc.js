@@ -2,11 +2,6 @@ import React from 'react';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
 export default function SubProjectDesc({title = '', area = '', specs = ''}) {
-  React.useEffect(() => {
-    console.log(title);
-    console.log(area);
-    console.log(specs);
-  }, []);
   const {sm} = useWindowDimensions();
 
   return (

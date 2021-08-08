@@ -38,6 +38,9 @@ export default function ProjectGallery() {
     transition: carouselTransition,
     rightDir: slider[0].class,
     leftDir: slider[1].class,
+    timer: 2,
+    infinity: true,
+    loopNumber: 2,
   });
 
   React.useEffect(() => {

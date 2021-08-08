@@ -1,4 +1,6 @@
 import React from 'react';
+import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
+import carouselControler from '../../componentHelpers/carouselControler';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 import HeaderImg from './HeaderImg';
 import HeaderText from './HeaderText';
@@ -10,27 +12,30 @@ export default function TopHeader({
   topCarTimer = 1,
 }) {
   const {md} = useWindowDimensions();
-  const [topCarousel, setTopCarousel] = React.useState(0);
 
-  React.useEffect(() => {
-    let intervalID;
-    if (carouselTop.length > 1) {
-      intervalID = setInterval(
-        () =>
-          setTopCarousel((x) => {
-            x = x === carouselTop.length - 1 ? 0 : x + 1;
-            return x;
-          }),
-        topCarTimer * 1000,
-      );
-    }
+  const topSlider = [
+    {class: 'slider-left', Icon: AiOutlineArrowLeft},
+    {class: 'slider-right', Icon: AiOutlineArrowRight},
+  ];
 
-    return () => {
-      if (carouselTop.length > 1) {
-        clearInterval(intervalID);
-      }
-    };
-  }, [carouselTop]);
+  const {
+    carouselArray,
+    carouselNum,
+    transition,
+    sliderFunc,
+    dotBtn: DotBtn,
+    handleTouchEnd,
+    handleTouchMove,
+    handleTouchStart,
+  } = carouselControler({
+    carousel: carouselTop,
+    transition: '0.3s ease',
+    rightDir: topSlider[1].class,
+    leftDir: topSlider[0].class,
+    infinity: true,
+    loopNumber: 2,
+    timer: topCarTimer,
+  });
 
   return (
     <div className="top-header container-lg mb-5 mb-md-2">
@@ -45,32 +50,24 @@ export default function TopHeader({
           } d-flex`}
         >
           <div className="slider-btn-ctl justify-content-center align-items-center d-flex w-100">
-            {carouselTop.map((_, index) => {
-              const setActive = index === topCarousel ? 'active' : '';
-              return (
-                <button
-                  key={index}
-                  type="button"
-                  name={`dot-carousel-${index}`}
-                  className={`slider-btns ar_carousel_slider_btn mx-1 ${setActive}`}
-                  onClick={() => setTopCarousel(index)}
-                >
-                  &nbsp;
-                </button>
-              );
-            })}
+            <DotBtn />
           </div>
         </div>
 
         {/* text container */}
-        <HeaderText carouselTop={carouselTop} topCarousel={topCarousel} />
+        <HeaderText carouselTop={carouselArray} topCarousel={carouselNum} />
 
         {/* container image carousel */}
         <HeaderImg
-          carouselTop={carouselTop}
-          topCarousel={topCarousel}
+          carouselTop={carouselArray}
+          topCarousel={carouselNum}
           open={open}
-          setTopCarousel={setTopCarousel}
+          setTopCarousel={sliderFunc}
+          topSlider={topSlider}
+          handleTouchEnd={handleTouchEnd}
+          handleTouchMove={handleTouchMove}
+          handleTouchStart={handleTouchStart}
+          transition={transition}
         />
       </div>
     </div>

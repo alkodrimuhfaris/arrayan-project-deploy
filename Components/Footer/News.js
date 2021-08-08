@@ -4,6 +4,8 @@ import {BiCalendarAlt} from 'react-icons/bi';
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
 import Link from 'next/link';
 import actions from '../../redux/actions';
+import imageStorage from '../../helpers/imageStorage';
+import carouselControler from '../../componentHelpers/carouselControler';
 
 export default function News() {
   const refNews = React.useRef(null);
@@ -15,7 +17,7 @@ export default function News() {
     pending: pendingNews,
     error: errorNews,
     success: successNews,
-    news: newsList,
+    news: newsListOri,
   } = useSelector((state) => state.newsData);
 
   React.useEffect(() => {
@@ -26,15 +28,20 @@ export default function News() {
     {class: 'news-slider-left', Icon: AiOutlineArrowLeft},
     {class: 'news-slider-right', Icon: AiOutlineArrowRight},
   ];
+  const {
+    carouselArray: newsList,
+    transition,
+    sliderFunc: changeNewsSlide,
+    handleTouchEnd,
+    handleTouchMove,
+    handleTouchStart,
+  } = carouselControler({
+    carousel: newsListOri,
+    rightDir: newsSlider[1].class,
+    leftDir: newsSlider[0].class,
+    infinity: false,
+  });
 
-  const changeNewsSlide = (dir) => {
-    setNewsOrder((x) => {
-      x = dir === 'news-slider-left' ? x - 1 : x + 1;
-      x = dir === 'news-slider-left' && x < 0 ? newsList.length - 1 : x;
-      x = dir === 'news-slider-right' && x > newsList.length - 1 ? 0 : x;
-      return x;
-    });
-  };
   return (
     <section id="newsArrayan" className="news">
       <section className="container text-center">
@@ -91,8 +98,38 @@ export default function News() {
                 )
               ? 'translate(0%, 0%)'
               : `translate(-${refNews.current.offsetWidth * newsOrder}px, 0px)`,
-            transition: '0.3s ease',
+            transition,
           }}
+          onTouchEnd={
+            !(refNewsCont.current && refNews.current)
+              ? null
+              : !(
+                  refNewsCont.current.offsetWidth <
+                  refNews.current.offsetWidth * newsList.length
+                )
+              ? handleTouchEnd
+              : null
+          }
+          onTouchMove={
+            !(refNewsCont.current && refNews.current)
+              ? null
+              : !(
+                  refNewsCont.current.offsetWidth <
+                  refNews.current.offsetWidth * newsList.length
+                )
+              ? handleTouchMove
+              : null
+          }
+          onTouchStart={
+            !(refNewsCont.current && refNews.current)
+              ? null
+              : !(
+                  refNewsCont.current.offsetWidth <
+                  refNews.current.offsetWidth * newsList.length
+                )
+              ? handleTouchStart
+              : null
+          }
           className="news-card-container mb-3 position-relative"
         >
           {!newsList.length && errorNews
@@ -101,8 +138,7 @@ export default function News() {
                 const widthNews = refNews.current
                   ? refNews.current.offsetWidth
                   : 0;
-                const image = process.env.NEXT_PUBLIC_URL_BACKEND + val.image;
-                const href = process.env.NEXT_PUBLIC_URL_BACKEND + val.href;
+                const image = imageStorage(val.image);
                 return (
                   <div
                     key={item}
@@ -133,12 +169,19 @@ export default function News() {
                           {val.title}
                         </article>
                         <div className="link-wrapper">
-                          <a className="text-ar-dark" href={href}>
-                            Baca Lebih Lanjut{' '}
-                            <span>
-                              <AiOutlineArrowRight />
-                            </span>
-                          </a>
+                          <Link
+                            href={{
+                              pathname: '/news/read/[slug]',
+                              query: {slug: val.slug},
+                            }}
+                          >
+                            <a className="text-ar-dark">
+                              Baca Lebih Lanjut{' '}
+                              <span>
+                                <AiOutlineArrowRight />
+                              </span>
+                            </a>
+                          </Link>
                         </div>
                       </section>
                     </div>
@@ -156,7 +199,10 @@ export default function News() {
               page: 1,
             }}
           >
-            <a name="open-news" className="btn-ar d-flex justify-content-center align-items-center rounded my-4">
+            <a
+              name="open-news"
+              className="btn-ar d-flex justify-content-center align-items-center rounded my-4"
+            >
               <span>Lihat Lebih Lanjut</span>
             </a>
           </Link>

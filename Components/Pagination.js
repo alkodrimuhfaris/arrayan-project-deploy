@@ -14,14 +14,12 @@ export default function Pagination({currentPage = 1, maxPage = 10}) {
         p.push(i);
       }
       setPages(p);
-      console.log('============= 1st case');
     } else if (currentPage <= 3 && maxPage > 5) {
       setPages([1, 2, 3, 4, 5]);
       setPrevElipsis(false);
       if (maxPage > 5) {
         setNextElipsis(true);
       }
-      console.log('============= 2nd case');
     } else if (maxPage - currentPage <= 2 && maxPage > 5) {
       const p = [];
       for (let i = maxPage - 4; i <= maxPage; i++) {
@@ -32,17 +30,14 @@ export default function Pagination({currentPage = 1, maxPage = 10}) {
       if (maxPage - 5 > 1) {
         setPrevElipsis(true);
       }
-      console.log('============= 3rd case');
     } else {
       const p = [];
       for (let i = currentPage - 2; i <= currentPage + 2; i++) {
         p.push(i);
-        console.log(i);
       }
       setPages(p);
       setNextElipsis(true);
       setPrevElipsis(true);
-      console.log('============= 4th case');
     }
   }, [currentPage, maxPage]);
 

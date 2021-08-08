@@ -8,6 +8,8 @@ export default function carouselControler({
   leftDir = 'left',
   loopNumber = 100,
   infinity = true,
+  timer = 0,
+  addLoop = 1,
 }) {
   const [showCarousel, setShowCarousel] = React.useState([]);
   const [tr, setTransition] = React.useState(transition);
@@ -18,6 +20,7 @@ export default function carouselControler({
   const [touchStart, setTouchStart] = React.useState(0);
   const [touchEnd, setTouchEnd] = React.useState(0);
   const ref = React.useRef(null);
+  const firstInterval = React.useRef(null);
 
   const {width} = useWindowDimensions();
 
@@ -80,6 +83,29 @@ export default function carouselControler({
   };
 
   React.useEffect(() => {
+    let intervalID;
+    if (timer !== 0) {
+      if (carousel.length > 1) {
+        intervalID = setInterval(() => {
+          if (!firstInterval.current) {
+            firstInterval.current = true;
+          } else {
+            setRelativeChange(+1);
+            setLastAdded((x) => {
+              x += 1;
+              x = x > carousel.length - 1 ? 0 : x;
+              return x;
+            });
+          }
+        }, timer * 1000);
+      }
+    }
+    return () => {
+      clearInterval(intervalID);
+    };
+  }, [carousel]);
+
+  React.useEffect(() => {
     if (carousel.length) {
       const curPosition = (idxCarousel + 1) % carousel.length;
       if (relativeChange !== 0) {
@@ -96,11 +122,10 @@ export default function carouselControler({
           }
           // everytime next or dot button is clicked
           if (x >= 0) {
-            for (let y = curPosition - 1; y < lastAddedCar; y++) {
-              if (y < 0) {
-                showCarousel.push(carousel[carousel.length - 1]);
-              } else {
-                showCarousel.push(carousel[y]);
+            if (showCarousel.length - x < carousel.length) {
+              addLoop = addLoop > 0 ? addLoop : 1;
+              for (let y = 0; y < addLoop; y++) {
+                showCarousel.push(...carousel);
               }
             }
           }
@@ -113,6 +138,15 @@ export default function carouselControler({
 
   React.useEffect(() => {
     setIdxCarousel(0);
+    if (infinity) {
+      const infinityCar = [];
+      for (let i = 0; i < loopNumber; i++) {
+        infinityCar.push(...carousel);
+      }
+      setShowCarousel(infinityCar);
+    } else {
+      setShowCarousel(() => carousel.map((val) => val));
+    }
   }, [width]);
 
   React.useEffect(() => {

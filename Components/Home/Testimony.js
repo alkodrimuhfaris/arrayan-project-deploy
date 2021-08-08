@@ -4,15 +4,18 @@ import Testi from './Testi';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
 import testiImg from '../../Assets/Photos/testiImg.jpg';
+import carouselControler from '../../componentHelpers/carouselControler';
 
 export default function Testimony({testimonyList = [], testiTimer = 10}) {
-  const {xsO, smO, md, mdO, lgO, xlO} = useWindowDimensions();
-  const [testi, setTesti] = React.useState(0);
+  const {width, xsO, smO, md, mdO, lgO, xlO} = useWindowDimensions();
   const [refTesti, wRefTesti, hRefTesti] = getComponentWidth();
-  const refTestiWrapper = React.useRef(null);
-  const refTestiIndv = React.useRef(null);
   const refTestiBlur = React.useRef(null);
-  const [ref1, wRef1, hRef1] = getComponentWidth();
+  const [testiContRat, setTestiContRat] = React.useState(3.516);
+  const [bgImgContRat, setBgImgContRat] = React.useState(0.942);
+  const [testiWrapperRat, setTestiWrapperRat] = React.useState(3.6475);
+  const [refTestiIndv, wTestiIndiv, hTestiIndiv] = getComponentWidth();
+  const [refTestiWrapper, wRefTestiWrapper, hRefTestiWrapper] =
+    getComponentWidth();
   const [ref2, wRef2, hRef2] = getComponentWidth();
 
   const testiSlider = [
@@ -20,32 +23,36 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
     {class: 'testi-slider-right', Icon: AiOutlineArrowRight},
   ];
 
+  const {
+    carouselArray: testimonyListArr,
+    carouselNum: testi,
+    transition,
+    sliderFunc: changeTestiSlide,
+    handleTouchEnd,
+    handleTouchMove,
+    handleTouchStart,
+  } = carouselControler({
+    carousel: testimonyList,
+    transition: '0.3s ease',
+    leftDir: testiSlider[0].class,
+    rightDir: testiSlider[1].class,
+    timer: testiTimer,
+    infinity: true,
+    loopNumber: 2,
+    addLoop: 1,
+  });
+
   React.useEffect(() => {
-    let intervalTesti;
-    if (testimonyList.length) {
-      intervalTesti = setInterval(() => {
-        setTesti((x) => {
-          x = x === testimonyList.length - 1 ? 0 : x + 1;
-          return x;
-        });
-      }, testiTimer * 1000);
-    }
-
-    return () => {
-      if (testimonyList.length) {
-        clearInterval(intervalTesti);
-      }
-    };
-  }, [testimonyList]);
-
-  const changeTestiSlide = (dir) => {
-    setTesti((x) => {
-      x = dir === 'testi-slider-left' ? x - 1 : x + 1;
-      x = dir === 'testi-slider-left' && x < 0 ? testimonyList.length - 1 : x;
-      x = dir === 'testi-slider-right' && x > testimonyList.length - 1 ? 0 : x;
-      return x;
-    });
-  };
+    setTestiContRat(() =>
+      xsO || smO ? 1.25 : mdO ? 1.4 : lgO ? 2.2 : xlO ? 3.516 : 3.516,
+    );
+    setBgImgContRat(() =>
+      xsO || smO || mdO ? 0.7 : lgO ? 0.7 : xlO ? 0.942 : 0.942,
+    );
+    setTestiWrapperRat(() =>
+      xsO || smO ? 1.4 : mdO ? 1.8 : lgO ? 2.4 : xlO ? 3.6475 : 3.6475,
+    );
+  }, [width]);
 
   return (
     <section
@@ -62,16 +69,7 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
       <div className="">
         <section
           style={{
-            height:
-              xsO || smO
-                ? `${wRefTesti / 1.25}px`
-                : mdO
-                ? `${wRefTesti / 1.4}px`
-                : lgO
-                ? `${wRefTesti / 2.2}px`
-                : xlO
-                ? `${wRefTesti / 3.516}px`
-                : `${wRefTesti / 3.516}px`,
+            height: `${wRefTesti / testiContRat}px`,
             maxHeight: '500px',
             aspectRatio: xsO || smO ? 1.25 : mdO ? 1.4 : lgO ? 2.2 : 3.516,
           }}
@@ -81,14 +79,7 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
           <div
             style={{
               height: `100%`,
-              width:
-                xsO || smO || mdO
-                  ? `100%`
-                  : lgO
-                  ? `${hRefTesti * 0.7}px`
-                  : xlO
-                  ? `${hRefTesti * 0.942}px`
-                  : `${hRefTesti * 0.942}px`,
+              width: md ? `100%` : `${hRefTesti * bgImgContRat}px`,
             }}
             className="bg-img-container position-relative"
           >
@@ -112,51 +103,31 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
             style={{
               width:
                 xsO || smO ? `100%` : mdO ? `100%` : lgO || xlO ? `83%` : `83%`,
-              height:
-                xsO || smO
-                  ? `${wRefTesti / 1.4}px`
-                  : mdO
-                  ? `${wRefTesti / 1.8}px`
-                  : lgO
-                  ? `${wRefTesti / 2.4}px`
-                  : xlO
-                  ? `${wRefTesti / 3.6475}px`
-                  : `${wRefTesti / 3.6475}px`,
+              height: `${wRefTesti / testiWrapperRat}px`,
             }}
             ref={refTestiWrapper}
             className="testi-wrapper"
           >
             <div
               style={{
-                width: md
-                  ? '100%'
-                  : refTestiWrapper.current && refTestiIndv.current
-                  ? `${2 * refTestiIndv.current.offsetWidth}px`
-                  : '100%',
+                width: md ? '100%' : `${2 * wTestiIndiv}px`,
               }}
               className="testi-inside-wrapper"
             >
               <div
                 className="testi-blur-left"
                 style={{
-                  width:
-                    md && refTestiWrapper.current && refTestiIndv.current
-                      ? `${refTestiIndv.current.offsetWidth / 4}px` // dibagi 4 karena panjangnya hanya seperempat
-                      : '0%',
+                  width: md
+                    ? `${wTestiIndiv / 4}px` // dibagi 4 karena panjangnya hanya seperempat
+                    : '0%',
                 }}
               />
               <div
                 className="testi-blur-right"
                 style={{
-                  width:
-                    md && refTestiIndv.current
-                      ? `${refTestiIndv.current.offsetWidth / 4}px` // dibagi 4 karena panjangnya hanya seperempat
-                      : refTestiWrapper.current && refTestiIndv.current
-                      ? `${
-                          refTestiWrapper.current.offsetWidth -
-                          2 * refTestiIndv.current.offsetWidth
-                        }px`
-                      : '0%',
+                  width: md
+                    ? `${wTestiIndiv / 4}px` // dibagi 4 karena panjangnya hanya seperempat
+                    : `${wRefTestiWrapper - 2 * wTestiIndiv}px`,
                 }}
                 ref={refTestiBlur}
               />
@@ -164,36 +135,26 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
               <div
                 className="w-100 h-100 testi-tracker position-relative"
                 style={{
-                  transform: !refTestiIndv.current
-                    ? ''
-                    : md
-                    ? `translate(-${
-                        testi * refTestiIndv.current.offsetWidth
-                      }px, 0px)`
-                    : `translate(-${
-                        testi * refTestiIndv.current.offsetWidth
-                      }px, 0px)`,
-                  transition: '0.3s ease',
+                  transform: `translate(-${testi * wTestiIndiv}px, 0px)`,
+                  transition,
                 }}
+                onTouchMove={handleTouchMove}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
                 ref={ref2}
               >
-                {testimonyList.map((val, idx) => {
+                {testimonyListArr.map((val, idx) => {
                   const firstRef = idx === 0 ? refTestiIndv : null;
-                  const widthRefTesti = refTestiIndv.current
-                    ? refTestiIndv.current.offsetWidth
-                    : 0;
-                  // const widthRefBlur = refTestiBlur.current
-                  //   ? refTestiBlur.current.offsetWidth
-                  //   : 0;
+                  const left = md
+                    ? `${wTestiIndiv / 4 + idx * wTestiIndiv}px`
+                    : `${idx * wTestiIndiv}px`;
                   return (
                     <div
                       key={idx}
                       ref={firstRef}
                       className="testi-individual h-100 position-absolute"
                       style={{
-                        left: md
-                          ? `${widthRefTesti / 4 + idx * widthRefTesti}px`
-                          : `${idx * widthRefTesti}px`,
+                        left,
                         width:
                           xsO || smO || mdO
                             ? `calc(100%/1.5)`

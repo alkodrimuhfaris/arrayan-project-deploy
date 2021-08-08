@@ -21,10 +21,6 @@ export default function SubProjectImage({images = []}) {
     });
   };
 
-  React.useEffect(() => {
-    console.log(images);
-  }, [images]);
-
   return (
     <div ref={ref1} className="subproject-img-cont">
       {slider.map((val, index) => {
