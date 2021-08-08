@@ -24,13 +24,18 @@ export default function ProjectGallery() {
     {class: 'left', Icon: AiOutlineArrowLeft},
   ];
 
-  const [subTitleProject, carousel, transition, sliderGallery, DotBtn] =
-    carouselControler(
-      subTitleProjectReal,
-      carouselTransition,
-      slider[0].class,
-      slider[1].class,
-    );
+  const {
+    carouselArray: subTitleProject,
+    carouselNum: carousel,
+    transition,
+    sliderFunc: sliderGallery,
+    dotBtn: DotBtn,
+  } = carouselControler({
+    carousel: subTitleProjectReal,
+    transition: carouselTransition,
+    rightDir: slider[0].class,
+    leftDir: slider[1].class,
+  });
 
   React.useEffect(() => {
     const widthPhoto =

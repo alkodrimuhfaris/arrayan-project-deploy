@@ -1,72 +1,163 @@
 import React from 'react';
-// import {
-//   withScriptjs,
-//   withGoogleMap,
-//   GoogleMap,
-//   Marker,
-// } from 'react-google-maps';
+import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
 import {StaticGoogleMap, Marker, Path} from 'react-static-google-map';
+import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
+import carouselControler from '../../componentHelpers/carouselControler';
+import gpc from '../../Assets/MapsIcon/Grand-Purwakarta-City.svg';
+import gvc from '../../Assets/MapsIcon/Grand-Vista-Cikarang.svg';
+import gcc from '../../Assets/MapsIcon/Grand-Cikarang-City-2.svg';
+import vkc from '../../Assets/MapsIcon/Villa-Kencana-Cikarang-01.svg';
+import abtUs from '../../Assets/Photos/abtUs.jpg';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
 
-export default function Maps({
-  markers = [
-    {lat: -6.2644619, lng: 107.2672509},
-    {lat: -6.3645619, lng: 107.2672409},
-    {lat: -6.1646619, lng: 107.2672309},
-  ],
-}) {
+export default function Maps() {
+  const carouselTransition = '0.3s ease';
   const [ref1, wRef1, hRef1] = getComponentWidth();
-  // const MapComponent = withScriptjs(
-  //   withGoogleMap((props) => (
-  //     <GoogleMap defaultZoom={10} defaultCenter={markers[0]}>
-  //       {props.isMarkerShown &&
-  //         markers.map((val, idx) => <Marker key={idx} position={val} />)}
-  //     </GoogleMap>
-  //   )),
-  // );
+  const [ref2, wRef2, hRef2] = getComponentWidth();
+  const [heightRatio, setHeightRatio] = React.useState(2.6667);
+  const [refPhoto, wRefPhoto, hRefPhoto] = getComponentWidth();
+  const [widthMap, setWidthMap] = React.useState(0);
+  const locations = [
+    {
+      name: 'Grand Purwakarta City',
+      address: 'Mulyamekar, Purwakarta West Java 41151',
+      photo: gpc,
+      href: '',
+    },
+    {
+      name: 'Grand Vista Cikarang',
+      address: 'Jayamulya, Bekasi West Java 17330',
+      photo: gvc,
+      href: '',
+    },
+    {
+      name: 'Grand Cikarang City 2',
+      address: 'Kedungwaringin, Bekasi West Java 17540',
+      photo: gcc,
+      href: '',
+    },
+    {
+      name: 'Vila Kencana CIkarang',
+      address: 'Karangsentosa, Bekasi West Java 17530',
+      photo: vkc,
+      href: '',
+    },
+  ];
+
+  const {width, xsO, smO, mdO, lg, lgO, xlO} = useWindowDimensions();
+
+  const slider = [
+    {class: 'right', Icon: AiOutlineArrowRight},
+    {class: 'left', Icon: AiOutlineArrowLeft},
+  ];
+
+  const {
+    carouselArray: locationsArray,
+    carouselNum: carousel,
+    transition,
+    sliderFunc,
+  } = carouselControler({
+    carousel: locations,
+    transition: carouselTransition,
+    rightDir: slider[0].class,
+    leftDir: slider[1].class,
+    infinity: false,
+  });
+
+  React.useEffect(() => {
+    const widthPhoto =
+      smO || xsO
+        ? wRef2 - 100
+        : mdO
+        ? (wRef2 - 100) / 2
+        : lgO
+        ? (wRef2 - 100) / 3
+        : xlO
+        ? (wRef2 - 100) / 4
+        : (wRef2 - 100) / 4;
+    setWidthMap(widthPhoto);
+    setHeightRatio(() =>
+      smO || xsO ? 0.9 : mdO ? 1.5 : lgO ? 2 : xlO ? 2.6667777 : 2.6667777,
+    );
+  }, [width, carousel]);
 
   return (
     <section
       ref={ref1}
-      className="maps d-flex justify-content-center align-items-center mt-5"
+      className="maps d-flex flex-column justify-content-center align-items-center mt-5"
+      style={{
+        height: `${wRef1 / heightRatio}px`,
+      }}
     >
-      {/* <MapComponent
-        //
-        isMarkerShown
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_APP_API_KEY_GMAPS}&v=3.exp&libraries=geometry,drawing,places`}
-        loadingElement={
+      <h1>Lokasi</h1>
+      <div className="w-100">
+        <div
+          ref={ref2}
+          style={{
+            height: `${wRef1 / (heightRatio * 1.3)}px`,
+            minHeight: '200px',
+          }}
+          className="container p-0 maps-container position-relative"
+        >
+          {!lg
+            ? null
+            : slider.map((val, idx) => {
+                const {class: cls, Icon} = val;
+                return (
+                  <div key={idx} className={`maps-slider-btn-cont ${cls}`}>
+                    <div className="position-relative h-100 w-100">
+                      <button
+                        type="button"
+                        onClick={() => sliderFunc(cls)}
+                        className={`maps-slider-btn color-white ${cls}`}
+                      >
+                        <Icon />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
           <div
             style={{
-              width: `100%`,
-              height: `calc(100vw/2.66667)`,
+              width: `${wRef2 - 100}px`,
+              marginLeft: '50px',
             }}
-          />
-        }
-        containerElement={
-          <div
-            style={{
-              width: `100%`,
-              height: `calc(100vw/2.66667)`,
-            }}
-          />
-        }
-        mapElement={<div style={{height: `100%`}} />}
-      /> */}
-      {/* <StaticGoogleMap
-        zoom={10}
-        size={`${wRef1}x${hRef1}`}
-        scale={4}
-        apiKey={process.env.NEXT_PUBLIC_APP_API_KEY_GMAPS}
-      >
-        <Marker.Group label="Arrayan Residence" color="red">
-          {markers.map((val, index) => (
-            <Marker key={index} location={val} />
-          ))}
-        </Marker.Group>
-      </StaticGoogleMap> */}
-      <p>THIS IS RESERVE FOR MAPS</p>
+            className="maps-tracker-cont overflow-hidden h-100"
+          >
+            <div
+              style={{
+                transform: `translate(-${widthMap * carousel}px)`,
+                transition,
+              }}
+              className="maps-tracker position-relative h-100"
+            >
+              {locationsArray.map((val, idx) => {
+                const {name, href, address, photo} = val;
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      left: `${idx * widthMap}px`,
+                      top: '0px',
+                      width: `${widthMap}px`,
+                      height: '100%',
+                    }}
+                    className="maps-ind position-absolute"
+                  >
+                    <a href={href} className="maps-ind-cont shadow p-3">
+                      <img src={photo} alt={name} />
+                      <div className="text-map d-flex flex-column align-items-center justify-content-center">
+                        <h3>{name}</h3>
+                        <p>{address}</p>
+                      </div>
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    // <section id="locationsArrayan" className="maps p-0 mt-4">
-    // </section>
   );
 }

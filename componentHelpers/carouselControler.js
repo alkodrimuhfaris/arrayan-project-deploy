@@ -1,13 +1,14 @@
 import React from 'react';
+import useWindowDimensions from './getWindowDimensions';
 
-export default function carouselControler(
+export default function carouselControler({
   carousel = [],
   transition = '0.3s ease',
   rightDir = 'right',
   leftDir = 'left',
   loopNumber = 100,
   infinity = true,
-) {
+}) {
   const [showCarousel, setShowCarousel] = React.useState([]);
   const [tr, setTransition] = React.useState(transition);
   const [idxCarousel, setIdxCarousel] = React.useState(0);
@@ -15,6 +16,8 @@ export default function carouselControler(
   const [relativeChange, setRelativeChange] = React.useState(0);
   const [btnClicked, setBtnClicked] = React.useState('');
   const ref = React.useRef(null);
+
+  const {width} = useWindowDimensions();
 
   const sliderFunc = (dir) => {
     setBtnClicked(dir);
@@ -75,6 +78,10 @@ export default function carouselControler(
   }, [relativeChange, carousel]);
 
   React.useEffect(() => {
+    setIdxCarousel(0);
+  }, [width]);
+
+  React.useEffect(() => {
     if (tr === 'none') {
       setTransition(transition);
       setIdxCarousel((x) => x - 1);
@@ -117,5 +124,11 @@ export default function carouselControler(
     </div>
   );
 
-  return [showCarousel, idxCarousel, tr, sliderFunc, dotBtn];
+  return {
+    carouselArray: showCarousel,
+    carouselNum: idxCarousel,
+    transition: tr,
+    sliderFunc,
+    dotBtn,
+  };
 }

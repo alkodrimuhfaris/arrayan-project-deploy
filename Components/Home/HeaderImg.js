@@ -13,6 +13,17 @@ export default function HeaderImg({
   const refCar = React.useRef(null);
   const [ref1, wRef1, hRef1] = getComponentWidth();
 
+  const [touchStart, setTouchStart] = React.useState(0);
+  const [touchEnd, setTouchEnd] = React.useState(0);
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
   const topSlider = [
     {class: 'slider-left', Icon: AiOutlineArrowLeft},
     {class: 'slider-right', Icon: AiOutlineArrowRight},
@@ -26,6 +37,20 @@ export default function HeaderImg({
       return x;
     });
   };
+
+  React.useEffect(() => {
+    if (touchStart - touchEnd > 150) {
+      // do your stuff here for left swipe
+      // moveSliderRight();
+      setTopCarousel((x) => x + 1);
+    }
+
+    if (touchStart - touchEnd < -150) {
+      // do your stuff here for right swipe
+      // moveSliderLeft();
+      setTopCarousel((x) => x - 1);
+    }
+  }, [touchEnd, touchStart]);
 
   return (
     <div className="header-img col-12 col-md-12 col-lg-2 order-1 order-md-2">
@@ -65,7 +90,12 @@ export default function HeaderImg({
                     key={index}
                     className={`ar_carousel_slide ${setActive}`}
                   >
-                    <img src={image} alt={`carousel-${index}`} />
+                    <img
+                      onTouchStart={handleTouchStart}
+                      onTouchEnd={handleTouchMove}
+                      src={image}
+                      alt={`carousel-${index}`}
+                    />
                   </li>
                 );
               })}
