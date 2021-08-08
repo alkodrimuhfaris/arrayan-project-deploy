@@ -107,8 +107,8 @@ export default function News() {
                   refNewsCont.current.offsetWidth <
                   refNews.current.offsetWidth * newsList.length
                 )
-              ? handleTouchEnd
-              : null
+              ? null
+              : handleTouchEnd
           }
           onTouchMove={
             !(refNewsCont.current && refNews.current)
@@ -117,8 +117,8 @@ export default function News() {
                   refNewsCont.current.offsetWidth <
                   refNews.current.offsetWidth * newsList.length
                 )
-              ? handleTouchMove
-              : null
+              ? null
+              : handleTouchMove
           }
           onTouchStart={
             !(refNewsCont.current && refNews.current)
@@ -127,8 +127,8 @@ export default function News() {
                   refNewsCont.current.offsetWidth <
                   refNews.current.offsetWidth * newsList.length
                 )
-              ? handleTouchStart
-              : null
+              ? null
+              : handleTouchStart
           }
           className="news-card-container mb-3 position-relative"
         >

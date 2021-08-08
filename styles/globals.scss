@@ -1474,11 +1474,13 @@ p.desc-card-modal {
         font-weight: $font-extrabold;
       }
       & .share-btn {
-        width: 25px;
-        height: 25px;
+        outline: none !important;
+        border: none !important;
+        width: 30px;
+        height: 30px;
         border-radius: 40px;
-        background-color: #707070;
-        color: white;
+        background-color: #707070 !important;
+        color: white !important;
       }
     }
   }

@@ -1,17 +1,29 @@
 import React from 'react';
+import {useRouter} from 'next/router';
 import {useSelector} from 'react-redux';
 import {
   FaFacebookF,
   FaLinkedinIn,
-  FaYoutube,
+  FaWhatsapp,
   FaInstagram,
 } from 'react-icons/fa';
+import {UncontrolledTooltip} from 'reactstrap';
+import {AiOutlineTwitter} from 'react-icons/ai';
+import {MdEmail} from 'react-icons/md';
 import {FiGlobe} from 'react-icons/fi';
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+  EmailShareButton,
+} from 'react-share';
 import Content from 'dangerously-set-html-content';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 import imageStorage from '../../helpers/imageStorage';
 import timeParser from '../../helpers/timeParser';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
+import getSelfUrl from '../../helpers/getSelfUrl';
 
 export default function ReadNews() {
   const [image, setImage] = React.useState('');
@@ -19,18 +31,45 @@ export default function ReadNews() {
   const [ref1, wRef1, hRef1] = getComponentWidth();
   const {
     title,
+    shortContent,
     content,
     image: img,
     slug,
     date: dt,
   } = useSelector((state) => state.readNews);
+  const router = useRouter();
+  const [url, setUrl] = React.useState('');
+  const [copyUrl, setCopyUrl] = React.useState(false);
+  const [tooltipOpen, setTooltipOpen] = React.useState(false);
+
   const [share, setShare] = React.useState([
-    {href: '#', Icons: FaFacebookF},
-    {href: '#', Icons: FaInstagram},
-    {href: '#', Icons: FiGlobe},
-    {href: '#', Icons: FaLinkedinIn},
-    {href: '#', Icons: FaYoutube},
+    {href: '#', Icons: FaFacebookF, ShareBtn: FacebookShareButton},
+    {href: '#', Icons: AiOutlineTwitter, ShareBtn: TwitterShareButton},
+    {href: '#', Icons: FiGlobe, ShareBtn: 'email'},
+    {href: '#', Icons: FaLinkedinIn, ShareBtn: LinkedinShareButton},
+    {href: '#', Icons: FaWhatsapp, ShareBtn: WhatsappShareButton},
   ]);
+
+  const toggle = () => setTooltipOpen((x) => !x);
+
+  React.useEffect(() => {
+    let timeOutID = null;
+    if (tooltipOpen) {
+      timeOutID = setTimeout(() => {
+        setTooltipOpen(false);
+      }, 2 * 1000);
+    }
+    return () => {
+      clearTimeout(timeOutID);
+    };
+  }, [tooltipOpen]);
+
+  React.useEffect(() => {
+    setUrl((x) => {
+      x = getSelfUrl(router.asPath);
+      return x;
+    });
+  }, [router]);
 
   React.useEffect(() => {
     if (img && dt) {
@@ -44,6 +83,13 @@ export default function ReadNews() {
       });
     }
   }, [img, dt]);
+
+  React.useEffect(() => {
+    if (copyUrl && url) {
+      navigator.clipboard.writeText(url);
+      setCopyUrl(false);
+    }
+  }, [copyUrl]);
 
   const {xs, sm, md, lg} = useWindowDimensions();
 
@@ -82,19 +128,53 @@ export default function ReadNews() {
         >
           <span className="share-caption">Share Artikel ini</span>
           {share.map((val, idx) => {
-            const {href, Icons} = val;
+            const {href, Icons, ShareBtn} = val;
             return (
-              <a
+              <button
+                type="button"
                 key={idx}
                 href={href}
                 className="share-btn d-flex justify-content-center align-items-center"
               >
-                <Icons />
-              </a>
+                {ShareBtn !== 'email' ? (
+                  <ShareBtn
+                    className="d-flex justify-content-center align-items-center share-btn"
+                    url={url}
+                    title={title}
+                    quote={title}
+                    subject={title}
+                    body={shortContent}
+                  >
+                    <Icons />
+                  </ShareBtn>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCopyUrl(true);
+                      setTooltipOpen(true);
+                    }}
+                    id="tooltip-1"
+                    className="share-btn d-flex justify-content-center align-items-center"
+                  >
+                    <Icons />
+                  </button>
+                )}
+              </button>
             );
           })}
         </section>
       </div>
+
+      <UncontrolledTooltip
+        target="tooltip-1"
+        placement="bottom"
+        isOpen={tooltipOpen}
+        toggle={toggle}
+        trigger="click"
+      >
+        tautan berhasil disalin!
+      </UncontrolledTooltip>
     </div>
   );
 }
