@@ -803,6 +803,34 @@ ul.menu {
   }
 }
 
+
+.card-modal {
+  border-radius: 10px !important;
+  position: relative;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  & .img-cont-card-mod {
+    height: 78%;
+    position: relative;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  & h6 {
+    font-weight: $font-bold;
+  }
+}
+
+p.desc-card-modal {
+  color: $color;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
 // content per page
 
 .content.home {
@@ -1413,10 +1441,8 @@ ul.menu {
   }
   & .read-news {
     & .image {
-      height: 400px;
       & img {
         width: 100%;
-        height: 100%;
         object-fit: cover;
       }
     }
@@ -1593,31 +1619,4 @@ ul.menu {
       }
     }
   }
-}
-
-.card-modal {
-  border-radius: 10px !important;
-  position: relative;
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  & .img-cont-card-mod {
-    height: 78%;
-    position: relative;
-    & img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  & h6 {
-    font-weight: $font-bold;
-  }
-}
-
-p.desc-card-modal {
-  color: $color;
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
 }

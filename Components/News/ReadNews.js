@@ -7,17 +7,20 @@ import {
   FaInstagram,
 } from 'react-icons/fa';
 import {FiGlobe} from 'react-icons/fi';
-
+import Content from 'dangerously-set-html-content';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 import imageStorage from '../../helpers/imageStorage';
 import timeParser from '../../helpers/timeParser';
+import getComponentWidth from '../../componentHelpers/getComponentWidth';
 
 export default function ReadNews() {
   const [image, setImage] = React.useState('');
   const [date, setDate] = React.useState('');
+  const [ref1, wRef1, hRef1] = getComponentWidth();
   const {
     title,
     shortContent,
+    content,
     image: img,
     slug,
     date: dt,
@@ -49,8 +52,15 @@ export default function ReadNews() {
 
   return (
     <div className="read-news row no-gutters">
-      <div className="col-12 container-md image order-3 order-md-1 mb-3 p-0">
-        <img src={image} alt={`${slug}-photos`} />
+      <div
+        ref={ref1}
+        className="col-12 container-md image order-3 order-md-1 mb-3 p-0"
+      >
+        <img
+          height={wRef1 ? `${(wRef1 * 3) / 4}px` : `${(wRef1 * 3) / 4}px`}
+          src={image}
+          alt={`${slug}-photos`}
+        />
       </div>
       <div className="col-12 container title order-1 order-md-2 mb-1 mb-md-2">
         <h3>{title}</h3>
@@ -64,7 +74,7 @@ export default function ReadNews() {
       </div>
       <div className="col-12 container article-content order-4 order-md-4">
         <article>
-          <p>{shortContent}</p>
+          <Content html={content} />
         </article>
       </div>
       <div className="col-12 container mt-3 share-article order-5 order-md-5">
