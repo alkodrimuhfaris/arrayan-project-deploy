@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Menu({open = false}) {
   return (
@@ -23,6 +24,11 @@ export default function Menu({open = false}) {
           <li data-text="News">
             <a className="text-decoration-none text-white" href="#newsArrayan">
               News
+            </a>
+          </li>
+          <li data-text="About Us">
+            <a className="text-decoration-none text-white" href="#newsArrayan">
+              About Us
             </a>
           </li>
         </ul>
