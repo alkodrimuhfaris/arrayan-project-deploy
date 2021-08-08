@@ -15,6 +15,8 @@ export default function carouselControler({
   const [lastAddedCar, setLastAdded] = React.useState(0);
   const [relativeChange, setRelativeChange] = React.useState(0);
   const [btnClicked, setBtnClicked] = React.useState('');
+  const [touchStart, setTouchStart] = React.useState(0);
+  const [touchEnd, setTouchEnd] = React.useState(0);
   const ref = React.useRef(null);
 
   const {width} = useWindowDimensions();
@@ -43,6 +45,38 @@ export default function carouselControler({
       return x;
     });
     setLastAdded(dotNumb);
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 150) {
+      // do your stuff here for left swipe
+      setBtnClicked(rightDir);
+      setRelativeChange(1);
+      setLastAdded((x) => {
+        x += 1;
+        x = x > carousel.length - 1 ? 0 : x;
+        return x;
+      });
+    }
+
+    if (touchStart - touchEnd < -150) {
+      // do your stuff here for right swipe
+      setBtnClicked(leftDir);
+      setRelativeChange(-1);
+      setLastAdded((x) => {
+        x -= 1;
+        x = x < 0 ? carousel.length - 1 : x;
+        return x;
+      });
+    }
   };
 
   React.useEffect(() => {
@@ -130,5 +164,8 @@ export default function carouselControler({
     transition: tr,
     sliderFunc,
     dotBtn,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
   };
 }

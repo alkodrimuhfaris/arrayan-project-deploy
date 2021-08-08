@@ -22,25 +22,25 @@ export default function Maps() {
       name: 'Grand Purwakarta City',
       address: 'Mulyamekar, Purwakarta West Java 41151',
       photo: gpc,
-      href: '',
+      href: '#',
     },
     {
       name: 'Grand Vista Cikarang',
       address: 'Jayamulya, Bekasi West Java 17330',
       photo: gvc,
-      href: '',
+      href: '#',
     },
     {
       name: 'Grand Cikarang City 2',
       address: 'Kedungwaringin, Bekasi West Java 17540',
       photo: gcc,
-      href: '',
+      href: '#',
     },
     {
       name: 'Vila Kencana CIkarang',
       address: 'Karangsentosa, Bekasi West Java 17530',
       photo: vkc,
-      href: '',
+      href: '#',
     },
   ];
 
@@ -56,6 +56,9 @@ export default function Maps() {
     carouselNum: carousel,
     transition,
     sliderFunc,
+    handleTouchMove,
+    handleTouchStart,
+    handleTouchEnd,
   } = carouselControler({
     carousel: locations,
     transition: carouselTransition,
@@ -129,6 +132,9 @@ export default function Maps() {
                 transform: `translate(-${widthMap * carousel}px)`,
                 transition,
               }}
+              onTouchMove={handleTouchMove}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
               className="maps-tracker position-relative h-100"
             >
               {locationsArray.map((val, idx) => {

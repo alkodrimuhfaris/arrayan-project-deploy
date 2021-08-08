@@ -30,6 +30,9 @@ export default function ProjectGallery() {
     transition,
     sliderFunc: sliderGallery,
     dotBtn: DotBtn,
+    handleTouchEnd,
+    handleTouchMove,
+    handleTouchStart,
   } = carouselControler({
     carousel: subTitleProjectReal,
     transition: carouselTransition,
@@ -107,6 +110,9 @@ export default function ProjectGallery() {
               width: '100%',
               height: `100%`,
             }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
             className="pg-carousel-tracker w-100 h-100 position-relative"
           >
             {subTitleProject.map((val, index) => {
