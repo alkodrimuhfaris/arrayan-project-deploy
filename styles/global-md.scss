@@ -456,6 +456,21 @@
     }
   }
 
+  // .content.md.projects {
+  //   & article.highlight {
+  //     color: $color;
+  //     & h1.title {
+  //       font-size: em;
+  //       font-weight: $font-bold;
+  //       margin: 0;
+  //     }
+  //     & p.subtitle {
+  //       font-size: 1.5em;
+  //       font-weight: $font-extrabold;
+  //     }
+  //   }
+  // }
+
   
   .content.md.news {
     & .list-news {

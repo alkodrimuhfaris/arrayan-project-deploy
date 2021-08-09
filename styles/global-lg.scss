@@ -345,5 +345,20 @@
         width: 60%;
       }
     }
-  }  
+  }
+
+  // .content.lg.projects {
+  //   & article.highlight {
+  //     color: $color;
+  //     & h1.title {
+  //       font-size: 0.9em;
+  //       font-weight: $font-bold;
+  //       margin: 0;
+  //     }
+  //     & p.subtitle {
+  //       font-size: 1.5em;
+  //       font-weight: $font-extrabold;
+  //     }
+  //   }
+  // }
 }

@@ -447,6 +447,21 @@
     }
   }
   
+  // .content.sm.projects {
+  //   & article.highlight {
+  //     color: $color;
+  //     & h1.title {
+  //       font-size: 0.7em;
+  //       font-weight: $font-bold;
+  //       margin: 0;
+  //     }
+  //     & p.subtitle {
+  //       font-size: 1em;
+  //       font-weight: $font-extrabold;
+  //     }
+  //   }
+  // }
+
   .content.sm.news {
     & .list-news {
       & .list-news-card {

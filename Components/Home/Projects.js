@@ -33,16 +33,6 @@ export default function Projects({projectList = []}) {
                   style={{
                     height: mdO || smO || xsO ? `${ref1Width}px` : 'auto',
                   }}
-                  // style={
-                  //   md || sm
-                  //     ? {
-                  //         width: `${ref2Width}px`,
-                  //         height: `${ref2Width}px`,
-                  //       }
-                  //     : {
-                  //       width:
-                  //     }
-                  // }
                 >
                   <div
                     className="project-img-container"
@@ -51,19 +41,6 @@ export default function Projects({projectList = []}) {
                       height: lgO || xlO ? `${ref2Width / 1.902}px` : '100%',
                       aspectRatio: 1.902,
                     }}
-                    // style={
-                    //   sm || md
-                    //     ? {
-                    //         width: '100%',
-                    //         height: '100%',
-                    //       }
-                    //     : lg || xl
-                    //     ? {
-                    //         width: `${ref1Width * 0.606}px`,
-                    //         height: `${(ref1Width * 0.606) / 1.902}px`,
-                    //       }
-                    //     : {}
-                    // }
                   >
                     <img
                       className={`img-main ${
@@ -76,21 +53,6 @@ export default function Projects({projectList = []}) {
                         height: lgO || xlO ? `${ref3Width / 2.087}px` : '100%',
                         aspectRatio: 2.087,
                       }}
-                      // style={
-                      //   sm || md
-                      //     ? {
-                      //         width: '100%',
-                      //         height: '100%',
-                      //       }
-                      //     : lg || xl
-                      //     ? {
-                      //         width: `${ref1Width * 0.606 * 0.9014}px`,
-                      //         height: `${
-                      //           (ref1Width * 0.606 * 0.9014) / 2.087
-                      //         }px`,
-                      //       }
-                      //     : {}
-                      // }
                     />
                     <img
                       className={`img-behind ${

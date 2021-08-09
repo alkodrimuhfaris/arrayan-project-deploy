@@ -1143,15 +1143,46 @@ p.desc-card-modal {
   }
   
   & article.highlight {
+    width: 98%;
+    height: 98%;
+    position: relative;
+    border-radius: 10px !important;
     color: $color;
+    transition: 0.2s ease;
+    & span img {
+      height: 100%;
+      width: 2em;
+      margin-right: 1em;
+      object-fit: contain !important;
+    }
     & h1.title {
       font-size: 1em;
       font-weight: $font-bold;
       margin: 0;
     }
     & p.subtitle {
-      font-size: 2.2em;
+      font-size: 1.8em;
       font-weight: $font-extrabold;
+    }
+    &::after {
+      content: '';
+      border-radius: 10px !important;
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      // background-color: red;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+      // opacity: 1;
+      transition: 0.2s ease-in-out;
+    }
+    &:hover {
+      transition: 0.2s ease;
+      transform: scale(1.02);
+      &::after {
+        opacity: 1;
+      }
     }
   }
 
@@ -1283,7 +1314,6 @@ p.desc-card-modal {
         }
       }
       & .subproject-img-tracker {
-        transition: 0.3s ease-in;
         & .subproject-img-carousel {
           & img {
             width: 100%;

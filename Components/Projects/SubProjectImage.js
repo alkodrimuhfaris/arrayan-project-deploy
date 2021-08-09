@@ -2,9 +2,9 @@ import React from 'react';
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
 import imageStorage from '../../helpers/imageStorage';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
+import carouselControler from '../../componentHelpers/carouselControler';
 
 export default function SubProjectImage({images = []}) {
-  const [carousel, setCarousel] = React.useState(0);
   const [ref1, wref1, href1] = getComponentWidth();
 
   const slider = [
@@ -12,14 +12,22 @@ export default function SubProjectImage({images = []}) {
     {class: 'right', Icon: AiOutlineArrowRight},
   ];
 
-  const sliderAct = (dir) => {
-    setCarousel((x) => {
-      x = dir === 'left' ? x - 1 : x + 1;
-      x = dir === 'left' && x < 0 ? images.length - 1 : x;
-      x = dir === 'right' && x > images.length - 1 ? 0 : x;
-      return x;
-    });
-  };
+  const {
+    carouselArray: imagesArray,
+    carouselNum: carousel,
+    transition,
+    sliderFunc: sliderAct,
+    dotBtn: DotBtn,
+    handleTouchEnd,
+    handleTouchMove,
+    handleTouchStart,
+  } = carouselControler({
+    carousel: images,
+    rightDir: slider[1].class,
+    leftDir: slider[0].class,
+    infinity: true,
+    loopNumber: 2,
+  });
 
   return (
     <div ref={ref1} className="subproject-img-cont">
@@ -39,10 +47,14 @@ export default function SubProjectImage({images = []}) {
       <div
         style={{
           transform: `translate(-${carousel * wref1}px, 0px)`,
+          transition,
         }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         className="subproject-img-tracker position-relative h-100 w-100"
       >
-        {images.map((val, idx) => {
+        {imagesArray.map((val, idx) => {
           const src = imageStorage(val);
           return (
             <div
@@ -59,20 +71,7 @@ export default function SubProjectImage({images = []}) {
         })}
       </div>
       <div className="dot-subproject justify-content-center align-items-center d-flex w-100">
-        {images.map((_, index) => {
-          const active = index === carousel ? 'active' : '';
-          return (
-            <button
-              key={index}
-              type="button"
-              name={`dot-subproject-${index}`}
-              className={`mx-1 ${active}`}
-              onClick={() => setCarousel(index)}
-            >
-              &nbsp;
-            </button>
-          );
-        })}
+        <DotBtn />
       </div>
     </div>
   );
