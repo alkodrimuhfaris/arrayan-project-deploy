@@ -1,7 +1,7 @@
 @import './globals.scss';
 
 // width tablet
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 992px) {
   body {
     & .parallax-left, & .parallax-right {
       display: none;

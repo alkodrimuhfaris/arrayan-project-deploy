@@ -6,6 +6,7 @@ const initialState = {
   testimonials: [],
   projects: [],
   message: '',
+  loading: true,
 };
 
 export default (state = initialState, action) => {
@@ -42,6 +43,12 @@ export default (state = initialState, action) => {
         testimonials,
         projects,
         message: 'Pengambilan data sukses!',
+      };
+    }
+    case 'SET_LOADING': {
+      return {
+        ...state,
+        loading: action.payload,
       };
     }
   }

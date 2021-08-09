@@ -37,7 +37,7 @@ export default function Navbar({
       >
         <div className="container h-100 d-flex align-items-center justify-content-between">
           <div className="navbar-left container d-flex w-83 position-relative">
-            <Link href="/">
+            <Link href={{pathname: '/'}}>
               <div
                 className="logo"
                 style={{

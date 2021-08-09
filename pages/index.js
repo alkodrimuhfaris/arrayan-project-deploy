@@ -22,8 +22,7 @@ export default function Home() {
 
   // useState initialisation
   const [open, setOpen] = React.useState(false);
-  const [loading, setLoading] = React.useState(true);
-  const [movingPart, setMovingPart] = React.useState(true);
+  const [movingPart, setMovingPart] = React.useState(false);
   const [openNotif, setOpenNotif] = React.useState(false);
   const [propNotif, setPropNotif] = React.useState({
     content: () => <p>Telah terjadi error, coba lagi</p>,
@@ -44,6 +43,7 @@ export default function Home() {
     projects,
     sliders,
     testimonials,
+    loading,
   } = useSelector((state) => state.homeData);
   const {
     pending: pendingNews,
@@ -60,15 +60,11 @@ export default function Home() {
     let movingPartID;
     if (successNews && successHome) {
       loadingID = setTimeout(() => {
-        setLoading(false);
+        dispatch(actions.homeActions.setLoading(false));
       }, loadingTime * 1000);
-      movingPartID = setTimeout(() => {
-        setMovingPart(false);
-      }, (loadingTime - 1) * 1000);
     }
     return () => {
       if (successNews && successHome) {
-        clearTimeout(movingPartID);
         clearTimeout(loadingID);
       }
     };

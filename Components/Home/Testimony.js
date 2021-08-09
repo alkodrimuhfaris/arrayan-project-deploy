@@ -15,7 +15,6 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
   const [testiContRat, setTestiContRat] = React.useState(3.516);
   const [bgImgContRat, setBgImgContRat] = React.useState(0.942);
   const [testiWrapperRat, setTestiWrapperRat] = React.useState(3.6475);
-  const [testiIndWidth, setTestiIndvWidth] = React.useState('');
   const [refTestiIndv, wTestiIndiv, hTestiIndiv] = getComponentWidth();
   const [refTestiWrapper, wRefTestiWrapper, hRefTestiWrapper] =
     getComponentWidth();
@@ -56,15 +55,6 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
     );
     setTestiWrapperRat(() =>
       xsO || smO ? 1.4 : mdO ? 1.8 : lgO ? 2.4 : xlO ? 3.6475 : 3.6475,
-    );
-    setTestiIndvWidth(() =>
-      xsO || smO || mdO
-        ? `calc(100%/1.5)`
-        : lgO
-        ? `${hRef2 * 1.453}px`
-        : xlO
-        ? `${hRef2 * 1.2}px`
-        : `${hRef2 * 1.453}px`,
     );
   }, [width]);
 
@@ -127,7 +117,12 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
           >
             <div
               style={{
-                width: md ? '100%' : `${2 * wTestiIndiv}px`,
+                width:
+                  xsO || smO || mdO
+                    ? '100%'
+                    : lgO || xlO
+                    ? `${2 * wTestiIndiv}px`
+                    : '840px',
               }}
               className="testi-inside-wrapper"
             >
@@ -171,7 +166,14 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
                       className="testi-individual h-100 position-absolute"
                       style={{
                         left,
-                        width: testiIndWidth,
+                        width:
+                          xsO || smO || mdO
+                            ? `calc(100%/1.5)`
+                            : lgO
+                            ? `${hRef2 * 1.453}px`
+                            : xlO
+                            ? `${hRef2 * 1.2}px`
+                            : `${hRef2 * 1.453}px`,
                         height: `${hRef2}px`,
                       }}
                     >

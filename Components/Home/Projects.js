@@ -43,7 +43,12 @@ export default function Projects({projectList = []}) {
                     className="project-img-container"
                     ref={idx === 0 ? ref2 : null}
                     style={{
-                      height: lgO || xlO ? `${ref2Width / 1.902}px` : '100%',
+                      height:
+                        xsO || smO || mdO
+                          ? '100%'
+                          : lgO || xlO
+                          ? `${ref2Width / 1.902}px`
+                          : '345px',
                       aspectRatio: 1.902,
                     }}
                   >
@@ -55,7 +60,12 @@ export default function Projects({projectList = []}) {
                       src={image}
                       alt={`project-${idx}`}
                       style={{
-                        height: lgO || xlO ? `${ref3Width / 2.087}px` : '100%',
+                        height:
+                          xsO || smO || mdO
+                            ? '100%'
+                            : lgO || xlO
+                            ? `${ref3Width / 2.087}px`
+                            : '421px',
                         aspectRatio: 2.087,
                       }}
                     />
