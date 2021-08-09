@@ -1,9 +1,10 @@
 import Head from 'next/head';
+import iconArrayan from '../Assets/Icons/arrayanIconColor.svg'
 
 function NewsHeader({
   title = 'Arrayan - About Us',
   description = 'Pusat Rumah Murah Subsidi Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Murah Bersubsidi Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang',
-  image = '',
+  image = iconArrayan,
 }) {
   return (
     <Head>
