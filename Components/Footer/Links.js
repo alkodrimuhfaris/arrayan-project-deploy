@@ -37,8 +37,8 @@ export default function Links({
               <h3 className="title">Our Link</h3>
               <ul className="list-footer">
                 {OurLink.map((val, idx) => (
-                  <Link href={val.href}>
-                    <li key={idx}>
+                  <Link key={idx} href={val.href}>
+                    <li>
                       <a className="footer-link">{val.desc}</a>
                     </li>
                   </Link>
