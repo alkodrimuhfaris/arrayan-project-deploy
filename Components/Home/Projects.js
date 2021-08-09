@@ -36,7 +36,7 @@ export default function Projects({projectList = []}) {
                         ? `${ref1Width}px`
                         : lgO || xlO
                         ? 'auto'
-                        : 'auto',
+                        : '421px',
                   }}
                 >
                   <div
@@ -65,7 +65,7 @@ export default function Projects({projectList = []}) {
                             ? '100%'
                             : lgO || xlO
                             ? `${ref3Width / 2.087}px`
-                            : '421px',
+                            : '345px',
                         aspectRatio: 2.087,
                       }}
                     />
