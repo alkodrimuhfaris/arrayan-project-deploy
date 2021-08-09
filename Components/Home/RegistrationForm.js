@@ -4,6 +4,7 @@ import ModalConfirm from '../ModalConfirm/ModalConfirm';
 import ModalLoading from '../ModalLoading/ModalLoading';
 import actions from '../../redux/actions/index';
 import Form from './Form';
+import scrollToElement from '../../componentHelpers/scrollToElement';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -25,6 +26,8 @@ export default function RegistrationForm() {
     icon: 'i',
     title: 'Warning!',
   });
+
+  const {refScroll} = scrollToElement({jumpElement: 'contact'});
 
   const {success, error, pending, message} = useSelector(
     (state) => state.postRegistration,
@@ -66,6 +69,7 @@ export default function RegistrationForm() {
 
   return (
     <section
+      ref={refScroll}
       id="formContact"
       className="mt-0 mt-lg-3 form-contact bg-ar-dark text-white"
     >

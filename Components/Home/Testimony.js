@@ -1,10 +1,12 @@
 import React from 'react';
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
+import {useRouter} from 'next/router';
 import Testi from './Testi';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
 import testiImg from '../../Assets/Photos/testiImg.jpg';
 import carouselControler from '../../componentHelpers/carouselControler';
+import scrollToElement from '../../componentHelpers/scrollToElement';
 
 export default function Testimony({testimonyList = [], testiTimer = 10}) {
   const {width, xsO, smO, md, mdO, lgO, xlO} = useWindowDimensions();
@@ -42,6 +44,8 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
     addLoop: 1,
   });
 
+  const {refScroll} = scrollToElement({jumpElement: 'testimony'});
+
   React.useEffect(() => {
     setTestiContRat(() =>
       xsO || smO ? 1.25 : mdO ? 1.4 : lgO ? 2.2 : xlO ? 3.516 : 3.516,
@@ -56,6 +60,7 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
 
   return (
     <section
+      ref={refScroll}
       id="testimony"
       className="testimony position-relative overflow-hidden text-center my-lg-5 mb-0"
     >

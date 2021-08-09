@@ -1,19 +1,18 @@
 import React from 'react';
-import {useRouter} from 'next/router';
 import Link from 'next/link';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
+import scrollToElement from '../../componentHelpers/scrollToElement';
 
 export default function Projects({projectList = []}) {
-  const {sm, md, lg, xl} = useWindowDimensions();
   const {xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
   const [ref1, ref1Width, hR1] = getComponentWidth();
   const [ref2, ref2Width, hR2] = getComponentWidth();
   const [ref3, ref3Width, hR3] = getComponentWidth();
-  const router = useRouter();
+  const {refScroll} = scrollToElement({jumpElement: 'projects'})
 
   return (
-    <section id="ourProject" className="projects my-5">
+    <section ref={refScroll} id="ourProject" className="projects my-5">
       <article className="container mb-4 text-ar-dark text-center">
         <h1 className="title">Our Project</h1>
       </article>

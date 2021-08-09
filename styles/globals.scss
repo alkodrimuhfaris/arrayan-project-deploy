@@ -159,7 +159,7 @@ nav {
   position: relative;
   transition: 0.4s ease-out;
   &.open {
-    transform: scale(0.92);
+    transform: scale(0.95);
     transition: transform 0.2s 0.41s ease-out;
   }
   &.loading {

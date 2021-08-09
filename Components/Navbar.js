@@ -1,4 +1,5 @@
 import React from 'react';
+import {useRouter} from 'next/router';
 import {FaHeadset} from 'react-icons/fa';
 import Link from 'next/link';
 import arrayanIcon from '../Assets/Icons/arrayanIcon.svg';
@@ -15,6 +16,15 @@ export default function Navbar({
 }) {
   const [ref1, w1, hRef1] = getComponentWidth();
   const [ref2, w2, hRef2] = getComponentWidth();
+  const router = useRouter();
+  const {jump} = router.query;
+
+  React.useEffect(() => {
+    if (jump !== '#') {
+      setOpen(false);
+    }
+  }, [jump]);
+
   return (
     <div ref={refNavBar} className="navbar-ar-cont">
       <div
@@ -64,18 +74,20 @@ export default function Navbar({
               open ? 'open' : ''
             }`}
           >
-            <button
-              onClick={() => {
-                setOpen((x) => !x);
-              }}
-              type="button"
-              name="open-menu-btn"
-              className={`menu-toggle ${
-                !visTopHeader || neverTransparentBG ? 'change-color' : ''
-              }`}
-            >
-              &nbsp;
-            </button>
+            <Link href={{query: {jump: '#'}}}>
+              <button
+                onClick={() => {
+                  setOpen((x) => !x);
+                }}
+                type="button"
+                name="open-menu-btn"
+                className={`menu-toggle ${
+                  !visTopHeader || neverTransparentBG ? 'change-color' : ''
+                }`}
+              >
+                &nbsp;
+              </button>
+            </Link>
           </div>
         </div>
       </div>
