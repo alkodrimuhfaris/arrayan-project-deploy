@@ -9,7 +9,7 @@ export default function Projects({projectList = []}) {
   const [ref1, ref1Width, hR1] = getComponentWidth();
   const [ref2, ref2Width, hR2] = getComponentWidth();
   const [ref3, ref3Width, hR3] = getComponentWidth();
-  const {refScroll} = scrollToElement({jumpElement: 'projects'})
+  const {refScroll} = scrollToElement({jumpElement: 'projects'});
 
   return (
     <section ref={refScroll} id="ourProject" className="projects my-5">
@@ -31,7 +31,12 @@ export default function Projects({projectList = []}) {
                   ref={idx === 0 ? ref1 : null}
                   className={`project-wrapper w-100 ${even ? 'even' : 'odd'}`}
                   style={{
-                    height: mdO || smO || xsO ? `${ref1Width}px` : 'auto',
+                    height:
+                      mdO || smO || xsO
+                        ? `${ref1Width}px`
+                        : lgO || xlO
+                        ? 'auto'
+                        : 'auto',
                   }}
                 >
                   <div

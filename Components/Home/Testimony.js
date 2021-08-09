@@ -15,6 +15,7 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
   const [testiContRat, setTestiContRat] = React.useState(3.516);
   const [bgImgContRat, setBgImgContRat] = React.useState(0.942);
   const [testiWrapperRat, setTestiWrapperRat] = React.useState(3.6475);
+  const [testiIndWidth, setTestiIndvWidth] = React.useState('');
   const [refTestiIndv, wTestiIndiv, hTestiIndiv] = getComponentWidth();
   const [refTestiWrapper, wRefTestiWrapper, hRefTestiWrapper] =
     getComponentWidth();
@@ -56,6 +57,15 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
     setTestiWrapperRat(() =>
       xsO || smO ? 1.4 : mdO ? 1.8 : lgO ? 2.4 : xlO ? 3.6475 : 3.6475,
     );
+    setTestiIndvWidth(() =>
+      xsO || smO || mdO
+        ? `calc(100%/1.5)`
+        : lgO
+        ? `${hRef2 * 1.453}px`
+        : xlO
+        ? `${hRef2 * 1.2}px`
+        : `${hRef2 * 1.453}px`,
+    );
   }, [width]);
 
   return (
@@ -75,8 +85,8 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
         <section
           style={{
             height: `${wRefTesti / testiContRat}px`,
-            maxHeight: '500px',
-            aspectRatio: xsO || smO ? 1.25 : mdO ? 1.4 : lgO ? 2.2 : 3.516,
+            maxHeight: '400px',
+            aspectRatio: testiContRat,
           }}
           className="testi-container container-lg position-relative"
           ref={refTesti}
@@ -85,6 +95,7 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
             style={{
               height: `100%`,
               width: md ? `100%` : `${hRefTesti * bgImgContRat}px`,
+              minWidth: '350px',
             }}
             className="bg-img-container position-relative"
           >
@@ -109,6 +120,7 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
               width:
                 xsO || smO ? `100%` : mdO ? `100%` : lgO || xlO ? `83%` : `83%`,
               height: `${wRefTesti / testiWrapperRat}px`,
+              maxHeight: '350px',
             }}
             ref={refTestiWrapper}
             className="testi-wrapper"
@@ -149,25 +161,17 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
                 ref={ref2}
               >
                 {testimonyListArr.map((val, idx) => {
-                  const firstRef = idx === 0 ? refTestiIndv : null;
                   const left = md
                     ? `${wTestiIndiv / 4 + idx * wTestiIndiv}px`
                     : `${idx * wTestiIndiv}px`;
                   return (
                     <div
                       key={idx}
-                      ref={firstRef}
+                      ref={idx === 0 ? refTestiIndv : null}
                       className="testi-individual h-100 position-absolute"
                       style={{
                         left,
-                        width:
-                          xsO || smO || mdO
-                            ? `calc(100%/1.5)`
-                            : lgO
-                            ? `${hRef2 * 1.453}px`
-                            : xlO
-                            ? `${hRef2 * 1.2}px`
-                            : `${hRef2 * 1.453}px`,
+                        width: testiIndWidth,
                         height: `${hRef2}px`,
                       }}
                     >
