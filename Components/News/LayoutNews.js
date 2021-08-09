@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import {useSelector} from 'react-redux';
 
 export default function LayoutNews({
   slug = [],
@@ -7,25 +8,23 @@ export default function LayoutNews({
   footer = () => null,
   ...props
 }) {
-  const [popularArticle, setPopularArt] = React.useState([
-    {slug: '#', title: 'Peer-to-Peer Lending vs Pinjaman Bank'},
-    {slug: '#', title: 'Pembiayaan Piutang dan Anjak Piutang, Apa Bedanya?'},
-    {slug: '#', title: 'Manajemen Cash Flow dalam 10 Menit'},
-    {
-      slug: '#',
-      title: 'Bagaimana, sih, Cara Kerja Peminjaman di PAPITUPI Syariah?',
-    },
-    {slug: '#', title: 'Perbedaan Peer-to-Peer Lending dan Crowdfunding'},
-  ]);
-  const [tags, setTags] = React.useState([
-    'Papitupi Syariah',
-    'Literasi Keuangan',
-    'P2P Lending',
-    'Fintech',
-    'Bisnis',
-    'Mengatur Keuangan',
-    'Tips',
-  ]);
+  const [popularArticle, setPopularArt] = React.useState([]);
+  const {news} = useSelector((state) => state.newsData);
+  const {tags} = useSelector((state) => state.dataFromGetTags);
+
+  React.useEffect(() => {
+    setPopularArt((x) => {
+      x = [];
+      if (news.length > 5) {
+        for (let i = 0; i < 5; i++) {
+          x.push(news[i]);
+        }
+      } else {
+        x = news.map((y) => y);
+      }
+      return x;
+    });
+  }, [news]);
 
   return (
     <div className="my-5 container-md">
@@ -56,7 +55,12 @@ export default function LayoutNews({
                     const {slug: linkSlug, title} = val;
                     return (
                       <li key={idx}>
-                        <Link href={linkSlug}>
+                        <Link
+                          href={{
+                            pathname: '/news/read/[slug]',
+                            query: {slug: linkSlug},
+                          }}
+                        >
                           <a className="text-ar-dark">{title}</a>
                         </Link>
                       </li>
@@ -76,7 +80,7 @@ export default function LayoutNews({
                       key={idx}
                       href={{
                         pathname: '/news',
-                        query: {tags: val},
+                        query: {tag: val},
                       }}
                     >
                       <a className="borders my-1 mx-1">

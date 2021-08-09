@@ -771,11 +771,11 @@ ul.menu {
             & p {
               color: #707070;
             }
-            & a.footer-link {
+            & .footer-link {
               color: #707070;
-              text-decoration: none;
+              text-decoration: none !important;
               &:hover {
-                text-decoration: underline;
+                text-decoration: underline !important;
                 cursor: pointer;
               }
             }
@@ -1377,6 +1377,15 @@ p.desc-card-modal {
 }
 
 .content.news {
+  & .tag-title {
+    & h5 {
+      color: $color;
+      font-weight: $font-light;
+      & span {
+        font-weight: $font-extrabold;
+      }
+    }
+  }
   & .title-news-main {
     & .title {
       margin-bottom: 50px;

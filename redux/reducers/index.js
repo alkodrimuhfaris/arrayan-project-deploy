@@ -2,12 +2,9 @@ import {combineReducers} from 'redux';
 
 // news
 import newsData from './news/newsData';
-
-// news
 import newsDataMain from './news/news';
-
-// read news
 import readNews from './news/readNews';
+import dataFromGetTags from './news/tags';
 
 // registrations
 import postRegistration from './registrations/postRegistration';
@@ -21,12 +18,9 @@ import projectData from './project/projectSlug';
 export default combineReducers({
   // news
   newsData,
-
-  // news main
   newsDataMain,
-
-  // read news
   readNews,
+  dataFromGetTags,
 
   // registration
   postRegistration,

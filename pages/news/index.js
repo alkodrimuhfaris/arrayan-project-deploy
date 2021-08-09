@@ -12,6 +12,7 @@ export default function index() {
   const router = useRouter();
   const dispatch = useDispatch();
   const {page = 1} = router.query;
+  const {tag} = router.query;
   const {meta, success, pending} = useSelector((state) => state.newsDataMain);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [lastPage, setLastPage] = React.useState(1);
@@ -21,11 +22,15 @@ export default function index() {
     if (!page) {
       // get page 1
       dispatch(actions.newsActions.getNewsMain({page: 1}));
-    } else {
+    } else if (!tag && page) {
       // get page
       dispatch(actions.newsActions.getNewsMain({page}));
+    } else if (tag && !page) {
+      dispatch(actions.newsActions.getNewsMain({page: 1, tag}));
+    } else {
+      dispatch(actions.newsActions.getNewsMain({page, tag}));
     }
-  }, [page]);
+  }, [page, tag]);
 
   React.useEffect(() => {
     if (success && Object.keys(meta).length) {
@@ -46,6 +51,17 @@ export default function index() {
           </div>
         )}
       >
+        {!tag ? null : (
+          <div className="w-100 mb-3 tag-title">
+            <div className="row">
+              <div className="col-12">
+                <h5>
+                  Result for tag: <span>{tag}</span>
+                </h5>
+              </div>
+            </div>
+          </div>
+        )}
         <ListNews page={page} />
       </LayoutNews>
     </Layout>

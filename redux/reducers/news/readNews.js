@@ -11,6 +11,7 @@ const initialState = {
   date: '',
   href: '',
   message: '',
+  tags: [],
 };
 
 export default (state = initialState, action) => {
@@ -46,6 +47,7 @@ export default (state = initialState, action) => {
         image,
         date,
         href,
+        tags,
       } = action.payload.data.data;
       return {
         ...state,
@@ -60,6 +62,7 @@ export default (state = initialState, action) => {
         image,
         date,
         href,
+        tags,
         message: 'Pengambilan data sukses!',
       };
     }

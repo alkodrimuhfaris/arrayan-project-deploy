@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
+import {useSelector} from 'react-redux';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
 export default function ReadNewsTag() {
-  const [tags, setTags] = React.useState(['Arrayan', 'Harga Properti']);
   const {sm} = useWindowDimensions();
+  const {tags} = useSelector((state) => state.readNews);
 
   return (
     <div className={`tags-container ${sm ? 'container-lg' : ''}`}>
@@ -17,7 +18,7 @@ export default function ReadNewsTag() {
             key={idx}
             href={{
               pathname: '/news',
-              query: {tags: val},
+              query: {tag: val},
             }}
           >
             <a className="borders my-1 mx-1">

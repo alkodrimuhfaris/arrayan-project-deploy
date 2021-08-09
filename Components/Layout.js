@@ -50,11 +50,46 @@ export default function Layout({
   ];
 
   const OurLink = [
-    {desc: 'Home', link: '#'},
-    {desc: 'About', link: '#'},
-    {desc: 'Our Project', link: '#'},
-    {desc: 'Investor', link: '#'},
-    {desc: 'News', link: '#'},
+    {
+      desc: 'Home',
+      href: {
+        pathname: '/',
+      },
+    },
+    {
+      desc: 'About',
+      href: {
+        pathname: '/about-us',
+        query: {jump: 'about-us'},
+      },
+    },
+    {
+      desc: 'Our Project',
+      href: {
+        pathname: '/',
+        query: {jump: 'projects'},
+      },
+    },
+    {
+      desc: 'Testimony',
+      href: {
+        pathname: '/',
+        query: {jump: 'testimony'},
+      },
+    },
+    {
+      desc: 'Contact',
+      href: {
+        query: {jump: 'contact'},
+      },
+    },
+    {
+      desc: 'News',
+      href: {
+        pathname: '/news',
+        query: {jump: 'news'},
+      },
+    },
   ];
 
   const HeadOffice = [

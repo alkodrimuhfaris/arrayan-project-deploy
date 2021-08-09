@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import arrayanIconColor from '../../Assets/Icons/arrayanIconColor.svg';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
@@ -36,11 +37,11 @@ export default function Links({
               <h3 className="title">Our Link</h3>
               <ul className="list-footer">
                 {OurLink.map((val, idx) => (
-                  <li key={idx}>
-                    <a className="footer-link" href={val.link}>
-                      {val.desc}
-                    </a>
-                  </li>
+                  <Link href={val.href}>
+                    <li key={idx}>
+                      <span className="footer-link">{val.desc}</span>
+                    </li>
+                  </Link>
                 ))}
               </ul>
             </section>
@@ -52,9 +53,7 @@ export default function Links({
               <ul className="list-footer">
                 {HeadOffice.map((val, idx) => (
                   <li key={idx}>
-                    <a className="footer-link" href={val.link}>
-                      {val.desc}
-                    </a>
+                    <span className="footer-link">{val.desc}</span>
                   </li>
                 ))}
               </ul>
@@ -65,9 +64,7 @@ export default function Links({
               <ul className="list-footer">
                 {ProjectOffice.map((val, idx) => (
                   <li key={idx}>
-                    <a className="footer-link" href={val.link}>
-                      {val.desc}
-                    </a>
+                    <span className="footer-link">{val.desc}</span>
                   </li>
                 ))}
               </ul>
