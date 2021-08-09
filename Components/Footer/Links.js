@@ -39,7 +39,7 @@ export default function Links({
                 {OurLink.map((val, idx) => (
                   <Link href={val.href}>
                     <li key={idx}>
-                      <span className="footer-link">{val.desc}</span>
+                      <a className="footer-link">{val.desc}</a>
                     </li>
                   </Link>
                 ))}
@@ -78,9 +78,9 @@ export default function Links({
               {socialMedia.map((val, idx) => {
                 const {Logo} = val;
                 return (
-                  <a key={idx} href={val.link} className="social-media">
+                  <span key={idx} className="social-media">
                     <Logo />
-                  </a>
+                  </span>
                 );
               })}
             </div>
