@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import actions from '../../redux/actions';
 
 export default function LayoutNews({
   slug = [],
@@ -8,23 +9,31 @@ export default function LayoutNews({
   footer = () => null,
   ...props
 }) {
+  const dispatch = useDispatch();
   const [popularArticle, setPopularArt] = React.useState([]);
-  const {news} = useSelector((state) => state.newsData);
+  const {news} = useSelector((state) => state.dataFromGetPopularNews);
   const {tags} = useSelector((state) => state.dataFromGetTags);
 
   React.useEffect(() => {
-    setPopularArt((x) => {
-      x = [];
-      if (news.length > 5) {
-        for (let i = 0; i < 5; i++) {
-          x.push(news[i]);
+    if (news.length) {
+      setPopularArt((x) => {
+        x = [];
+        if (news.length > 5) {
+          for (let i = 0; i < 5; i++) {
+            x.push(news[i]);
+          }
+        } else {
+          x = news.map((y) => y);
         }
-      } else {
-        x = news.map((y) => y);
-      }
-      return x;
-    });
+        return x;
+      });
+    }
   }, [news]);
+
+  React.useEffect(() => {
+    dispatch(actions.newsActions.getPopularNews());
+    dispatch(actions.newsActions.getTags());
+  }, []);
 
   return (
     <div className="my-5 container-md">
@@ -80,11 +89,11 @@ export default function LayoutNews({
                       key={idx}
                       href={{
                         pathname: '/news',
-                        query: {tag: val},
+                        query: {tag: val.name},
                       }}
                     >
                       <a className="borders my-1 mx-1">
-                        <div>{val}</div>
+                        <div>{val.name}</div>
                       </a>
                     </Link>
                   ))}

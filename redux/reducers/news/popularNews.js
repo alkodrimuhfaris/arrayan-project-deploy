@@ -1,8 +1,10 @@
 const initialState = {
   success: false,
-  pending: false,
   error: false,
-  tags: [],
+  pending: false,
+  news: [],
+  links: {},
+  meta: {},
   message: '',
 };
 
@@ -11,7 +13,7 @@ export default (state = initialState, action) => {
     default: {
       return state;
     }
-    case 'GET_TAGS_PENDING': {
+    case 'GET_NEWS_POPULAR_PENDING': {
       return {
         ...state,
         success: false,
@@ -20,23 +22,25 @@ export default (state = initialState, action) => {
         message: 'Mendapatkan data...',
       };
     }
-    case 'GET_TAGS_REJECTED': {
+    case 'GET_NEWS_POPULAR_REJECTED': {
       return {
         ...state,
         success: false,
-        error: true,
+        error: false,
         pending: false,
-        message: 'Mendapatkan data...',
+        message: 'Pengambilan data gagal, silahkan muat ulang halaman',
       };
     }
-    case 'GET_TAGS_FULFILLED': {
+    case 'GET_NEWS_POPULAR_FULFILLED': {
       return {
         ...state,
         success: true,
         error: false,
         pending: false,
-        tags: action.payload.data.data,
-        message: 'Mendapatkan data...',
+        news: action.payload.data.data,
+        links: action.payload.data.links,
+        meta: action.payload.data.meta,
+        message: 'Pengambilan data sukses!',
       };
     }
   }

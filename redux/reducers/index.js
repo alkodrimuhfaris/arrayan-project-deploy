@@ -5,6 +5,7 @@ import newsData from './news/newsData';
 import newsDataMain from './news/news';
 import readNews from './news/readNews';
 import dataFromGetTags from './news/tags';
+import dataFromGetPopularNews from './news/popularNews';
 
 // registrations
 import postRegistration from './registrations/postRegistration';
@@ -21,6 +22,7 @@ export default combineReducers({
   newsDataMain,
   readNews,
   dataFromGetTags,
+  dataFromGetPopularNews,
 
   // registration
   postRegistration,

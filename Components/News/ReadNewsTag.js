@@ -22,7 +22,7 @@ export default function ReadNewsTag() {
             }}
           >
             <a className="borders my-1 mx-1">
-              <div>{val}</div>
+              <div>{val.name}</div>
             </a>
           </Link>
         ))}

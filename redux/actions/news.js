@@ -15,8 +15,12 @@ export default {
     type: 'GET_NEWS_SLUG',
     payload: services().get(`/article/${slug}`),
   }),
+  getPopularNews: () => ({
+    type: 'GET_NEWS_POPULAR',
+    payload: services().get(`/article/popular`),
+  }),
   getTags: () => ({
     type: 'GET_TAGS',
-    payload: services().get(`/article/tags`),
+    payload: services().get(`/tag`),
   }),
 };
