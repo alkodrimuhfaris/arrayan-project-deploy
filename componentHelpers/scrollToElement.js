@@ -43,7 +43,6 @@ export default function scrollToElement({jumpElement = ''}) {
     if (pathname === '/' && jumpElement === 'projects') {
       if (pendingNews || pendingHome) {
         setLoadTime(4000);
-        console.log('set time');
       }
     }
   }, [successNews, successHome]);
@@ -59,8 +58,6 @@ export default function scrollToElement({jumpElement = ''}) {
             window.pageYOffset +
             yOffset;
           window.scrollTo({top: y, behavior: 'smooth'});
-          console.log('jump');
-          console.log(pathname);
           setLoadTime(400);
         }, loadTime);
       }
