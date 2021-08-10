@@ -58,7 +58,7 @@ export default function Projects() {
                         xsO || smO || mdO
                           ? '100%'
                           : lgO || xlO
-                          ? `${ref2Width / 1.902}px`
+                          ? `${ref2Width ? ref2Width / 1.902 : 345}px`
                           : '345px',
                       aspectRatio: 1.902,
                     }}
@@ -75,7 +75,7 @@ export default function Projects() {
                           xsO || smO || mdO
                             ? '100%'
                             : lgO || xlO
-                            ? `${ref3Width / 2.087}px`
+                            ? `${ref3Width ? ref3Width / 2.087 : 345}px`
                             : '345px',
                         maxHeight:
                           xsO || smO
