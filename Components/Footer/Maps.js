@@ -22,25 +22,25 @@ export default function Maps() {
       name: 'Grand Purwakarta City',
       address: 'Mulyamekar, Purwakarta West Java 41151',
       photo: gpc,
-      href: '#',
+      href: 'https://goo.gl/maps/k3HZNLoEhubFrTMW7',
     },
     {
       name: 'Grand Vista Cikarang',
       address: 'Jayamulya, Bekasi West Java 17330',
       photo: gvc,
-      href: '#',
+      href: 'https://goo.gl/maps/a86ofoFCcbdxSr6T7',
     },
     {
       name: 'Grand Cikarang City 2',
       address: 'Kedungwaringin, Bekasi West Java 17540',
       photo: gcc,
-      href: '#',
+      href: 'https://goo.gl/maps/1gfXKwiNZnokRS2t8',
     },
     {
-      name: 'Vila Kencana CIkarang',
+      name: 'Vila Kencana Cikarang',
       address: 'Karangsentosa, Bekasi West Java 17530',
       photo: vkc,
-      href: '#',
+      href: 'https://goo.gl/maps/6ptMeD16vr1WEdpT9',
     },
   ];
 
