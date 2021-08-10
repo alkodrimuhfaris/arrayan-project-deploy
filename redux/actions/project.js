@@ -6,4 +6,8 @@ export default {
     type: 'GET_PROJECT_SLUG',
     payload: services().get(`/project/${slug}`),
   }),
+  setAspectRatio: (aspectRatio) => ({
+    type: 'SET_ASPECT_RATIO',
+    payload: aspectRatio,
+  }),
 };

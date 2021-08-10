@@ -1136,6 +1136,26 @@ p.desc-card-modal {
       height: 100%;
       object-fit: cover;
     }
+    & .go-back-projects {
+      z-index: 8002;
+      position: fixed;
+      display: inline-block;
+      text-decoration: none !important;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: $color;
+      font-weight: $font-light;
+      padding: 0.25em 0.5em;
+      top: 6em;
+      left: 0;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      transition: 0.1s ease-in;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+        transition: 0.1s ease-in;
+        font-weight: $font-medium;
+      }
+    }
   }
   
   & article.highlight {

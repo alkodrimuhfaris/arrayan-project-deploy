@@ -16,6 +16,9 @@ const initialState = {
   subProjects: [],
   message: '',
   banner: '',
+
+  // aspect ratio
+  aspectRatio: 3.2,
 };
 
 export default (state = initialState, action) => {
@@ -68,6 +71,12 @@ export default (state = initialState, action) => {
         subProjects,
         banner,
         message: 'Pengambilan data sukses!',
+      };
+    }
+    case 'SET_ASPECT_RATIO': {
+      return {
+        ...state,
+        aspectRatio: action.payload,
       };
     }
   }
