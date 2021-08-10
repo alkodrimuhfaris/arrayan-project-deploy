@@ -1,15 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
+import {useSelector} from 'react-redux';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 import scrollToElement from '../../componentHelpers/scrollToElement';
 
-export default function Projects({projectList = []}) {
+export default function Projects() {
   const {xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
   const [ref1, ref1Width, hR1] = getComponentWidth();
   const [ref2, ref2Width, hR2] = getComponentWidth();
   const [ref3, ref3Width, hR3] = getComponentWidth();
   const {refScroll} = scrollToElement({jumpElement: 'projects'});
+
+  const {projects: projectList} = useSelector((state) => state.homeData);
 
   return (
     <section ref={refScroll} id="ourProject" className="projects my-5">
@@ -32,10 +35,18 @@ export default function Projects({projectList = []}) {
                   className={`project-wrapper w-100 ${even ? 'even' : 'odd'}`}
                   style={{
                     height:
-                      mdO || smO || xsO
+                      xsO || smO || mdO
                         ? `${ref1Width}px`
                         : lgO || xlO
                         ? 'auto'
+                        : '421px',
+                    maxHeight:
+                      xsO || smO
+                        ? '560px'
+                        : mdO
+                        ? '360px'
+                        : lgO || xlO
+                        ? '421px'
                         : '421px',
                   }}
                 >
@@ -66,6 +77,16 @@ export default function Projects({projectList = []}) {
                             : lgO || xlO
                             ? `${ref3Width / 2.087}px`
                             : '345px',
+                        maxHeight:
+                          xsO || smO
+                            ? '560px'
+                            : mdO
+                            ? '360px'
+                            : lgO
+                            ? '298px'
+                            : xlO
+                            ? '345px'
+                            : '345px',
                         aspectRatio: 2.087,
                       }}
                     />
@@ -74,6 +95,16 @@ export default function Projects({projectList = []}) {
                         even ? 'img-behind-even' : 'img-behind-odd'
                       }`}
                       src={image}
+                      style={{
+                        maxHeight:
+                          xsO || smO
+                            ? '560px'
+                            : mdO
+                            ? '360px'
+                            : lgO || xlO
+                            ? '421px'
+                            : '421px',
+                      }}
                       alt={`project-${idx}`}
                     />
                   </div>

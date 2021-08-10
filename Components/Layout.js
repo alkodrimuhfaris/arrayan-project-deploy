@@ -18,7 +18,6 @@ export default function Layout({
   className = 'home',
   visTopHeader = false,
   loading = false,
-  movingPart = false,
   ...props
 }) {
   const [screenSize, setScreenSize] = React.useState('');
@@ -118,7 +117,7 @@ export default function Layout({
       ref={refHomeCont}
       className="position-relative w-100 page-full-cont overflow-hidden"
     >
-      <LoadingScreen movingPart={movingPart} loading={loading} />
+      <LoadingScreen loading={loading} />
       {/* left parallax */}
       <ParallaxLeft
         offsetY={offsetY}

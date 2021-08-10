@@ -38,7 +38,7 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
     transition: '0.3s ease',
     leftDir: testiSlider[0].class,
     rightDir: testiSlider[1].class,
-    timer: testiTimer,
+    // timer: testiTimer,
     infinity: true,
     loopNumber: 2,
     addLoop: 1,
@@ -56,7 +56,7 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
     setTestiWrapperRat(() =>
       xsO || smO ? 1.4 : mdO ? 1.8 : lgO ? 2.4 : xlO ? 3.6475 : 3.6475,
     );
-  }, [width]);
+  }, [width, xsO, smO, md, mdO, lgO, xlO]);
 
   return (
     <section
@@ -65,7 +65,7 @@ export default function Testimony({testimonyList = [], testiTimer = 10}) {
       className="testimony position-relative overflow-hidden text-center my-lg-5 mb-0"
     >
       <section className="container">
-        <h1 className="title mx-auto text-ar-dark">Testimoni Arrayan Group</h1>
+        <h1 className="title mx-auto text-ar-dark">{width} Testimoni Arrayan Group</h1>
         <p className="subtitle mx-auto text-grey">
           Yakin belum memiliki property dari Arrayan Group? Yul kita tanya apa
           pendapat orang yang sudah memiliki property di Arrayan Group.

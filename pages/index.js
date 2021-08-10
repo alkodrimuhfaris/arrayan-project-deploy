@@ -22,7 +22,6 @@ export default function Home() {
 
   // useState initialisation
   const [open, setOpen] = React.useState(false);
-  const [movingPart, setMovingPart] = React.useState(false);
   const [openNotif, setOpenNotif] = React.useState(false);
   const [propNotif, setPropNotif] = React.useState({
     content: () => <p>Telah terjadi error, coba lagi</p>,
@@ -40,7 +39,6 @@ export default function Home() {
     pending: pendingHome,
     error: errorHome,
     success: successHome,
-    projects,
     sliders,
     testimonials,
     loading,
@@ -57,7 +55,6 @@ export default function Home() {
 
   React.useEffect(() => {
     let loadingID;
-    let movingPartID;
     if (successNews && successHome) {
       loadingID = setTimeout(() => {
         dispatch(actions.homeActions.setLoading(false));
@@ -82,7 +79,6 @@ export default function Home() {
       neverTransparentNavbar={false}
       visTopHeader={visTopHeader}
       loading={loading}
-      movingPart={movingPart}
     >
       <HomeHeader />
       <ModalConfirm
@@ -102,7 +98,7 @@ export default function Home() {
       <Highlight />
 
       {/* project */}
-      <Projects projectList={projects} />
+      <Projects />
 
       {/* testimony */}
       <Testimony testimonyList={testimonials} testiTimer={testiTimer} />

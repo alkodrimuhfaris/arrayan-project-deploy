@@ -313,12 +313,12 @@
                 margin-bottom: 1em ;
                 overflow: hidden;
                 position: relative;
-                height: calc(1.2em * 8); /* exactly three lines */
+                height: calc(1.2em * 10); /* exactly three lines */
                 line-height: 1.2em;
                 color: white;
                 font-weight: $font-medium;
                 display: -webkit-box;
-                -webkit-line-clamp: 5;
+                -webkit-line-clamp: 10;
                 -webkit-box-orient: vertical;  
               }
               & .project-btn {
