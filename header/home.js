@@ -4,17 +4,19 @@ function HomeHeader() {
   return (
     <Head>
       {/* <!-- Primary Meta Tags --> */}
-      <title>
-        Arrayan Group | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota
-      </title>
+      <title>Arrayan Group | Pusat Hunian Terbaik Di Daerah Ibukota</title>
       <meta
         property="og:title"
-        content="Arrayan Group | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang"
+        content="Arrayan Group | Pusat Hunian Terbaik Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang"
         key="title"
       />
       <meta
         name="description"
-        content="Pusat Rumah Murah Subsidi Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Murah Bersubsidi Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang"
+        content="Pusat Hunian Terbaik Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang"
+      />
+      <meta
+        name="keywords"
+        content="Rumah,Properti,Hunian,Cikarang,Ibukota,36x36,Carport"
       />
 
       {/* <!-- Open Graph / Facebook --> */}
@@ -22,11 +24,11 @@ function HomeHeader() {
       <meta property="og:url" content={process.env.NEXT_PUBLIC_URL} />
       <meta
         property="og:title"
-        content="Arrayan Group | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota"
+        content="Arrayan Group | Pusat Hunian Terbaik Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang"
       />
       <meta
         property="og:description"
-        content="Pusat Rumah Murah Subsidi Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Murah Bersubsidi Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang"
+        content="Pusat Hunian Terbaik Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang"
       />
       <meta
         property="og:image"
@@ -38,11 +40,11 @@ function HomeHeader() {
       <meta property="twitter:url" content={process.env.NEXT_PUBLIC_URL} />
       <meta
         property="twitter:title"
-        content="Arrayan Group | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota"
+        content="Arrayan Group | Pusat Hunian Terbaik Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang"
       />
       <meta
         property="twitter:description"
-        content="Pusat Rumah Murah Subsidi Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Murah Bersubsidi Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang"
+        content="Pusat Hunian Terbaik Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang"
       />
       <meta
         property="twitter:image"
