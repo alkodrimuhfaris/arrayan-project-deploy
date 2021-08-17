@@ -16,6 +16,7 @@ const initialState = {
   subProjects: [],
   message: '',
   banner: '',
+  projectHighlight: [],
 
   // aspect ratio
   aspectRatio: 3.2,
@@ -57,6 +58,7 @@ export default (state = initialState, action) => {
       } = action.payload.data.data;
       const subTitleProject = projectSlug.subImage(subData);
       const subProjects = projectSlug.subProjects(sub_projects);
+      const projectHighlight = projectSlug.projectHighlight(subData);
       return {
         ...state,
         success: true,
@@ -70,6 +72,7 @@ export default (state = initialState, action) => {
         subTitleProject,
         subProjects,
         banner,
+        projectHighlight,
         message: 'Pengambilan data sukses!',
       };
     }

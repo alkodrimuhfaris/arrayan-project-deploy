@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 function ProjectHeader({
   title = '',
-  description = 'Pusat Rumah Murah Subsidi Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Murah Bersubsidi Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang',
+  description = 'Pusat Hunian Terbaik Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang',
   image = '',
 }) {
   return (
@@ -14,7 +14,7 @@ function ProjectHeader({
       </title>
       <meta
         property="og:title"
-        content={`${title} - Arrayan Projects | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
+        content={`${title} - Arrayan Projects | Pusat Hunian Terbaik Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
         key="title"
       />
       <meta name="description" content={description} />
@@ -24,7 +24,7 @@ function ProjectHeader({
       <meta property="og:url" content={process.env.NEXT_PUBLIC_URL} />
       <meta
         property="og:title"
-        content={`${title} - Arrayan Projects | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
+        content={`${title} - Arrayan Projects | Pusat Hunian Terbaik Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
       />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
@@ -34,7 +34,7 @@ function ProjectHeader({
       <meta property="twitter:url" content={process.env.NEXT_PUBLIC_URL} />
       <meta
         property="twitter:title"
-        content={`${title} - Arrayan Projects | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
+        content={`${title} - Arrayan Projects | Pusat Hunian Terbaik Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
       />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={image} />

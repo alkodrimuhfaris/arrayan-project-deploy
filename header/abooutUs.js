@@ -3,7 +3,7 @@ import iconArrayan from '../Assets/Icons/arrayanIconColor.svg'
 
 function NewsHeader({
   title = 'Arrayan - About Us',
-  description = 'Pusat Rumah Murah Subsidi Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Murah Bersubsidi Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang',
+  description = 'Pusat Hunian Terbaik Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang',
   image = iconArrayan,
 }) {
   return (
@@ -12,7 +12,7 @@ function NewsHeader({
       <title>{title} | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota</title>
       <meta
         property="og:title"
-        content={`${title} | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
+        content={`${title} | Pusat Hunian Terbaik Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
         key="title"
       />
       <meta name="description" content={description} />
@@ -22,7 +22,7 @@ function NewsHeader({
       <meta property="og:url" content={process.env.NEXT_PUBLIC_URL} />
       <meta
         property="og:title"
-        content={`${title} | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
+        content={`${title} | Pusat Hunian Terbaik Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
       />
       <meta property="og:description" content={description} />
       {image === '' ? null : <meta property="og:image" content={image} />}
@@ -32,7 +32,7 @@ function NewsHeader({
       <meta property="twitter:url" content={process.env.NEXT_PUBLIC_URL} />
       <meta
         property="twitter:title"
-        content={`${title} | Pusat Rumah Murah Bersubsidi Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
+        content={`${title} | Pusat Hunian Terbaik Di Daerah Ibukota, Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang`}
       />
       <meta property="twitter:description" content={description} />
       {image === '' ? null : <meta property="twitter:image" content={image} />}

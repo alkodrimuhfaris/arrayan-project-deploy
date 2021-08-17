@@ -90,6 +90,7 @@ export default function carouselControler({
           if (!firstInterval.current) {
             firstInterval.current = true;
           } else {
+            setBtnClicked(rightDir);
             setRelativeChange(+1);
             setLastAdded((x) => {
               x += 1;

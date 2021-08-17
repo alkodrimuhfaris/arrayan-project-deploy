@@ -42,6 +42,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'jsx-a11y/anchor-is-valid': 'warn',
     'no-nested-ternary': 'off',
+    'prefer-destructuring': 'off',
     semi: 'warn',
   },
 };

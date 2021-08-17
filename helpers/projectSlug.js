@@ -39,4 +39,37 @@ export default {
       });
       return {id, title, area, specs, images};
     }),
+  projectHighlight: (data = {}) => {
+    const projectHighlight = [];
+    const dataArr = Object.entries(data);
+    if (!dataArr.length) {
+      return [];
+    }
+    for (let i = 1; i <= 8; i++) {
+      const pH = {
+        icon: '',
+        title: '',
+        subTitle: '',
+      };
+      dataArr.forEach((val, idx) => {
+        if (val[0] === `f${i}_icon` && val[1] && val[1] !== '') {
+          pH.icon = val[1];
+        }
+      });
+      dataArr.forEach((val2, idx2) => {
+        if (val2[0] === `f${i}_text_1` && val2[1] && val2[1] !== '') {
+          pH.title = val2[1];
+        }
+      });
+      dataArr.forEach((val3, idx3) => {
+        if (val3[0] === `f${i}_text_2` && val3[1] && val3[1] !== '') {
+          pH.subTitle = val3[1];
+        }
+      });
+      if (pH.icon !== '' && pH.title !== '' && pH.title !== '') {
+        projectHighlight.push(pH);
+      }
+    }
+    return projectHighlight;
+  },
 };
