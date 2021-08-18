@@ -1,30 +1,15 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import imageStorage from '../../helpers/imageStorage';
-import hectares from '../../Assets/ProjectIcons/Area.svg';
-import terminal from '../../Assets/ProjectIcons/bus.svg';
-import ruko from '../../Assets/ProjectIcons/flat.svg';
-import ruangH from '../../Assets/ProjectIcons/garden.svg';
-import unitR from '../../Assets/ProjectIcons/home.svg';
-import rS from '../../Assets/ProjectIcons/hospital.svg';
-import mall from '../../Assets/ProjectIcons/mall.svg';
-import stasiun from '../../Assets/ProjectIcons/train.svg';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
+import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
 export default function ProjectHighligt() {
-  // const [highlight, setHighlight] = React.useState([
-  //   {title: 'Hectares', content: '3 Ha', src: hectares},
-  //   {title: 'Ruang Hijau', content: '1000m', sup: '2', src: ruangH},
-  //   {title: 'Unit Rumah', content: '3.500', src: unitR},
-  //   {title: 'Ruko', content: '300', src: ruko},
-  //   {title: 'Stasiun', content: '3 menit', src: stasiun},
-  //   {title: 'Terminal', content: '2 menit', src: terminal},
-  //   {title: 'Pusat Kota & Mall', content: '5 menit', src: mall},
-  //   {title: 'Rumah Sakit', content: '8 menit', src: rS},
-  // ]);
   const {projectHighlight: highlight} = useSelector(
     (state) => state.projectData,
   );
+  const [ref1, wref1, href1] = getComponentWidth();
+  const {md, lg, xl} = useWindowDimensions();
 
   return (
     <section className="project-highlight my-3 container text-center">
@@ -36,24 +21,28 @@ export default function ProjectHighligt() {
               key={index}
               className="p-2 p-md-4 col-6 col-lg-3 col-md-6 d-flex justify-content-center align-items-center"
             >
-              <article className="highlight p-2 d-flex flex-column align-items-center justify-content-center">
-                <h1 className="m-0 title">{val.title}</h1>
-                <div className="w-100 d-flex justify-content-center align-items-center">
-                  <span>
+              <article className="highlight pt-2">
+                <div className="row">
+                  <div
+                    ref={index === 0 ? ref1 : null}
+                    style={{
+                      height: `${wref1}px`,
+                    }}
+                    className="col-3 position-relative"
+                  >
                     <img
+                      style={{
+                        left: md ? '1.5em' : lg ? '2em' : xl ? '2.5em' : '2em',
+                      }}
                       className="bg-transparent"
                       src={imageStorage(icon)}
                       alt={`${index}-icon`}
                     />
-                  </span>
-                  {/* {val.sup ? (
-                    <p className="m-0 subtitle">
-                      {val.subTitle}
-                      <sup>{val.sup}</sup>
-                    </p>
-                  ) : (
-                    )} */}
-                  <p className="m-0 subtitle">{val.subTitle}</p>
+                  </div>
+                  <div className="col-8 text-center">
+                    <h1 className="m-0 title">{val.title}</h1>
+                    <p className="m-0 subtitle">{val.subTitle}</p>
+                  </div>
                 </div>
               </article>
             </div>

@@ -1164,10 +1164,12 @@ p.desc-card-modal {
     border-radius: 10px !important;
     color: $color;
     transition: 0.2s ease;
-    & span img {
+    & img {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
       height: 100%;
       width: 2em;
-      margin-right: 1em;
       object-fit: contain !important;
     }
     & h1.title {
@@ -1181,6 +1183,8 @@ p.desc-card-modal {
     }
     &::after {
       content: '';
+      top: 0px;
+      left: 0px;
       border-radius: 10px !important;
       position: absolute;
       z-index: -1;
