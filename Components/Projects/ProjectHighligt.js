@@ -28,12 +28,9 @@ export default function ProjectHighligt() {
                     style={{
                       height: `${wref1}px`,
                     }}
-                    className="col-3 position-relative"
+                    className="col-3 p-2 position-relative"
                   >
                     <img
-                      style={{
-                        left: md ? '1.5em' : lg ? '2em' : xl ? '2.5em' : '2em',
-                      }}
                       className="bg-transparent"
                       src={imageStorage(icon)}
                       alt={`${index}-icon`}
