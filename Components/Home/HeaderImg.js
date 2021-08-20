@@ -14,7 +14,7 @@ export default function HeaderImg({
   handleTouchMove,
   handleTouchStart,
 }) {
-  const {xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
+  const {width, xsO, smO, mdO, lgO, xlO} = useWindowDimensions();
   const refCar = React.useRef(null);
   const [ref1, wRef1, hRef1] = getComponentWidth();
 
@@ -27,7 +27,7 @@ export default function HeaderImg({
       <div
         ref={ref1}
         style={{
-          height: `${wRef1 / 1.936}px`,
+          height: wRef1 && width ? `${wRef1 / 1.936}px` : '361.05px',
         }}
         className="header-img-container overflow-hidden"
       >
