@@ -9,7 +9,7 @@ export default function Boards() {
   const [ref1, wRef1, hRef2] = getComponentWidth();
   const boards = [
     {name: 'Asmat Amin', position: 'President Commissioner', photo: asmatA},
-    {name: 'Hengki Esa Putra', position: 'President Director', photo: ''},
+    {name: 'Hengki Esa Putra', position: 'Operational Director', photo: ''},
     {name: 'Rachmat Wahyudi', position: 'CFO', photo: rachmatW},
     {name: 'Astini B. Oudang', position: 'Commissioner', photo: ''},
   ];
