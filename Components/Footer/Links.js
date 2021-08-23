@@ -49,7 +49,7 @@ export default function Links({
 
           <div className="col-12 col-md-6 row">
             <section className="footer-list my-3 py-3 col-12 col-md-12 col-lg-6">
-              <h3 className="title">Head Office</h3>
+              <h3 className="title">Jakarta Office</h3>
               <ul className="list-footer">
                 {HeadOffice.map((val, idx) => (
                   <li key={idx}>
@@ -60,7 +60,7 @@ export default function Links({
             </section>
 
             <section className="footer-list my-3 py-3 col-12 col-md-12 col-lg-6">
-              <h3 className="title">Project Office</h3>
+              <h3 className="title">Head Office</h3>
               <ul className="list-footer">
                 {ProjectOffice.map((val, idx) => (
                   <li key={idx}>
