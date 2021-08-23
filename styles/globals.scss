@@ -824,6 +824,14 @@ ul.menu {
   }
 }
 
+h3.desc-title-modal {
+  color: $color;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-weight: $font-extrabold;
+}
+
 p.desc-card-modal {
   color: $color;
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -832,6 +840,23 @@ p.desc-card-modal {
   text-align: justify !important;
   text-justify: inter-word !important;
 }
+
+ul.list-card-modal-board li {
+  color: $color;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+p.desc-card-modal-underline {
+  color: $color;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  text-decoration: underline !important;
+  font-weight: $font-bold !important;
+}
+
 
 // content per page
 

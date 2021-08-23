@@ -26,15 +26,25 @@ export default function Boards() {
     position: '',
     photo: '',
     desc: '',
+    experience: () => {},
   });
+  const [selected, setSelected] = React.useState(0);
   const toggle = () => setModalOpen((x) => !x);
   const selectBoard = (val) => {
-    setSelectedBoard({...boards[val], desc: desc[val]});
+    setSelectedBoard({
+      ...boards[val],
+      desc: desc[val],
+    });
   };
 
   return (
     <div className="boards my-3 my-md-5">
-      <ModalBoards open={modalOpen} toggle={toggle} {...selectedBoard} />
+      <ModalBoards
+        experience={selected}
+        open={modalOpen}
+        toggle={toggle}
+        {...selectedBoard}
+      />
       <div className="container">
         <div className="row">
           <div className="col-12 mb-3 d-flex align-items-center justify-content-center title">
@@ -56,6 +66,7 @@ export default function Boards() {
                 <div className="w-100 h-100 d-flex justify-content-center align-items-center">
                   <button
                     onClick={() => {
+                      setSelected(idx);
                       selectBoard(idx);
                       toggle();
                     }}

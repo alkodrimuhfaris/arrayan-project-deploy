@@ -2,6 +2,7 @@ import React from 'react';
 import {Modal, ModalBody} from 'reactstrap';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
+import BoardsExperience from './BoardsExperience';
 
 export default function ModalBoards({
   open = false,
@@ -10,6 +11,7 @@ export default function ModalBoards({
   photo = '',
   position = '',
   desc = '',
+  experience = 0,
 }) {
   const [ref1, wRef1, hRef1] = getComponentWidth();
   const [ref2, wRef2, hRef2] = getComponentWidth();
@@ -58,8 +60,12 @@ export default function ModalBoards({
             </div>
             <div ref={ref2} className="col-12 col-lg-9">
               <article className="py-lg-0 py-3 container w-100">
+                <h3 className="desc-title-modal text-ar-dark text-bold">
+                  Biodata
+                </h3>
                 <p className="desc-card-modal text-justify w-100">{desc}</p>
               </article>
+              <BoardsExperience selectedBoards={experience} />
             </div>
           </div>
         </div>
