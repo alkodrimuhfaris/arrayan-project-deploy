@@ -57,8 +57,8 @@ export default function ModalBoards({
               </div>
             </div>
             <div ref={ref2} className="col-12 col-lg-9">
-              <article className="py-lg-0 py-3 container">
-                <p className="desc-card-modal">{desc}</p>
+              <article className="py-lg-0 py-3 container w-100">
+                <p className="desc-card-modal text-justify w-100">{desc}</p>
               </article>
             </div>
           </div>
