@@ -4,6 +4,7 @@ import {combineReducers} from 'redux';
 import newsData from './news/newsData';
 import newsDataMain from './news/news';
 import readNews from './news/readNews';
+import draftNews from './news/draftNews';
 import dataFromGetTags from './news/tags';
 import dataFromGetPopularNews from './news/popularNews';
 
@@ -21,6 +22,7 @@ export default combineReducers({
   newsData,
   newsDataMain,
   readNews,
+  draftNews,
   dataFromGetTags,
   dataFromGetPopularNews,
 
