@@ -25,7 +25,7 @@ import timeParser from '../../helpers/timeParser';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
 import getSelfUrl from '../../helpers/getSelfUrl';
 
-export default function ReadNews() {
+export default function ReadNews({draft = false}) {
   const [image, setImage] = React.useState('');
   const [date, setDate] = React.useState('');
   const [ref1, wRef1, hRef1] = getComponentWidth();
@@ -36,7 +36,7 @@ export default function ReadNews() {
     image: img,
     slug,
     date: dt,
-  } = useSelector((state) => state.readNews);
+  } = useSelector((state) => (!draft ? state.readNews : state.draftNews));
   const router = useRouter();
   const [url, setUrl] = React.useState('');
   const [copyUrl, setCopyUrl] = React.useState(false);

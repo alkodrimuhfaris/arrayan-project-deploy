@@ -3,9 +3,11 @@ import Link from 'next/link';
 import {useSelector} from 'react-redux';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
-export default function ReadNewsTag() {
+export default function ReadNewsTag({draft = false}) {
   const {sm} = useWindowDimensions();
-  const {tags} = useSelector((state) => state.readNews);
+  const {tags} = useSelector((state) =>
+    !draft ? state.readNews : state.draftNews,
+  );
 
   return (
     <div className={`tags-container ${sm ? 'container-lg' : ''}`}>

@@ -46,11 +46,11 @@ export default function news() {
       <LayoutNews
         footer={() => (
           <div className="mt-3 my-5 w-100">
-            <ReadNewsTag />
+            <ReadNewsTag draft />
           </div>
         )}
       >
-        <ReadNews />
+        <ReadNews draft />
       </LayoutNews>
     </Layout>
   );
