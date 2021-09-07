@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import actions from '../../redux/actions';
 
 export default function LayoutNews({
-  slug = [],
   mainPage = false,
   footer = () => null,
   ...props

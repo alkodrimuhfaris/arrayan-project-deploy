@@ -1,16 +1,7 @@
 import React from 'react';
+import {visi, misi} from '../../lib/dto';
 
 export default function VisiMisi() {
-  const visi =
-    'Menjadi pengembang kota mandiri terkemuka yang menyediakan kawasan hunian yang sehat dan nyaman, untuk Mewujudkan Keadilan Sosial Bagi Seluruh rakyat Indonesia.';
-  const misi = [
-    'Berkontribusi dalam pembangunan infrastruktur permukiman dan lingkungan dalam rangka mewujudkan dan meningkatkan kualitas hidup manusia Indonesia',
-    'Mewujudkan dan mengoptimalkan dukungan teknologi informasi dan inovasi dalam dalam menghasilkan produk yang layak, tepat waktu dan tepat guna.',
-    'Mendukung program pemerintah dalam rangka mendorong pembangunan perkotaan yang berkelanjutan.',
-    'Meningkatkan indeks pembangunan manusia.',
-    'Meningkatkan tata kelola organisasi dan tata Kelola Kawasan yang integrasi',
-  ];
-
   return (
     <div className="visi-misi bg-ar-dark text-white py-5">
       <div className="container">

@@ -1,25 +1,8 @@
 import React from 'react';
-import Award1 from '../../Assets/Icons/Awards-01.svg';
-import Award2 from '../../Assets/Icons/Awards-02.svg';
-import Award3 from '../../Assets/Icons/Awards-03.svg';
-import Award4 from '../../Assets/Icons/Awards-04.svg';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
+import {highlight, awards} from '../../lib/dto';
 
 export default function Highlight() {
-  const highlight = [
-    {title: 'Berdiri Sejak', desc: '2010'},
-    {title: 'Mengelola Lahan', desc: '698 Ha'},
-    {title: 'Unit Terjual', desc: '15.000'},
-    {title: 'Akan Dibangun', desc: '20.000'},
-  ];
-
-  const awards = [
-    {Award: Award1},
-    {Award: Award2},
-    {Award: Award3},
-    {Award: Award4},
-  ];
-
   const [ref1, w1, hRef1] = getComponentWidth();
 
   return (

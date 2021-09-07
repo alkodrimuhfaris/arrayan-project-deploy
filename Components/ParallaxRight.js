@@ -1,7 +1,5 @@
 import React from 'react';
-import rightTop from '../Assets/Parallax/kanan-branch-top.png';
-import rightMid from '../Assets/Parallax/kanan-mid.png';
-import rightEnd from '../Assets/Parallax/kanan-branch-end.png';
+import {parallaxRight} from '../lib/dto';
 
 export default function ParallaxRight({
   offsetY = 0,
@@ -9,12 +7,6 @@ export default function ParallaxRight({
   loading = false,
   refHomeCont = {current: null},
 }) {
-  const parallaxRight = [
-    {src: rightTop, position: '-1%', speed: 0.3},
-    {src: rightMid, position: '20%', speed: 0.7},
-    {src: rightEnd, position: '45%', speed: 0.52},
-  ];
-
   return (
     <div
       className={`parallax-right ${loading ? 'loading' : ''} ${

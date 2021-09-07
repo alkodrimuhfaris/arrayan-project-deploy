@@ -6,7 +6,6 @@ import timeParser from '../../helpers/timeParser';
 export default function NewsCard({
   slug = '',
   image = '',
-  href = '',
   title = '',
   shortContent = '',
   date = '',

@@ -16,7 +16,6 @@ export default function index() {
   const {meta, success, pending} = useSelector((state) => state.newsDataMain);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [lastPage, setLastPage] = React.useState(1);
-  const ref = React.useRef(null);
 
   React.useEffect(() => {
     if (!page) {

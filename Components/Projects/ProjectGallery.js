@@ -122,7 +122,7 @@ export default function ProjectGallery() {
               const idx = val + 1;
               return (
                 <div
-                  key={index}
+                  key={idx - 1}
                   style={{
                     left: `${index * wPhoto}px`,
                     width: `${wPhoto}px`,

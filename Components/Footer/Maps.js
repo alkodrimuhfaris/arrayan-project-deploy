@@ -1,48 +1,16 @@
 import React from 'react';
 import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai';
-import {StaticGoogleMap, Marker, Path} from 'react-static-google-map';
 import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 import carouselControler from '../../componentHelpers/carouselControler';
-import gpc from '../../Assets/MapsIcon/Grand-Purwakarta-City.svg';
-import gvc from '../../Assets/MapsIcon/Grand-Vista-Cikarang.svg';
-import gcc from '../../Assets/MapsIcon/Grand-Cikarang-City-2.svg';
-import vkc from '../../Assets/MapsIcon/Villa-Kencana-Cikarang-01.svg';
-import abtUs from '../../Assets/Photos/abtUs.jpg';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
+import {locations} from '../../lib/dto';
 
 export default function Maps() {
   const carouselTransition = '0.3s ease';
   const [ref1, wRef1, hRef1] = getComponentWidth();
   const [ref2, wRef2, hRef2] = getComponentWidth();
   const [heightRatio, setHeightRatio] = React.useState(2.6667);
-  const [refPhoto, wRefPhoto, hRefPhoto] = getComponentWidth();
   const [widthMap, setWidthMap] = React.useState(0);
-  const locations = [
-    {
-      name: 'Grand Purwakarta City',
-      address: 'Mulyamekar, Purwakarta West Java 41151',
-      photo: gpc,
-      href: 'https://goo.gl/maps/k3HZNLoEhubFrTMW7',
-    },
-    {
-      name: 'Grand Vista Cikarang',
-      address: 'Jayamulya, Bekasi West Java 17330',
-      photo: gvc,
-      href: 'https://goo.gl/maps/a86ofoFCcbdxSr6T7',
-    },
-    {
-      name: 'Grand Cikarang City 2',
-      address: 'Kedungwaringin, Bekasi West Java 17540',
-      photo: gcc,
-      href: 'https://goo.gl/maps/1gfXKwiNZnokRS2t8',
-    },
-    {
-      name: 'Vila Kencana Cikarang',
-      address: 'Karangsentosa, Bekasi West Java 17530',
-      photo: vkc,
-      href: 'https://goo.gl/maps/6ptMeD16vr1WEdpT9',
-    },
-  ];
 
   const {width, xsO, smO, mdO, lg, lgO, xlO} = useWindowDimensions();
 

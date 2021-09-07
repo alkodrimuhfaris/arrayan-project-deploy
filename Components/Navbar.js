@@ -52,20 +52,10 @@ export default function Navbar({
             <div className="contact">
               <a
                 ref={ref2}
-                // style={{aspectRatio: 4.51, width: `${hRef2 * 4.51}px`}}
                 className="contact-button text-decoration-none text-white"
                 href={`tel:${cpNumber}`}
               >
                 <img src={callCenter} alt="call-center-arrayan" />
-                {/* <div className="text-small">
-                  <p>
-                    <span>
-                      <FaHeadset />
-                    </span>{' '}
-                    call centre
-                  </p>
-                </div>
-                {cpNumber} */}
               </a>
             </div>
           </div>

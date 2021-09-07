@@ -1,7 +1,5 @@
 import React from 'react';
-import leftTop from '../Assets/Parallax/kiri-top.png';
-import leftMid from '../Assets/Parallax/kiri-branch-middle.png';
-import leftEnd from '../Assets/Parallax/kiri-end.png';
+import {parallaxLeft} from '../lib/dto';
 
 export default function ParallaxLeft({
   offsetY = 0,
@@ -9,12 +7,6 @@ export default function ParallaxLeft({
   loading = false,
   refHomeCont = {current: null},
 }) {
-  const parallaxLeft = [
-    {src: leftTop, position: '8%', speed: 0.7},
-    {src: leftMid, position: '30%', speed: 0.5},
-    {src: leftEnd, position: '35%', speed: 0.73},
-  ];
-
   return (
     <div
       className={`parallax-left ${loading ? 'loading' : ''} ${

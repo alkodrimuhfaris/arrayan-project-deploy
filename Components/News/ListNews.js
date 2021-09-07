@@ -1,17 +1,9 @@
 import React from 'react';
-import {useRouter} from 'next/router';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import NewsCard from './NewsCard';
 
-export default function ListNews({page}) {
-  const router = useRouter();
-  const dispatch = useDispatch();
-  const {
-    pending: pendingNews,
-    error: errorNews,
-    success: successNews,
-    news: newsList,
-  } = useSelector((state) => state.newsDataMain);
+export default function ListNews() {
+  const {news: newsList} = useSelector((state) => state.newsDataMain);
 
   return (
     <section className="list-news w-100">

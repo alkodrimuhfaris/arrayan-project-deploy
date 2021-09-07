@@ -2,14 +2,12 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import imageStorage from '../../helpers/imageStorage';
 import getComponentWidth from '../../componentHelpers/getComponentWidth';
-import useWindowDimensions from '../../componentHelpers/getWindowDimensions';
 
 export default function ProjectHighligt() {
   const {projectHighlight: highlight} = useSelector(
     (state) => state.projectData,
   );
   const [ref1, wref1, href1] = getComponentWidth();
-  const {md, lg, xl} = useWindowDimensions();
 
   return (
     <section className="project-highlight my-3 container text-center">
