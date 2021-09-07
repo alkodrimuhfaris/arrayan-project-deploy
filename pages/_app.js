@@ -29,9 +29,27 @@ const App = ({Component, pageProps}) => {
 
   return (
     <Provider store={store}>
+      <FacebookPixel />
       <Component {...pageProps} />
     </Provider>
   );
 };
+
+function FacebookPixel() {
+  const router = useRouter();
+  useEffect(() => {
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init(process.env.NEXT_PUBLIC_APP_API_FACEBOOK_PIXEL_ID);
+        ReactPixel.pageView();
+
+        router.events.on('routeChangeComplete', () => {
+          ReactPixel.pageView();
+        });
+      });
+  });
+  return null;
+}
 
 export default App;

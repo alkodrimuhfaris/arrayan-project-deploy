@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import iconArrayan from '../Assets/Icons/arrayanIconColor.svg'
 
-function NewsHeader({
+function AboutUsHeader({
   title = 'Arrayan - About Us',
   description = 'Pusat Hunian Terbaik Di Daerah Ibukota. Kunjungi Wesite Kami Untuk Rumah Yang Nyaman Dengan Fasilitas Terbaik Di Kelasnya. Berlokasi di Bekasi, Karawang, dan Purwakarta. Dapatkan Unit Super Murah di Grand Cikarang City 2, Grand Vista Cikarang, dan Villa Kencana Cikarang',
   image = iconArrayan,
@@ -98,4 +98,4 @@ function NewsHeader({
   );
 }
 
-export default NewsHeader;
+export default AboutUsHeader;
