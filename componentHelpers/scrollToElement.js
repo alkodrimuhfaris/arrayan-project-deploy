@@ -1,6 +1,5 @@
 import React from 'react';
 import {useRouter} from 'next/router';
-import {useSelector} from 'react-redux';
 import useWindowDimensions from './getWindowDimensions';
 
 export default function scrollToElement({jumpElement = ''}) {
