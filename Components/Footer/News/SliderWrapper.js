@@ -13,15 +13,14 @@ export default function SliderWrapper({
   handleTouchStart,
   errorNews,
 }) {
-  const onTouchEnd =
-    refNewsCont.current && refNews.current
-      ? null
-      : !(
-          refNewsCont.current.offsetWidth <
-          refNews.current.offsetWidth * newsList.length
-        )
-      ? null
-      : handleTouchEnd;
+  const onTouchEnd = !(refNewsCont.current && refNews.current)
+    ? null
+    : !(
+        refNewsCont.current.offsetWidth <
+        refNews.current.offsetWidth * newsList.length
+      )
+    ? null
+    : handleTouchEnd;
   const onTouchMove = !(refNewsCont.current && refNews.current)
     ? null
     : !(
