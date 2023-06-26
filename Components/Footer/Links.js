@@ -40,7 +40,7 @@ export default function Links({
                 {OurLink.map((val, idx) => (
                   <Link key={idx} href={val.href}>
                     <li>
-                      <a className="footer-link">{val.desc}</a>
+                      <p className="footer-link m-0">{val.desc}</p>
                     </li>
                   </Link>
                 ))}
@@ -52,22 +52,32 @@ export default function Links({
             <section className="footer-list my-3 py-3 col-12 col-md-12 col-lg-6">
               <h3 className="title">Jakarta Office</h3>
               <ul className="list-footer">
-                {HeadOffice.map((val, idx) => (
-                  <li key={idx}>
-                    <span className="footer-link">{val.desc}</span>
-                  </li>
-                ))}
+                <li>
+                  <span className="footer-link">
+                    {HeadOffice.map((val, idx) => (
+                      <React.Fragment key={idx}>
+                        {val.desc}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </span>
+                </li>
               </ul>
             </section>
 
             <section className="footer-list my-3 py-3 col-12 col-md-12 col-lg-6">
               <h3 className="title">Head Office</h3>
               <ul className="list-footer">
-                {ProjectOffice.map((val, idx) => (
-                  <li key={idx}>
-                    <span className="footer-link">{val.desc}</span>
-                  </li>
-                ))}
+                <li>
+                  <span className="footer-link">
+                    {ProjectOffice.map((val, idx) => (
+                      <React.Fragment key={idx}>
+                        {val.desc}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </span>
+                </li>
               </ul>
             </section>
           </div>
@@ -105,10 +115,8 @@ export default function Links({
             </section>
 
             <section className="footer-list align-self-end col-12 col-md-12 col-lg-6">
+              <h3 className="title mt-lg-0 mt-md-4">Email</h3>
               <ul className="list-footer">
-                <li>
-                  <p className="footer-link">Email</p>
-                </li>
                 <li>
                   <a
                     className="footer-link"
