@@ -11,6 +11,7 @@ export default function Links({
 }) {
   const [ref1, wRef1, hRef1] = getComponentWidth();
   const [ref2, wRef2, hRef2] = getComponentWidth();
+  const arrayanFooter = `© ${new Date().getFullYear()} Arrayan Group`;
   return (
     <footer id="footerArrayan" className="footer mb-5">
       <div className="container">
@@ -91,8 +92,8 @@ export default function Links({
               <h3 className="title">Contact Info</h3>
               <ul className="list-footer">
                 <li>
-                  <a className="footer-link" href="tel:(021) 8655 7890">
-                    Phone (021) 8655 7890
+                  <a className="footer-link" href="tel:(021)-2250-4920">
+                    Phone (021) 2250 4920
                   </a>
                 </li>
                 <li>
@@ -113,7 +114,12 @@ export default function Links({
                     className="footer-link"
                     href="mailto:mail@arrayangroup.com"
                   >
-                    mail@arrayangroup.com
+                    cs@arrayan.co.id
+                  </a>
+                </li>
+                <li>
+                  <a className="footer-link" href="mailto:Info@arrayan.co.id">
+                    Info@arrayan.co.id
                   </a>
                 </li>
               </ul>
@@ -124,7 +130,7 @@ export default function Links({
 
       {/*  */}
       <section className="container text-center">
-        <p className="text-c">© 2021 Arrayan Group</p>
+        <p className="text-c">{arrayanFooter}</p>
       </section>
     </footer>
   );
