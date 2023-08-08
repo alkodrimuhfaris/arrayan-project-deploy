@@ -875,7 +875,8 @@ p.desc-card-modal-underline {
       font-size: 1.1em;
       font-weight: $font-medium;
     }
-    & button.btn {
+    & button.btn, a.btn {
+      text-decoration: none; /* no underline */
       width: 100%;
       color: white;
       padding: 1em 0.5em;
